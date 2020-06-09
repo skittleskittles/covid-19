@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from Hello_app import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.get_list)  # 添加路径对应函数,''表示运行首页访问路径
 ]
