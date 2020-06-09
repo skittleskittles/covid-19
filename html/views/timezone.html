@@ -9,22 +9,22 @@
     <script src="../scripts/Plugin/bmap.min.js"></script>
     <script src="http://api.map.baidu.com/api?v=2.0&ak=LelFSt6BfykGf8m3PB5zr8LaXAG2cMg6"></script>
     <script src="../scripts/common.js"></script>
-    <script src="../scripts/quota.js"></script>
+    <script src="../scripts/timezone.js"></script>
 </head>
 <body>
 <!--顶部-->
 <header class="header left">
   <div class="left nav">
       <ul>
-          <li><i class="nav_1"></i><a href="index.html">采集概况</a> </li>
-          <li><i class="nav_2"></i><a href="quota.html">指标分析</a> </li>
-          <li><i class="nav_3"></i><a href="trend.html">趋势分析</a> </li>
-          <li class="nav_active"><i class="nav_4"></i><a href="chronic.html">慢病病人列表</a> </li>
+          <li><i class="nav_1"></i><a href="index.html">主界面</a> </li>
+          <li><i class="nav_2"></i><a href="timezone.html">时空态势</a> </li>
+          <li><i class="nav_3"></i><a href="yuqing.html">舆情分析</a> </li>
+          <!-- <li class="nav_active"><i class="nav_4"></i><a href="chronic.html">慢病病人列表</a> </li> -->
           </ul>
   </div>
     <div class="header_center left" style="position:relative">
         
-        <h2><strong>大数据展示</strong></h2>
+        <h2><strong>新冠疫情可视分析系统</strong></h2>
 
     </div>
     <div class="right nav text_right">
@@ -100,7 +100,13 @@
                 <p id="histogramChart2" class="p_chart"></p>
             </div>
         </div>
-        <div class="left div_any01">
+        <div class="div_any02 left ">
+            <div class="div_any_child div_height">
+                <div class="div_any_title any_title_width"><img src="../images/title_0.png">疫情地图 </div>
+                <div id="mapChart" style="width:97.5%;height:95%;display: inline-block;padding-left: 1.25%;padding-top:2.2%"></div>
+            </div>
+        </div>
+        <!-- <div class="left div_any01">
             <div class="div_any_child">
                 <div class="div_any_title"><img src="../images/title_7.png">各医院医疗费用(元)</div>
                 <p id="lineChart1" class="p_chart"></p>
@@ -119,7 +125,7 @@
                 <div class="div_any_title"><img src="../images/title_10.png">平均住院天数(天)</div>
                 <p id="histogramChart4" class="p_chart"></p>
             </div>
-        </div>
+        </div> -->
         <div class="left div_any01">
             <div class="div_any_child">
                 <div class="div_any_title"><img src="../images/title_11.png">手术工作量(台)</div>
