@@ -5,8 +5,10 @@
 
 其中scripts和views文件夹下，timezone是时空态势，yuqing是舆情分析，index是主界面
 
+（注：实际前端页面是实现在ChinaVis2020内的html、js文件中。可以直接在ChinaVis中实现前端页面，也可以先在html文件夹内修改好html再添加到后端框架中）
+
 ## ChinaVis2020
-django框架。
+基于django的后端框架
 
 建议了解django工作流以及wsgi协议。（model，views，urls）
 
@@ -14,6 +16,8 @@ django + mysql + echarts 参考网址：
 
 * https://mewhz.com/index.php/2019/12/03/django_link_mysql/
 * https://mewhz.com/archives/196
+
+django + echarts读取json：https://blog.csdn.net/maybe_fate/article/details/79981572
 
 ## 我们的数据库
 
