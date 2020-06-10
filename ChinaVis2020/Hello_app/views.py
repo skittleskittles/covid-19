@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from Hello_app.models import Confirmed
+from Hello_app.models import Confirmed, CountryMovein,CountryMoveout,HubeiMoveout,Cure,Death
 
 
 def get_list(request):
