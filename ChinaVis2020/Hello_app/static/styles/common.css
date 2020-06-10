@@ -146,7 +146,7 @@ a:hover{
     box-sizing: border-box;
 }
 .nav>ul>li i{
-    width: 100px;
+    width: 16px;
     height: 16px;
     display: inline-block;
     position: relative;
@@ -170,7 +170,6 @@ a:hover{
     /*border-top:4px solid #4b8df8;*/
     display: none;
     z-index: 999;
-
 }
 .li_ul li{
     line-height: 40px !important;
@@ -185,7 +184,7 @@ a:hover{
 
 .nav_1{
     background-image: url("../images/nav_1.png");
-    background-color:#cccccc;
+    /*background-color:#cccccc;*/
  }
 .nav_2{
     background-image: url("../images/nav_2.png");
@@ -232,8 +231,6 @@ a:hover{
     /*padding-bottom: 4px;*/
     box-sizing: border-box;
     overflow: auto;
-
-;
 }
 .find_expend{
     display: none;
@@ -353,7 +350,6 @@ a:hover{
 }
 .div_any_child01{
     width: 48%;
-
     box-shadow: -10px 0px 15px #034c6a inset, /*å·¦è¾¹é˜´å½±*/
     0px -10px 15px #034c6a inset, /*ä¸Šè¾¹é˜´å½±*/
     10px 0px 15px #034c6a inset, /*å³è¾¹é˜´å½±*/
@@ -471,7 +467,6 @@ a:hover{
     background-color:  #081832;
 }
 .car_center{
-
     height: 100%;
     background-color:  #081832;
     width: 50.5%;
@@ -480,8 +475,6 @@ a:hover{
 .car_center video{
     width: 49.5%;
     height: 49%;
-
-
     box-sizing: border-box;
     box-shadow: -10px 0px 15px #034c6a inset,
     10px 0px 15px #034c6a inset;
@@ -542,29 +535,21 @@ border-radius: 3px;
     width: 16px;
     height: 16px;
     display: inline-block;
-
     background-image: url("../images/nav_1.png");
     top:3px;
     position: relative;
 }
 .left_up{
-
     height: 58%;
-
 }
 .left_table{
-
     height: 98%;
-
     border-radius: 5px;
     width:18%!important;
     background-color:  #081832;
-
-
 }
 .right_table{
     height: 98%;
-
     border-radius: 5px;
     width:81.5%!important;
     background-color:  #081832;

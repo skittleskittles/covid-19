@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>数据可视化demo</title>
-    <link href="../static/styles/common.css" rel="stylesheet">
+    <link href="../static/styles/common.css?random=120100" rel="stylesheet">
     <script src="../static/scripts/Plugin/jquery-3.3.1.min.js"></script>
     <script src="../static/scripts/Plugin/echarts.min.js"></script>
     <script src="../static/scripts/common.js"></script>
@@ -22,7 +22,7 @@
   </div>
     <div class="header_center left" style="position:relative">
   
-        <h2><strong>大数据展示</strong></h2>
+        <h2><strong>新冠疫情可视分析系统</strong></h2>
 
     </div>
     <div class="right nav text_right">
@@ -55,39 +55,38 @@
                 </div>
             </div>
         </div>
-        <div class="left div_any01" style="width:48%;">
+        <div class="left div_any01" style="width:200%;">
           <div class="div_any_child" style="height: 420px;">
-              <div class="div_any_title"><img src="../static/images/title_14.png">主要症状</div>
+              <div class="div_any_title"><img src="../static/images/title_14.png">情感倾向</div>
               <p id="histogramChart2" class="p_chart" style="height: 400px;"></p>
-
           </div>
         </div>
-          <div class="left div_table_box" style="width: 48%;">
-              <div class="div_any_child" style="height: 420px;">
-                  <div class="div_any_title"><img src="../static/images/title_16.png">预警信息</div>
-                  <div class="table_p">
-                      <table>
-                          <thead><tr>
-                              <th>序号</th>
-                              <th>内容</th>
-                              <th>发布时间</th>
-                          </tr>
-                          </thead>
-                          <tbody>
-                          <tr><td>1</td><td>9月21日感染性腹泻发病：123人次</td><td>2018-11-05</td></tr>
-                          <tr><td>2</td><td>9月20日流行性感冒：57人次</td><td>2018-11-03</td></tr>
-                          <tr><td>3</td><td>9月19日:手足口病发病同比增长220%</td><td>2018-11-01</td></tr>
-                          <tr><td>4</td><td>9月18日登革热死亡:2人</td><td>2018-10-29</td></tr>
-                          <tr><td>5</td><td>9月17日流行性感冒：157人次</td><td>2018-10-27</td></tr>
-                          <tr><td>6</td><td>9月15日全区传染病发病人数较低</td><td>2018-10-25</td></tr>
-                          <tr><td>7</td><td>9月14日流行性感冒：157人次</td><td>2018-10-23</td></tr>
-                          <tr><td>8</td><td>9月13日全区传染病发病人数较低</td><td>2018-10-21</td></tr>
-                          <tr><td>9</td><td>9月12日流行性感冒：157人次</td><td>2018-10-20</td></tr>
-                          </tbody>
-                      </table>
-                  </div>
-              </div>
-          </div>
+{#          <div class="left div_table_box" style="width: 48%;">#}
+{#              <div class="div_any_child" style="height: 420px;">#}
+{#                  <div class="div_any_title"><img src="../static/images/title_16.png">预警信息</div>#}
+{#                  <div class="table_p">#}
+{#                      <table>#}
+{#                          <thead><tr>#}
+{#                              <th>序号</th>#}
+{#                              <th>内容</th>#}
+{#                              <th>发布时间</th>#}
+{#                          </tr>#}
+{#                          </thead>#}
+{#                          <tbody>#}
+{#                          <tr><td>1</td><td>9月21日感染性腹泻发病：123人次</td><td>2018-11-05</td></tr>#}
+{#                          <tr><td>2</td><td>9月20日流行性感冒：57人次</td><td>2018-11-03</td></tr>#}
+{#                          <tr><td>3</td><td>9月19日:手足口病发病同比增长220%</td><td>2018-11-01</td></tr>#}
+{#                          <tr><td>4</td><td>9月18日登革热死亡:2人</td><td>2018-10-29</td></tr>#}
+{#                          <tr><td>5</td><td>9月17日流行性感冒：157人次</td><td>2018-10-27</td></tr>#}
+{#                          <tr><td>6</td><td>9月15日全区传染病发病人数较低</td><td>2018-10-25</td></tr>#}
+{#                          <tr><td>7</td><td>9月14日流行性感冒：157人次</td><td>2018-10-23</td></tr>#}
+{#                          <tr><td>8</td><td>9月13日全区传染病发病人数较低</td><td>2018-10-21</td></tr>#}
+{#                          <tr><td>9</td><td>9月12日流行性感冒：157人次</td><td>2018-10-20</td></tr>#}
+{#                          </tbody>#}
+{#                      </table>#}
+{#                  </div>#}
+{#              </div>#}
+{#          </div>#}
       </div>
     </div>
 </div>
@@ -100,18 +99,18 @@
               <div id="lineChart2"  style="width: 52%;height: 90%;display: inline-block;"></div>
           </div>
       </div>
-      <div class="left div_any01" style="width:48%;">
-        <div class="div_any_child" style="height: 420px;">
-            <div class="div_any_title"><img src="../static/images/title_18.png">年龄分布</div>
-            <p id="pieChart1" class="p_chart" style="height: 400px;"></p>
-        </div>
-      </div>
-      <div class="right div_any01" style="width:48%;">
-          <div class="div_any_child" style="height: 420px;">
-              <div class="div_any_title"><img src="../static/images/title_19.png">性别分布</div>
-              <p id="pieChart2" class="p_chart" style="height: 400px;"></p>
-          </div>
-      </div>
+{#      <div class="left div_any01" style="width:48%;">#}
+{#        <div class="div_any_child" style="height: 420px;">#}
+{#            <div class="div_any_title"><img src="../static/images/title_18.png">年龄分布</div>#}
+{#            <p id="pieChart1" class="p_chart" style="height: 400px;"></p>#}
+{#        </div>#}
+{#      </div>#}
+{#      <div class="right div_any01" style="width:48%;">#}
+{#          <div class="div_any_child" style="height: 420px;">#}
+{#              <div class="div_any_title"><img src="../static/images/title_19.png">性别分布</div>#}
+{#              <p id="pieChart2" class="p_chart" style="height: 400px;"></p>#}
+{#          </div>#}
+{#      </div>#}
   </div>
 </div>
 </body>
