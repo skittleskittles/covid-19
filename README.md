@@ -19,6 +19,8 @@ django + mysql + echarts 参考网址：
 
 django + echarts读取json：https://blog.csdn.net/maybe_fate/article/details/79981572
 
+不同页面的跳转：https://www.cnblogs.com/dylancao/p/11554906.html（已实现）
+
 ## 我们的数据库
 
 - 基本信息：
