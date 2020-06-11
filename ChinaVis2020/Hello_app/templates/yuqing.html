@@ -7,7 +7,10 @@
     <script src="../static/scripts/Plugin/jquery-3.3.1.min.js"></script>
     <script src="../static/scripts/Plugin/echarts.min.js"></script>
     <script src="../static/scripts/common.js"></script>
-    <script src="../static/scripts/yuqing.js"></script>
+    <script>
+
+    </script>
+{#    <script src="../static/scripts/yuqing.js?random=123500"></script>#}
 </head>
 <body>
 <!--顶部-->
@@ -41,18 +44,18 @@
                 <div class="div_any_title"><img src="../static/images/title_13.png">舆情词云</div>
                 <div id="histogramChart1"  style="width: 45%;display: inline-block;height: 400px;margin-top: 15px;"></div>
                 <div id="lineChart1"  style="width: 52%;height: 66%;display: inline-block;"></div>
-                <div style="width: 50%;height: 20%;display: inline-block;color:red;position: absolute;right: 2%;top: 8%;">
-                  <div style="display: inline-block;width:33%;text-align:center;">
-                    <div style="color:#fff;font-size: 18px;line-height: 32px;">词频分析</div>
-                    <div style="color:#87cefa;font-size: 30px;line-height: 42px;">2354</div>
-                  </div><div style="display: inline-block;width:33%;text-align:center;">
-                    <div style="color:#fff;font-size: 18px;line-height: 32px;">死亡数</div>
-                    <div style="color:red;font-size: 30px;line-height: 42px;">26</div>
-                  </div><div style="display: inline-block;width:33%;text-align:center;">
-                    <div style="color:#fff;font-size: 18px;line-height: 32px;">同比发病数趋势</div>
-                    <div style="color:#ff7f50;font-size: 30px;line-height: 42px;">5.36%</div>
-                  </div>
-                </div>
+{#                <div style="width: 50%;height: 20%;display: inline-block;color:red;position: absolute;right: 2%;top: 8%;">#}
+{#                  <div style="display: inline-block;width:33%;text-align:center;">#}
+{#                    <div style="color:#fff;font-size: 18px;line-height: 32px;">词频分析</div>#}
+{#                    <div style="color:#87cefa;font-size: 30px;line-height: 42px;">2354</div>#}
+{#                  </div><div style="display: inline-block;width:33%;text-align:center;">#}
+{#                    <div style="color:#fff;font-size: 18px;line-height: 32px;">死亡数</div>#}
+{#                    <div style="color:red;font-size: 30px;line-height: 42px;">26</div>#}
+{#                  </div><div style="display: inline-block;width:33%;text-align:center;">#}
+{#                    <div style="color:#fff;font-size: 18px;line-height: 32px;">同比发病数趋势</div>#}
+{#                    <div style="color:#ff7f50;font-size: 30px;line-height: 42px;">5.36%</div>#}
+{#                  </div>#}
+{#                </div>#}
             </div>
         </div>
         <div class="left div_any01" style="width:200%;">
@@ -94,7 +97,7 @@
   <div class="div_any">
       <div class="left div_any01" style="width:100%;">
           <div class="div_any_child" style="width:98%;position:relative;height: 420px;">
-              <div class="div_any_title"><img src="../static/images/title_17.png">主要疾病排行</div>
+              <div class="div_any_title"><img src="../static/images/title_17.png">热词词频</div>
               <div id="histogramChart3"  style="width: 45%;display: inline-block;height: 400px;margin-top: 15px;"></div>
               <div id="lineChart2"  style="width: 52%;height: 90%;display: inline-block;"></div>
           </div>
@@ -114,4 +117,86 @@
   </div>
 </div>
 </body>
+<script>
+    //主要症状
+   var histogramChart2 = echarts.init(document.getElementById('histogramChart2'));
+   histogramChart2.setOption({
+       color: ['rgb(194,53,49)', "#FFCC99", 'rgb(83,122,149)'],
+       tooltip : {
+           trigger: 'axis',
+           axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+               type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+           },
+           formatter: function(params) {//这里就是控制显示的样式
+                var relVal = params[0].name;
+                var value = 0;
+                for (var i = 0, l = params.length; i < l; i++) {
+                    value += params[i].value;
+                }
+                for (var i = 0, l = params.length; i < l; i++) {
+              //marker 就是带颜色的小圆圈 seriesName x轴名称  value  y轴值 后面就是计算百分比
+                    relVal += '<br/>'+ params[i].marker + params[i].seriesName + ' : '+ parseFloat(params[i].value) +' (' + (100 *
+                        parseFloat(params[i].value) / parseFloat(value)).toFixed(2) + "%)";
+                }
+               return relVal;
+           },
+       },
+       legend: {
+           //data:['直接访问','邮件营销','联盟广告','视频广告','搜索引擎','百度','谷歌','必应','其他']
+           data:{{ legend_data|safe }},
+           textStyle: {
+                       color: '#fff'
+           }
+       },
+       grid: {
+           left: '3%',
+           right: '4%',
+           bottom: '10%',
+           containLabel: true
+       },
+       xAxis : [
+           {
+               type : 'category',
+               data:{{ x_data|safe }},
+               //data : ['周一','周二','周三','周四','周五','周六','周日']
+               axisLine:{
+                   show: false,//不显示坐标轴线
+               },
+               axisLabel : {
+                   textStyle: {
+                       color: '#fff'
+                   }
+               }
+           }
+       ],
+       yAxis : [
+           {
+               type : 'value',
+               //max: 5,
+               axisLine:{
+                   show: false,//不显示坐标轴线
+               },
+               axisLabel : {
+                   textStyle: {
+                       color: '#fff'
+                   }
+               }
+           }
+       ],
+       series:{{ series|safe }},
+       dataZoom: [
+           {   // 这个dataZoom组件，默认控制x轴。
+               type: 'slider', // 这个 dataZoom 组件是 slider 型 dataZoom 组件
+               start: 20,      // 左边在 10% 的位置。
+               end: 100         // 右边在 60% 的位置。
+           },
+           {   // 这个dataZoom组件，默认控制x轴。
+               type: 'inside', // 这个 dataZoom 组件是 inside 型 dataZoom 组件
+               start: 20,      // 左边在 10% 的位置。
+               end: 100         // 右边在 60% 的位置。
+           }
+        ],
+   })
+
+</script>
 </html>
