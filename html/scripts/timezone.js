@@ -23,6 +23,7 @@ function init(){
         tooltip: {  // 配置提示信息
             trigger: 'item'
         },
+        backgroundColor: '#081832',
         legend: {  // 图例组件展现了不同系列的标记(symbol)，颜色和名字。可以通过点击图例控制哪些系列不显示
             orient: 'vertical',
             left: 'left',
@@ -114,6 +115,7 @@ function init(){
                                 type: 'map',
                                 mapType: 'china',
                                 roam: false,
+                                zoom:1,
                                 label: {
                                     show: true,
                                     color: 'rgb(249, 249, 249)'
@@ -135,6 +137,10 @@ function init(){
         mapArea.removeAttribute('_echarts_instance_');
         let provinceChart = echarts.init(mapArea,'dark');
         let option = {
+            title:{
+                text:pName+"省"
+            },
+            backgroundColor: '#081832',
             legend:{
                 data:[
                     {
@@ -569,6 +575,10 @@ function init(){
 
         // 指定图表的配置项和数据
         var option = {
+            title:{
+                text:pName+"省"
+            },
+            backgroundColor: '#081832',
             xAxis: {
                 type: 'category',
                 data:dateIndex
@@ -801,129 +811,207 @@ function init(){
     drawZoom('湖北');
 
     function drawTimeSeries(pName){
-        let mapArea = document.getElementById("interactionEcharts");
+        let dateIndex = ['人数种类','1/22/2020','1/23/2020','1/24/2020','1/25/2020','1/26/2020','1/27/2020','1/28/2020','1/29/2020','1/30/2020','1/31/2020','2/1/2020','2/2/2020','2/3/2020','2/4/2020','2/5/2020','2/6/2020','2/7/2020','2/8/2020','2/9/2020','2/10/2020','2/11/2020','2/12/2020','2/13/2020','2/14/2020','2/15/2020','2/16/2020','2/17/2020','2/18/2020','2/19/2020','2/20/2020','2/21/2020','2/22/2020','2/23/2020','2/24/2020','2/25/2020','2/26/2020','2/27/2020','2/28/2020','2/29/2020','3/1/2020','3/2/2020','3/3/2020','3/4/2020','3/5/2020','3/6/2020','3/7/2020','3/8/2020','3/9/2020','3/10/2020','3/11/2020','3/12/2020','3/13/2020','3/14/2020','3/15/2020','3/16/2020','3/17/2020','3/18/2020','3/19/2020','3/20/2020','3/21/2020','3/22/2020','3/23/2020','3/24/2020','3/25/2020','3/26/2020','3/27/2020','3/28/2020','3/29/2020','3/30/2020','3/31/2020','4/1/2020','4/2/2020','4/3/2020','4/4/2020','4/5/2020','4/6/2020','4/7/2020','4/8/2020','4/9/2020','4/10/2020','4/11/2020','4/12/2020','4/13/2020','4/14/2020','4/15/2020','4/16/2020','4/17/2020','4/18/2020','4/19/2020','4/20/2020','4/21/2020','4/22/2020','4/23/2020','4/24/2020','4/25/2020','4/26/2020','4/27/2020','4/28/2020','4/29/2020','4/30/2020','5/1/2020','5/2/2020','5/3/2020','5/4/2020','5/5/2020','5/6/2020','5/7/2020','5/8/2020','5/9/2020','5/10/2020','5/11/2020','5/12/2020','5/13/2020','5/14/2020','5/15/2020','5/16/2020','5/17/2020','5/18/2020','5/19/2020','5/20/2020','5/21/2020','5/22/2020','5/23/2020','5/24/2020','5/25/2020','5/26/2020','5/27/2020','5/28/2020','5/29/2020','5/30/2020','5/31/2020','6/1/2020','6/2/2020'];
+        let confirmData = [];
+        confirmData.push("确诊人数");
+        let cureData = [];
+        cureData.push("治愈人数");
+        let deathData = [];
+        deathData.push("死亡人数");
+
+        let mapArea = document.getElementById("histogramChart1");
         mapArea.removeAttribute('_echarts_instance_');
-        let myInteractChart = echarts.init(mapArea);
-        function getSeriesData(pName) {
+        let myInteractChart = echarts.init(mapArea,'dark');
+
+        setTimeout(function () {
+            option = {
+                title:{
+                    text:pName+"省"
+                },
+                legend:{},
+                tooltip: {
+                    trigger: "axis",
+                    showContent:false
+                },
+                dataset:{
+                    source:[
+                        // ["人数种类",'1/22/2020','1/23/2020','1/24/2020','1/25/2020','1/26/2020'],
+                        // ["确诊人数",2000,3500,5000,6000,7500],
+                        // ["治愈人数",20,120,350,400,600],
+                        // ["死亡人数",2,5,10,35,60],
+                        dateIndex,
+                        // confirmData,
+                        // cureData,
+                        // deathData,
+                    ]
+                },
+                xAxis:{
+                    type:"category"
+                },
+                yAxis:{
+                    gridIndex:0
+                },
+                grid:{
+                    top:"55%"
+                },
+                series:[
+                    {type:"line", smooth: true,seriesLayoutBy: "row"},
+                    {type: "line",smooth: true,seriesLayoutBy: "row"},
+                    {type: "line",smooth: true,seriesLayoutBy: "row"},
+                    // {type: "line",smooth: true,seriesLayoutBy: "row"},
+                    {
+                        type: "pie",
+                        id:"pie",
+                        radius:"30%",
+                        center:["50%","25%"],
+                        label:{
+                            formatter: "{b}: {@1/22/2020} ({d}%)"
+                        },
+                        encode: {
+                            itemName: "人数种类",
+                            value:"1/22/2020",
+                            tooltip:"1/22/2020"
+                        }
+                    }
+                ]
+            };
+            myInteractChart.on("updateAxisPointer",function (event) {
+                let xAxisInfo = event.axesInfo[0];
+                if (xAxisInfo){
+                    let dimension = xAxisInfo.value+1;
+
+                    console.log(dimension);
+                    myInteractChart.setOption({
+                        series:{
+                            id:"pie",
+                            label:{
+                                format:"{b}: {@['dimension']} ({d}%)"
+                            },
+                            encode: {
+                                value: dimension,
+                                tooltip: dimension
+                            }
+                        }
+                    });
+                }
+            });
+            myInteractChart.setOption(option);
+            myInteractChart.setOption({
+                backgroundColor: '#081832',
+            });
+        });
+
+        function getInteractionData(pName){
+            console.log("getInterData");
+            confirmData = [];
+            confirmData.push("确诊人数");
+            cureData = [];
+            cureData.push("治愈人数");
+            deathData = [];
+            deathData.push("死亡人数");
+            $.ajax({
+                type: 'GET',
+                url: 'confirmed-data.csv',
+                dataType:'text',
+                success: function (data) {
+                    let jsonData = $.csv.toObjects(data);
+                    for (let i=0;i<jsonData.length;++i){
+                        if (jsonData[i]['Province/State']!==pName) continue;
+                        for (let j=1;j<dateIndex.length;++j){
+                            confirmData.push(Number(jsonData[i][dateIndex[j]]));
+                        }
+                    }
+                    myInteractChart.setOption({
+                        backgroundColor: '#081832',
+                        dataset: {
+                            source:[
+                                // ["人数种类",'1/22/2020','1/23/2020','1/24/2020','1/25/2020','1/26/2020'],
+                                // ["确诊人数",2000,3500,5000,6000,7500],
+                                // ["治愈人数",20,120,350,400,600],
+                                // ["死亡人数",2,5,10,35,60],
+                                dateIndex,
+                                confirmData,
+                                // cureData,
+                                // deathData,
+                            ]
+                        },
+                    })
+                }
+            });
+            $.ajax({
+                type: 'GET',
+                url: 'cure-data.csv',
+                dataType:'text',
+                success: function (data) {
+                    let jsonData = $.csv.toObjects(data);
+                    for (let i=0;i<jsonData.length;++i){
+                        if (jsonData[i]['Province/State']!==pName) continue;
+                        for (let j=1;j<dateIndex.length;++j){
+                            cureData.push(Number(jsonData[i][dateIndex[j]]));
+                        }
+                    }
+                    myInteractChart.setOption({
+                        dataset: {
+                            source:[
+                                // ["人数种类",'1/22/2020','1/23/2020','1/24/2020','1/25/2020','1/26/2020'],
+                                // ["确诊人数",2000,3500,5000,6000,7500],
+                                // ["治愈人数",20,120,350,400,600],
+                                // ["死亡人数",2,5,10,35,60],
+                                dateIndex,
+                                confirmData,
+                                cureData,
+                                // deathData,
+                            ]
+                        },
+                    })
+                }
+            });
+            $.ajax({
+                type: 'GET',
+                url: 'death-data.csv',
+                dataType:'text',
+                success: function (data) {
+                    let jsonData = $.csv.toObjects(data);
+                    for (let i=0;i<jsonData.length;++i){
+                        if (jsonData[i]['Province/State']!==pName) continue;
+                        for (let j=1;j<dateIndex.length;++j){
+                            deathData.push(Number(jsonData[i][dateIndex[j]]));
+                        }
+                    }
+                    myInteractChart.setOption({
+                        dataset: {
+                            source:[
+                                // ["人数种类",'1/22/2020','1/23/2020','1/24/2020','1/25/2020','1/26/2020'],
+                                // ["确诊人数",2000,3500,5000,6000,7500],
+                                // ["治愈人数",20,120,350,400,600],
+                                // ["死亡人数",2,5,10,35,60],
+                                dateIndex,
+                                confirmData,
+                                cureData,
+                                deathData,
+                            ]
+                        },
+                    })
+                }
+            });
+
 
         }
+
+        getInteractionData(pName);
     }
 
+    drawTimeSeries('湖北');
     myChart.on("click",function (params) {
         console.log("params");
         console.log(params.data.name);
         drawProvince(params.data.name);
         drawZoom(params.data.name);
+        drawTimeSeries(params.data.name);
     });
 
 
 
-  //各医院门诊人次
-  var histogramChart1 = echarts.init(document.getElementById('histogramChart1'));
-  histogramChart1.setOption({
-
-     grid: {
-         top: '20%',
-         left: '32%'
-     },
-     xAxis: {
-         show: false
-     },
-     yAxis: [{
-         show: true,
-         data:  ['厦门第一医院','厦门中山医院','厦门中医院','厦门第五医院',],
-         inverse: true,
-         axisLine: {
-             show: false
-         },
-         splitLine: {
-             show: false
-         },
-         axisTick: {
-             show: false
-         },
-         axisLabel: {
-             color: '#fff',
-             formatter: (value, index) => {
-                 return [
-
-                     `{lg|${index+1}}  ` + '{title|' + value + '} '
-                 ].join('\n')
-             },
-             rich: {
-                 lg: {
-                     backgroundColor: '#339911',
-                     color: '#fff',
-                     borderRadius: 15,
-                     // padding: 5,
-                     align: 'center',
-                     width: 15,
-                     height: 15
-                 },
-             }
-         },
-
-
-     }, {
-         show: true,
-         inverse: true,
-         data: [4000, 3000, 2000, 1000],
-         axisLabel: {
-             textStyle: {
-                 fontSize: 12,
-                 color: '#fff',
-             },
-         },
-         axisLine: {
-             show: false
-         },
-         splitLine: {
-             show: false
-         },
-         axisTick: {
-             show: false
-         },
-
-     }],
-     series: [{
-         name: '条',
-         type: 'bar',
-         yAxisIndex: 0,
-         data: [40, 30, 20, 10],
-         barWidth: 10,
-         itemStyle: {
-             normal: {
-                 barBorderRadius: 20,
-                 color: function(params) {
-                     var num = myColor.length;
-                     return myColor[params.dataIndex % num]
-                 },
-             }
-         },
-         label: {
-             normal: {
-                 show: true,
-                 position: 'inside',
-                 formatter: '{c}%'
-             }
-         },
-     }, {
-         name: '框',
-         type: 'bar',
-         yAxisIndex: 1,
-         barGap: '-100%',
-         data: [100, 100, 100, 100],
-         barWidth: 15,
-         itemStyle: {
-             normal: {
-                 color: 'none',
-                 borderColor: '#00c1de',
-                 borderWidth: 3,
-                 barBorderRadius: 15,
-             }
-         }
-     }, ]
-  })
 
   //各医院住院人次
   var histogramChart2 = echarts.init(document.getElementById('histogramChart2'));
