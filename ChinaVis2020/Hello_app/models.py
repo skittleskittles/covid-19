@@ -700,7 +700,7 @@ class EmotionalTendency(models.Model):
     total_sample = models.IntegerField(blank=True, null=True)
     positive = models.IntegerField(blank=True, null=True)
     neutral = models.IntegerField(blank=True, null=True)
-    nagative = models.IntegerField(blank=True, null=True)
+    negative = models.IntegerField(blank=True, null=True)
 
     class Meta:
         managed = False

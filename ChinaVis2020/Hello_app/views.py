@@ -60,7 +60,7 @@ def yuqing(request):
 
     positive = EmotionalTendency.objects.values("positive")
     neutral = EmotionalTendency.objects.values("neutral")
-    negative = EmotionalTendency.objects.values("nagative")
+    negative = EmotionalTendency.objects.values("negative")
     series = []
     serie1 = []
     serie2 = []
@@ -78,7 +78,7 @@ def yuqing(request):
             serie["data"] = serie2
         if com == '负向':
             for row in negative:
-                serie3.append(row['nagative'])
+                serie3.append(row['negative'])
             serie["data"] = serie3
         series.append(serie)
     # 柱子宽度可以在这里设置,注意必须加在最后一个 'bar' 系列上才会生效，并且是对此坐标系中所有 'bar' 系列生效。

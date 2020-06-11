@@ -97,7 +97,7 @@
   <div class="div_any">
       <div class="left div_any01" style="width:100%;">
           <div class="div_any_child" style="width:98%;position:relative;height: 420px;">
-              <div class="div_any_title"><img src="../static/images/title_17.png">主要疾病排行</div>
+              <div class="div_any_title"><img src="../static/images/title_17.png">热词词频</div>
               <div id="histogramChart3"  style="width: 45%;display: inline-block;height: 400px;margin-top: 15px;"></div>
               <div id="lineChart2"  style="width: 52%;height: 90%;display: inline-block;"></div>
           </div>
@@ -120,74 +120,26 @@
 <script>
     //主要症状
    var histogramChart2 = echarts.init(document.getElementById('histogramChart2'));
-   // histogramChart2.setOption({
-   //
-   //   color:['#FD6C88'],
-   //   grid:{
-   //       left: '5%',
-   //       right: '5%',
-   //       bottom: '10%',
-   //       containLabel: true
-   //   },
-   //   tooltip : {
-   //      trigger: 'item',
-   //      formatter: "{a}<br/>{b}<br/>{c}人"
-   //  },
-   //   calculable : true,
-   //   yAxis : [
-   //       {
-   //           type : 'category',
-   //           data : ['腹痛、腹胀、腹泻','恶心、呕吐、食欲不振','肌肉酸痛、乏力','持续高烧','头痛、眼眶痛、肌肉疼','皮疹、水泡','呼吸浅促','发热、咳嗽、流口水'],
-   //           axisLine:{
-   //                lineStyle:{
-   //                    color: '#FD6C88'
-   //                },
-   //            },
-   //            axisLabel : {
-   //                textStyle: {
-   //                    color: '#fff'
-   //                }
-   //            }
-   //       }
-   //   ],
-   //   xAxis : [
-   //       {
-   //           type : 'value',
-   //           axisLine:{
-   //               lineStyle:{
-   //                   color: '#FD6C88'
-   //               },
-   //           },
-   //           splitLine: {
-   //               "show": false
-   //           },
-   //           axisLabel: {
-   //               textStyle: {
-   //                   color: '#fff'
-   //               },
-   //               formatter: function (value) {
-   //                   return value + ""
-   //               },
-   //           },
-   //       }
-   //   ],
-   //   series : [
-   //       {
-   //           name:'主要症状',
-   //           type:'bar',
-   //           barWidth : 20,
-   //           data:[1750,1416,1136,819,704,413,251,175],
-   //       },
-   //   ]
-   // })
-
    histogramChart2.setOption({
-       color: ['rgb(194,53,49)', "#F8B448", 'rgb(83,122,149)'],
+       color: ['rgb(194,53,49)', "#FFCC99", 'rgb(83,122,149)'],
        tooltip : {
            trigger: 'axis',
            axisPointer : {            // 坐标轴指示器，坐标轴触发有效
                type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
-           }
+           },
+           formatter: function(params) {//这里就是控制显示的样式
+                var relVal = params[0].name;
+                var value = 0;
+                for (var i = 0, l = params.length; i < l; i++) {
+                    value += params[i].value;
+                }
+                for (var i = 0, l = params.length; i < l; i++) {
+              //marker 就是带颜色的小圆圈 seriesName x轴名称  value  y轴值 后面就是计算百分比
+                    relVal += '<br/>'+ params[i].marker + params[i].seriesName + ' : '+ parseFloat(params[i].value) +' (' + (100 *
+                        parseFloat(params[i].value) / parseFloat(value)).toFixed(2) + "%)";
+                }
+               return relVal;
+           },
        },
        legend: {
            //data:['直接访问','邮件营销','联盟广告','视频广告','搜索引擎','百度','谷歌','必应','其他']
