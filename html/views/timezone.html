@@ -4,12 +4,55 @@
     <meta charset="UTF-8">
     <title>数据可视化demo</title>
     <link href="../styles/common.css" rel="stylesheet">
-    <script src="../scripts/Plugin/jquery-3.3.1.min.js"></script>
-    <script src="../scripts/Plugin/echarts.min.js"></script>
+<!--    <script src="../scripts/Plugin/jquery-3.3.1.min.js"></script>-->
+    <script src="../libs/echarts.min.js"></script>
+    <script src="../libs/jquery1.9.1.js"></script>
+    <script src="../libs/jquery.csv.min.js"></script>
+<!--    <script src="../scripts/Plugin/echarts.min.js"></script>-->
     <script src="../scripts/Plugin/bmap.min.js"></script>
-    <script src="http://api.map.baidu.com/api?v=2.0&ak=LelFSt6BfykGf8m3PB5zr8LaXAG2cMg6"></script>
+<!--    <script src="http://api.map.baidu.com/api?v=2.0&ak=LelFSt6BfykGf8m3PB5zr8LaXAG2cMg6"></script>-->
     <script src="../scripts/common.js"></script>
     <script src="../scripts/timezone.js"></script>
+
+        <!--引入中国的地图数据js文件，引入后会自动注册地图名字和数据-->
+    <script src="https://www.echartsjs.com/examples/vendors/echarts/map/js/china.js?_v_=1578305236132"></script>
+    <!--引入中国各个省份的地图数据js文件，引入后会自动注册地图名字和数据-->
+    <script src="../scripts/maps/hebei.js"></script><!-- 河北 -->
+    <script src="../scripts/maps/shanxi.js"></script><!-- 山西 -->
+    <script src="../scripts/maps/liaoning.js"></script><!-- 辽宁 -->
+    <script src="../scripts/maps/jilin.js"></script><!-- 吉林 -->
+    <script src="../scripts/maps/heilongjiang.js"></script><!-- 黑龙江 -->
+    <script src="../scripts/maps/jiangsu.js"></script><!-- 江苏 -->
+    <script src="../scripts/maps/zhejiang.js"></script><!-- 浙江 -->
+    <script src="../scripts/maps/anhui.js"></script><!-- 安徽 -->
+    <script src="../scripts/maps/fujian.js"></script><!-- 福建 -->
+    <script src="../scripts/maps/jiangxi.js"></script><!-- 江西 -->
+    <script src="../scripts/maps/shandong.js"></script><!-- 山东 -->
+    <script src="../scripts/maps/henan.js"></script><!-- 河南 -->
+    <script src="../scripts/maps/hubei.js"></script><!-- 湖北 -->
+    <script src="../scripts/maps/hunan.js"></script><!-- 湖南 -->
+    <script src="../scripts/maps/guangdong.js"></script><!-- 广东 -->
+    <script src="../scripts/maps/hainan.js"></script><!-- 海南 -->
+    <script src="../scripts/maps/sichuan.js"></script><!-- 四川 -->
+    <script src="../scripts/maps/guizhou.js"></script><!-- 贵州 -->
+    <script src="../scripts/maps/yunnan.js"></script><!-- 云南 -->
+    <script src="../scripts/maps/shanxi1.js"></script><!-- 陕西 -->
+    <script src="../scripts/maps/gansu.js"></script><!-- 甘肃 -->
+    <script src="../scripts/maps/qinghai.js"></script><!-- 青海 -->
+    <script src="../scripts/maps/taiwan.js"></script><!-- 台湾 -->
+    <script src="../scripts/maps/neimenggu.js"></script><!-- 内蒙古 -->
+    <script src="../scripts/maps/guangxi.js"></script><!-- 广西 -->
+    <script src="../scripts/maps/xizang.js"></script><!-- 西藏 -->
+    <script src="../scripts/maps/ningxia.js"></script><!-- 宁夏 -->
+    <script src="../scripts/maps/xinjiang.js"></script><!-- 新疆 -->
+    <script src="../scripts/maps/beijing.js"></script><!-- 北京 -->
+    <script src="../scripts/maps/shanghai.js"></script><!-- 上海 -->
+    <script src="../scripts/maps/tianjin.js"></script><!-- 天津 -->
+    <script src="../scripts/maps/chongqing.js"></script><!-- 重庆 -->
+    <script src="../scripts/maps/xianggang.js"></script><!-- 香港 -->
+    <script src="../scripts/maps/aomen.js"></script><!-- 澳门 -->
+
+
 </head>
 <body>
 <!--顶部-->
@@ -90,22 +133,20 @@
   </div>
     <!--统计分析图-->
     <div class="div_any">
-        <div class="left div_any01">
-            <div class="div_any_child">
-                <div class="div_any_title"><img src="../images/title_5.png">各医院门诊人次(人)</div>
-                <p id="histogramChart1" class="p_chart"></p>
+        <div class="left div_any02">
+            <div class="div_any_child ">
+                <div class="div_any_title"><img src="../images/title_0.png">疫情地图</div>
+                <div id="mapChart" class="p_chart"></div>
             </div>
             <div class="div_any_child">
-                <div class="div_any_title"><img src="../images/title_6.png">各医院住院人次(人)</div>
-                <p id="histogramChart2" class="p_chart"></p>
+<!--                <div class="div_any_title"><img src="../images/title_12.png">疫情控制情况</div>-->
+                <div class="div_any_title"><img src="../images/title_0.png">疫情控制情况</div>
+                <p id="pieChart2" class="p_chart"></p>
             </div>
         </div>
-        <div class="div_any02 left ">
-            <div class="div_any_child div_height">
-                <div class="div_any_title any_title_width"><img src="../images/title_0.png">疫情地图 </div>
-                <div id="mapChart" style="width:97.5%;height:95%;display: inline-block;padding-left: 1.25%;padding-top:2.2%"></div>
-            </div>
-        </div>
+<!--        <div class="div_any01 left ">-->
+
+<!--        </div>-->
         <!-- <div class="left div_any01">
             <div class="div_any_child">
                 <div class="div_any_title"><img src="../images/title_7.png">各医院医疗费用(元)</div>
@@ -126,19 +167,21 @@
                 <p id="histogramChart4" class="p_chart"></p>
             </div>
         </div> -->
-        <div class="left div_any01">
+        <div class="left div_any02">
             <div class="div_any_child">
-                <div class="div_any_title"><img src="../images/title_11.png">手术工作量(台)</div>
+                <div class="div_any_title"><img src="../images/title_11.png">具体省份地图</div>
                 <p id="pieChart1" class="p_chart"></p>
             </div>
             <div class="div_any_child">
-                <div class="div_any_title"><img src="../images/title_12.png">床位数量分布(床)</div>
-                <p id="pieChart2" class="p_chart"></p>
+                <div class="div_any_title"><img src="../images/title_5.png">省份动态折线图</div>
+                <p id="histogramChart1" class="p_chart"></p>
             </div>
         </div>
     </div>
 
 
 </div>
+
+
 </body>
 </html>
