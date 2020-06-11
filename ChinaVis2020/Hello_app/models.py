@@ -12,6 +12,72 @@ class Warning(models.Model):
         db_table = 'WARNING'
 
 
+class AuthGroup(models.Model):
+    name = models.CharField(unique=True, max_length=150)
+
+    class Meta:
+        managed = False
+        db_table = 'auth_group'
+
+
+class AuthGroupPermissions(models.Model):
+    group = models.ForeignKey(AuthGroup, models.DO_NOTHING)
+    permission = models.ForeignKey('AuthPermission', models.DO_NOTHING)
+
+    class Meta:
+        managed = False
+        db_table = 'auth_group_permissions'
+        unique_together = (('group', 'permission'),)
+
+
+class AuthPermission(models.Model):
+    name = models.CharField(max_length=255)
+    content_type = models.ForeignKey('DjangoContentType', models.DO_NOTHING)
+    codename = models.CharField(max_length=100)
+
+    class Meta:
+        managed = False
+        db_table = 'auth_permission'
+        unique_together = (('content_type', 'codename'),)
+
+
+class AuthUser(models.Model):
+    password = models.CharField(max_length=128)
+    last_login = models.DateTimeField(blank=True, null=True)
+    is_superuser = models.IntegerField()
+    username = models.CharField(unique=True, max_length=150)
+    first_name = models.CharField(max_length=30)
+    last_name = models.CharField(max_length=150)
+    email = models.CharField(max_length=254)
+    is_staff = models.IntegerField()
+    is_active = models.IntegerField()
+    date_joined = models.DateTimeField()
+
+    class Meta:
+        managed = False
+        db_table = 'auth_user'
+
+
+class AuthUserGroups(models.Model):
+    user = models.ForeignKey(AuthUser, models.DO_NOTHING)
+    group = models.ForeignKey(AuthGroup, models.DO_NOTHING)
+
+    class Meta:
+        managed = False
+        db_table = 'auth_user_groups'
+        unique_together = (('user', 'group'),)
+
+
+class AuthUserUserPermissions(models.Model):
+    user = models.ForeignKey(AuthUser, models.DO_NOTHING)
+    permission = models.ForeignKey(AuthPermission, models.DO_NOTHING)
+
+    class Meta:
+        managed = False
+        db_table = 'auth_user_user_permissions'
+        unique_together = (('user', 'permission'),)
+
+
 class Confirmed(models.Model):
     province = models.CharField(max_length=45, blank=True, null=True)
     country = models.CharField(max_length=45, blank=True, null=True)
@@ -154,6 +220,146 @@ class Confirmed(models.Model):
     class Meta:
         managed = False
         db_table = 'confirmed'
+
+
+class CountryMovein(models.Model):
+    citycode = models.IntegerField(blank=True, null=True)
+    movein_source = models.CharField(max_length=45, blank=True, null=True)
+    m1_01 = models.FloatField(blank=True, null=True)
+    m1_02 = models.FloatField(blank=True, null=True)
+    m1_03 = models.FloatField(blank=True, null=True)
+    m1_04 = models.FloatField(blank=True, null=True)
+    m1_05 = models.FloatField(blank=True, null=True)
+    m1_06 = models.FloatField(blank=True, null=True)
+    m1_07 = models.FloatField(blank=True, null=True)
+    m1_08 = models.FloatField(blank=True, null=True)
+    m1_09 = models.FloatField(blank=True, null=True)
+    m1_10 = models.FloatField(blank=True, null=True)
+    m1_11 = models.FloatField(blank=True, null=True)
+    m1_12 = models.FloatField(blank=True, null=True)
+    m1_13 = models.FloatField(blank=True, null=True)
+    m1_14 = models.FloatField(blank=True, null=True)
+    m1_15 = models.FloatField(blank=True, null=True)
+    m1_16 = models.FloatField(blank=True, null=True)
+    m1_17 = models.FloatField(blank=True, null=True)
+    m1_18 = models.FloatField(blank=True, null=True)
+    m1_19 = models.FloatField(blank=True, null=True)
+    m1_20 = models.FloatField(blank=True, null=True)
+    m1_21 = models.FloatField(blank=True, null=True)
+    m1_22 = models.FloatField(blank=True, null=True)
+    m1_23 = models.FloatField(blank=True, null=True)
+    m1_24 = models.FloatField(blank=True, null=True)
+    m1_25 = models.FloatField(blank=True, null=True)
+    m1_26 = models.FloatField(blank=True, null=True)
+    m1_27 = models.FloatField(blank=True, null=True)
+    m1_28 = models.FloatField(blank=True, null=True)
+    m1_29 = models.FloatField(blank=True, null=True)
+    m1_30 = models.FloatField(blank=True, null=True)
+    m1_31 = models.FloatField(blank=True, null=True)
+    m2_01 = models.FloatField(blank=True, null=True)
+    m2_02 = models.FloatField(blank=True, null=True)
+    m2_03 = models.FloatField(blank=True, null=True)
+    m2_04 = models.FloatField(blank=True, null=True)
+    m2_05 = models.FloatField(blank=True, null=True)
+    m2_06 = models.FloatField(blank=True, null=True)
+    m2_07 = models.FloatField(blank=True, null=True)
+    m2_08 = models.FloatField(blank=True, null=True)
+    m2_09 = models.FloatField(blank=True, null=True)
+    m2_10 = models.FloatField(blank=True, null=True)
+    m2_11 = models.FloatField(blank=True, null=True)
+    m2_12 = models.FloatField(blank=True, null=True)
+    m2_13 = models.FloatField(blank=True, null=True)
+    m2_14 = models.FloatField(blank=True, null=True)
+    m2_15 = models.FloatField(blank=True, null=True)
+    m2_16 = models.FloatField(blank=True, null=True)
+    m2_17 = models.FloatField(blank=True, null=True)
+    m2_18 = models.FloatField(blank=True, null=True)
+    m2_19 = models.FloatField(blank=True, null=True)
+    m2_20 = models.FloatField(blank=True, null=True)
+    m2_21 = models.FloatField(blank=True, null=True)
+    m2_22 = models.FloatField(blank=True, null=True)
+    m2_23 = models.FloatField(blank=True, null=True)
+    m2_24 = models.FloatField(blank=True, null=True)
+    m2_25 = models.FloatField(blank=True, null=True)
+    m2_26 = models.FloatField(blank=True, null=True)
+    m2_27 = models.FloatField(blank=True, null=True)
+    m2_28 = models.FloatField(blank=True, null=True)
+    m2_29 = models.FloatField(blank=True, null=True)
+    m3_01 = models.FloatField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'country_movein'
+
+
+class CountryMoveout(models.Model):
+    citycode = models.IntegerField(blank=True, null=True)
+    moveout_dest = models.CharField(max_length=45, blank=True, null=True)
+    m1_01 = models.FloatField(blank=True, null=True)
+    m1_02 = models.FloatField(blank=True, null=True)
+    m1_03 = models.FloatField(blank=True, null=True)
+    m1_04 = models.FloatField(blank=True, null=True)
+    m1_05 = models.FloatField(blank=True, null=True)
+    m1_06 = models.FloatField(blank=True, null=True)
+    m1_07 = models.FloatField(blank=True, null=True)
+    m1_08 = models.FloatField(blank=True, null=True)
+    m1_09 = models.FloatField(blank=True, null=True)
+    m1_10 = models.FloatField(blank=True, null=True)
+    m1_11 = models.FloatField(blank=True, null=True)
+    m1_12 = models.FloatField(blank=True, null=True)
+    m1_13 = models.FloatField(blank=True, null=True)
+    m1_14 = models.FloatField(blank=True, null=True)
+    m1_15 = models.FloatField(blank=True, null=True)
+    m1_16 = models.FloatField(blank=True, null=True)
+    m1_17 = models.FloatField(blank=True, null=True)
+    m1_18 = models.FloatField(blank=True, null=True)
+    m1_19 = models.FloatField(blank=True, null=True)
+    m1_20 = models.FloatField(blank=True, null=True)
+    m1_21 = models.FloatField(blank=True, null=True)
+    m1_22 = models.FloatField(blank=True, null=True)
+    m1_23 = models.FloatField(blank=True, null=True)
+    m1_24 = models.FloatField(blank=True, null=True)
+    m1_25 = models.FloatField(blank=True, null=True)
+    m1_26 = models.FloatField(blank=True, null=True)
+    m1_27 = models.FloatField(blank=True, null=True)
+    m1_28 = models.FloatField(blank=True, null=True)
+    m1_29 = models.FloatField(blank=True, null=True)
+    m1_30 = models.FloatField(blank=True, null=True)
+    m1_31 = models.FloatField(blank=True, null=True)
+    m2_01 = models.FloatField(blank=True, null=True)
+    m2_02 = models.FloatField(blank=True, null=True)
+    m2_03 = models.FloatField(blank=True, null=True)
+    m2_04 = models.FloatField(blank=True, null=True)
+    m2_05 = models.FloatField(blank=True, null=True)
+    m2_06 = models.FloatField(blank=True, null=True)
+    m2_07 = models.FloatField(blank=True, null=True)
+    m2_08 = models.FloatField(blank=True, null=True)
+    m2_09 = models.FloatField(blank=True, null=True)
+    m2_10 = models.FloatField(blank=True, null=True)
+    m2_11 = models.FloatField(blank=True, null=True)
+    m2_12 = models.FloatField(blank=True, null=True)
+    m2_13 = models.FloatField(blank=True, null=True)
+    m2_14 = models.FloatField(blank=True, null=True)
+    m2_15 = models.FloatField(blank=True, null=True)
+    m2_16 = models.FloatField(blank=True, null=True)
+    m2_17 = models.FloatField(blank=True, null=True)
+    m2_18 = models.FloatField(blank=True, null=True)
+    m2_19 = models.FloatField(blank=True, null=True)
+    m2_20 = models.FloatField(blank=True, null=True)
+    m2_21 = models.FloatField(blank=True, null=True)
+    m2_22 = models.FloatField(blank=True, null=True)
+    m2_23 = models.FloatField(blank=True, null=True)
+    m2_24 = models.FloatField(blank=True, null=True)
+    m2_25 = models.FloatField(blank=True, null=True)
+    m2_26 = models.FloatField(blank=True, null=True)
+    m2_27 = models.FloatField(blank=True, null=True)
+    m2_28 = models.FloatField(blank=True, null=True)
+    m2_29 = models.FloatField(blank=True, null=True)
+    m3_01 = models.FloatField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'country_moveout'
 
 
 class Cure(models.Model):
@@ -442,4 +648,131 @@ class Death(models.Model):
     class Meta:
         managed = False
         db_table = 'death'
+
+
+class DjangoAdminLog(models.Model):
+    action_time = models.DateTimeField()
+    object_id = models.TextField(blank=True, null=True)
+    object_repr = models.CharField(max_length=200)
+    action_flag = models.PositiveSmallIntegerField()
+    change_message = models.TextField()
+    content_type = models.ForeignKey('DjangoContentType', models.DO_NOTHING, blank=True, null=True)
+    user = models.ForeignKey(AuthUser, models.DO_NOTHING)
+
+    class Meta:
+        managed = False
+        db_table = 'django_admin_log'
+
+
+class DjangoContentType(models.Model):
+    app_label = models.CharField(max_length=100)
+    model = models.CharField(max_length=100)
+
+    class Meta:
+        managed = False
+        db_table = 'django_content_type'
+        unique_together = (('app_label', 'model'),)
+
+
+class DjangoMigrations(models.Model):
+    app = models.CharField(max_length=255)
+    name = models.CharField(max_length=255)
+    applied = models.DateTimeField()
+
+    class Meta:
+        managed = False
+        db_table = 'django_migrations'
+
+
+class DjangoSession(models.Model):
+    session_key = models.CharField(primary_key=True, max_length=40)
+    session_data = models.TextField()
+    expire_date = models.DateTimeField()
+
+    class Meta:
+        managed = False
+        db_table = 'django_session'
+
+
+class EmotionalTendency(models.Model):
+    date = models.IntegerField(blank=True, null=True)
+    total = models.IntegerField(blank=True, null=True)
+    total_sample = models.IntegerField(blank=True, null=True)
+    positive = models.IntegerField(blank=True, null=True)
+    neutral = models.IntegerField(blank=True, null=True)
+    nagative = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'emotional_tendency'
+
+
+class HubeiMoveout(models.Model):
+    citycode = models.IntegerField(blank=True, null=True)
+    moveout_dest = models.CharField(max_length=45, blank=True, null=True)
+    m1_01 = models.FloatField(blank=True, null=True)
+    m1_02 = models.FloatField(blank=True, null=True)
+    m1_03 = models.FloatField(blank=True, null=True)
+    m1_04 = models.FloatField(blank=True, null=True)
+    m1_05 = models.FloatField(blank=True, null=True)
+    m1_06 = models.FloatField(blank=True, null=True)
+    m1_07 = models.FloatField(blank=True, null=True)
+    m1_08 = models.FloatField(blank=True, null=True)
+    m1_09 = models.FloatField(blank=True, null=True)
+    m1_10 = models.FloatField(blank=True, null=True)
+    m1_11 = models.FloatField(blank=True, null=True)
+    m1_12 = models.FloatField(blank=True, null=True)
+    m1_13 = models.FloatField(blank=True, null=True)
+    m1_14 = models.FloatField(blank=True, null=True)
+    m1_15 = models.FloatField(blank=True, null=True)
+    m1_16 = models.FloatField(blank=True, null=True)
+    m1_17 = models.FloatField(blank=True, null=True)
+    m1_18 = models.FloatField(blank=True, null=True)
+    m1_19 = models.FloatField(blank=True, null=True)
+    m1_20 = models.FloatField(blank=True, null=True)
+    m1_21 = models.FloatField(blank=True, null=True)
+    m1_22 = models.FloatField(blank=True, null=True)
+    m1_23 = models.FloatField(blank=True, null=True)
+    m1_24 = models.FloatField(blank=True, null=True)
+    m1_25 = models.FloatField(blank=True, null=True)
+    m1_26 = models.FloatField(blank=True, null=True)
+    m1_27 = models.FloatField(blank=True, null=True)
+    m1_28 = models.FloatField(blank=True, null=True)
+    m1_29 = models.FloatField(blank=True, null=True)
+    m1_30 = models.FloatField(blank=True, null=True)
+    m1_31 = models.FloatField(blank=True, null=True)
+    m2_01 = models.FloatField(blank=True, null=True)
+    m2_02 = models.FloatField(blank=True, null=True)
+    m2_03 = models.FloatField(blank=True, null=True)
+    m2_04 = models.FloatField(blank=True, null=True)
+    m2_05 = models.FloatField(blank=True, null=True)
+    m2_06 = models.FloatField(blank=True, null=True)
+    m2_07 = models.FloatField(blank=True, null=True)
+    m2_08 = models.FloatField(blank=True, null=True)
+    m2_09 = models.FloatField(blank=True, null=True)
+    m2_10 = models.FloatField(blank=True, null=True)
+    m2_11 = models.FloatField(blank=True, null=True)
+    m2_12 = models.FloatField(blank=True, null=True)
+    m2_13 = models.FloatField(blank=True, null=True)
+    m2_14 = models.FloatField(blank=True, null=True)
+    m2_15 = models.FloatField(blank=True, null=True)
+    m2_16 = models.FloatField(blank=True, null=True)
+    m2_17 = models.FloatField(blank=True, null=True)
+    m2_18 = models.FloatField(blank=True, null=True)
+    m2_19 = models.FloatField(blank=True, null=True)
+    m2_20 = models.FloatField(blank=True, null=True)
+    m2_21 = models.FloatField(blank=True, null=True)
+    m2_22 = models.FloatField(blank=True, null=True)
+    m2_23 = models.FloatField(blank=True, null=True)
+    m2_24 = models.FloatField(blank=True, null=True)
+    m2_25 = models.FloatField(blank=True, null=True)
+    m2_26 = models.FloatField(blank=True, null=True)
+    m2_27 = models.FloatField(blank=True, null=True)
+    m2_28 = models.FloatField(blank=True, null=True)
+    m2_29 = models.FloatField(blank=True, null=True)
+    m3_01 = models.FloatField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'hubei_moveout'
 

@@ -7,7 +7,10 @@
     <script src="../static/scripts/Plugin/jquery-3.3.1.min.js"></script>
     <script src="../static/scripts/Plugin/echarts.min.js"></script>
     <script src="../static/scripts/common.js"></script>
-    <script src="../static/scripts/yuqing.js"></script>
+    <script>
+
+    </script>
+{#    <script src="../static/scripts/yuqing.js?random=123500"></script>#}
 </head>
 <body>
 <!--顶部-->
@@ -41,18 +44,18 @@
                 <div class="div_any_title"><img src="../static/images/title_13.png">舆情词云</div>
                 <div id="histogramChart1"  style="width: 45%;display: inline-block;height: 400px;margin-top: 15px;"></div>
                 <div id="lineChart1"  style="width: 52%;height: 66%;display: inline-block;"></div>
-                <div style="width: 50%;height: 20%;display: inline-block;color:red;position: absolute;right: 2%;top: 8%;">
-                  <div style="display: inline-block;width:33%;text-align:center;">
-                    <div style="color:#fff;font-size: 18px;line-height: 32px;">词频分析</div>
-                    <div style="color:#87cefa;font-size: 30px;line-height: 42px;">2354</div>
-                  </div><div style="display: inline-block;width:33%;text-align:center;">
-                    <div style="color:#fff;font-size: 18px;line-height: 32px;">死亡数</div>
-                    <div style="color:red;font-size: 30px;line-height: 42px;">26</div>
-                  </div><div style="display: inline-block;width:33%;text-align:center;">
-                    <div style="color:#fff;font-size: 18px;line-height: 32px;">同比发病数趋势</div>
-                    <div style="color:#ff7f50;font-size: 30px;line-height: 42px;">5.36%</div>
-                  </div>
-                </div>
+{#                <div style="width: 50%;height: 20%;display: inline-block;color:red;position: absolute;right: 2%;top: 8%;">#}
+{#                  <div style="display: inline-block;width:33%;text-align:center;">#}
+{#                    <div style="color:#fff;font-size: 18px;line-height: 32px;">词频分析</div>#}
+{#                    <div style="color:#87cefa;font-size: 30px;line-height: 42px;">2354</div>#}
+{#                  </div><div style="display: inline-block;width:33%;text-align:center;">#}
+{#                    <div style="color:#fff;font-size: 18px;line-height: 32px;">死亡数</div>#}
+{#                    <div style="color:red;font-size: 30px;line-height: 42px;">26</div>#}
+{#                  </div><div style="display: inline-block;width:33%;text-align:center;">#}
+{#                    <div style="color:#fff;font-size: 18px;line-height: 32px;">同比发病数趋势</div>#}
+{#                    <div style="color:#ff7f50;font-size: 30px;line-height: 42px;">5.36%</div>#}
+{#                  </div>#}
+{#                </div>#}
             </div>
         </div>
         <div class="left div_any01" style="width:200%;">
@@ -114,4 +117,134 @@
   </div>
 </div>
 </body>
+<script>
+    //主要症状
+   var histogramChart2 = echarts.init(document.getElementById('histogramChart2'));
+   // histogramChart2.setOption({
+   //
+   //   color:['#FD6C88'],
+   //   grid:{
+   //       left: '5%',
+   //       right: '5%',
+   //       bottom: '10%',
+   //       containLabel: true
+   //   },
+   //   tooltip : {
+   //      trigger: 'item',
+   //      formatter: "{a}<br/>{b}<br/>{c}人"
+   //  },
+   //   calculable : true,
+   //   yAxis : [
+   //       {
+   //           type : 'category',
+   //           data : ['腹痛、腹胀、腹泻','恶心、呕吐、食欲不振','肌肉酸痛、乏力','持续高烧','头痛、眼眶痛、肌肉疼','皮疹、水泡','呼吸浅促','发热、咳嗽、流口水'],
+   //           axisLine:{
+   //                lineStyle:{
+   //                    color: '#FD6C88'
+   //                },
+   //            },
+   //            axisLabel : {
+   //                textStyle: {
+   //                    color: '#fff'
+   //                }
+   //            }
+   //       }
+   //   ],
+   //   xAxis : [
+   //       {
+   //           type : 'value',
+   //           axisLine:{
+   //               lineStyle:{
+   //                   color: '#FD6C88'
+   //               },
+   //           },
+   //           splitLine: {
+   //               "show": false
+   //           },
+   //           axisLabel: {
+   //               textStyle: {
+   //                   color: '#fff'
+   //               },
+   //               formatter: function (value) {
+   //                   return value + ""
+   //               },
+   //           },
+   //       }
+   //   ],
+   //   series : [
+   //       {
+   //           name:'主要症状',
+   //           type:'bar',
+   //           barWidth : 20,
+   //           data:[1750,1416,1136,819,704,413,251,175],
+   //       },
+   //   ]
+   // })
+
+   histogramChart2.setOption({
+       color: ['rgb(194,53,49)', "#F8B448", 'rgb(83,122,149)'],
+       tooltip : {
+           trigger: 'axis',
+           axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+               type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+           }
+       },
+       legend: {
+           //data:['直接访问','邮件营销','联盟广告','视频广告','搜索引擎','百度','谷歌','必应','其他']
+           data:{{ legend_data|safe }},
+           textStyle: {
+                       color: '#fff'
+           }
+       },
+       grid: {
+           left: '3%',
+           right: '4%',
+           bottom: '10%',
+           containLabel: true
+       },
+       xAxis : [
+           {
+               type : 'category',
+               data:{{ x_data|safe }},
+               //data : ['周一','周二','周三','周四','周五','周六','周日']
+               axisLine:{
+                   show: false,//不显示坐标轴线
+               },
+               axisLabel : {
+                   textStyle: {
+                       color: '#fff'
+                   }
+               }
+           }
+       ],
+       yAxis : [
+           {
+               type : 'value',
+               //max: 5,
+               axisLine:{
+                   show: false,//不显示坐标轴线
+               },
+               axisLabel : {
+                   textStyle: {
+                       color: '#fff'
+                   }
+               }
+           }
+       ],
+       series:{{ series|safe }},
+       dataZoom: [
+           {   // 这个dataZoom组件，默认控制x轴。
+               type: 'slider', // 这个 dataZoom 组件是 slider 型 dataZoom 组件
+               start: 20,      // 左边在 10% 的位置。
+               end: 100         // 右边在 60% 的位置。
+           },
+           {   // 这个dataZoom组件，默认控制x轴。
+               type: 'inside', // 这个 dataZoom 组件是 inside 型 dataZoom 组件
+               start: 20,      // 左边在 10% 的位置。
+               end: 100         // 右边在 60% 的位置。
+           }
+        ],
+   })
+
+</script>
 </html>
