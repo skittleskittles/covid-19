@@ -28,6 +28,10 @@ def timezone(request):
     confirmed_data = Confirmed.objects.all()
     return render(request, 'timezone.html', {'Confirmed': confirmed_data})
 
+def qianyi(request):
+    confirmed_data = Confirmed.objects.all()
+    return render(request, 'qianyi.html', {'Confirmed': confirmed_data})
+
 
 def yuqing(request):
     # 首先获取列名
