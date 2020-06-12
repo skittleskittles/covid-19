@@ -77,69 +77,6 @@ $(function(){
      ]
    })
 
-   //主要症状
-   var histogramChart2 = echarts.init(document.getElementById('histogramChart2'));
-   histogramChart2.setOption({
-
-     color:['#FD6C88'],
-     grid:{
-         left: '5%',
-         right: '5%',
-         bottom: '10%',
-         containLabel: true
-     },
-     tooltip : {
-        trigger: 'item',
-        formatter: "{a}<br/>{b}<br/>{c}人"
-    },
-     calculable : true,
-     yAxis : [
-         {
-             type : 'category',
-             data : ['腹痛、腹胀、腹泻','恶心、呕吐、食欲不振','肌肉酸痛、乏力','持续高烧','头痛、眼眶痛、肌肉疼','皮疹、水泡','呼吸浅促','发热、咳嗽、流口水'],
-             axisLine:{
-                  lineStyle:{
-                      color: '#FD6C88'
-                  },
-              },
-              axisLabel : {
-                  textStyle: {
-                      color: '#fff'
-                  }
-              }
-         }
-     ],
-     xAxis : [
-         {
-             type : 'value',
-             axisLine:{
-                 lineStyle:{
-                     color: '#FD6C88'
-                 },
-             },
-             splitLine: {
-                 "show": false
-             },
-             axisLabel: {
-                 textStyle: {
-                     color: '#fff'
-                 },
-                 formatter: function (value) {
-                     return value + ""
-                 },
-             },
-         }
-     ],
-     series : [
-         {
-             name:'主要症状',
-             type:'bar',
-             barWidth : 20,
-             data:[1750,1416,1136,819,704,413,251,175],
-         },
-     ]
-   })
-
    //传染病发病趋势
    var lineChart1 = echarts.init(document.getElementById('lineChart1'));
    lineChart1.setOption({

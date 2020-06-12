@@ -694,6 +694,19 @@ class DjangoSession(models.Model):
         db_table = 'django_session'
 
 
+class EmotionalTendency(models.Model):
+    date = models.IntegerField(blank=True, null=True)
+    total = models.IntegerField(blank=True, null=True)
+    total_sample = models.IntegerField(blank=True, null=True)
+    positive = models.IntegerField(blank=True, null=True)
+    neutral = models.IntegerField(blank=True, null=True)
+    negative = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'emotional_tendency'
+
+
 class HubeiMoveout(models.Model):
     citycode = models.IntegerField(blank=True, null=True)
     moveout_dest = models.CharField(max_length=45, blank=True, null=True)
@@ -762,3 +775,4 @@ class HubeiMoveout(models.Model):
     class Meta:
         managed = False
         db_table = 'hubei_moveout'
+
