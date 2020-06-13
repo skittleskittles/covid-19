@@ -160,7 +160,7 @@ a:hover{
     font-size: 14px;
 }
 /*.nav>ul>li:hover .li_ul{*/
-    /*display: block;*/
+/*    display: block;*/
 /*}*/
 
 .li_ul{
@@ -182,6 +182,17 @@ a:hover{
     font-size: 13px;
 }
 
+.nav_active{
+    width: 20px;
+    border-bottom: 4px solid #4b8df8;
+    box-shadow: -10px 0px 15px #034c6a inset, /*å·¦è¾¹é˜´å½±*/
+    0px -10px 15px #034c6a inset, /*ä¸Šè¾¹é˜´å½±*/
+    10px 0px 15px #034c6a inset, /*å³è¾¹é˜´å½±*/
+    0px 10px 15px #034c6a inset;
+
+    box-sizing: border-box;
+}
+
 .nav_1{
     background-image: url("../images/nav_1.png");
     /*background-color:#cccccc;*/
@@ -196,28 +207,7 @@ a:hover{
 .nav_4{
     background-image: url("../images/nav_3.png");
 }
-.nav_5{
-    background-image: url("../images/nav_5.png");
-}
-.nav_6{
-    background-image: url("../images/nav_6.png");
-}
-.nav_7{
-    background-image: url("../images/nav_7.png");
-}
-.nav_8{
-    background-image: url("../images/nav_9.png");
-}
-.nav_active{
-    width: 20px;
-    border-bottom: 4px solid #4b8df8;
-    box-shadow: -10px 0px 15px #034c6a inset, /*å·¦è¾¹é˜´å½±*/
-    0px -10px 15px #034c6a inset, /*ä¸Šè¾¹é˜´å½±*/
-    10px 0px 15px #034c6a inset, /*å³è¾¹é˜´å½±*/
-    0px 10px 15px #034c6a inset;
 
-    box-sizing: border-box;
-}
 
 .con{
     width: 100%;
