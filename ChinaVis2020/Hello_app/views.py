@@ -45,11 +45,11 @@ def yuqing(request):
     print('---cipin----')
     cpdate = CipinTop300.objects.all()
     cpjsonlist = []
-    cpCloud = {}
     for cp in cpdate:
-        cpCloud['keyword'] = cp.keyword
+        cpCloud = {}
+        cpCloud['name'] = cp.keyword
         cpCloud['value'] = cp.total
-        cpjsonlist.push(cpCloud)
+        cpjsonlist.append(cpCloud)
     print(cpjsonlist)
     # print(CipinTop300.objects.get(keyword= '新型').total)
     # cpword = CipinTop300.objects.values("keyword")
@@ -124,5 +124,7 @@ def yuqing(request):
     return render(request,"yuqing.html",{
         "series":series,
         "x_data":x_data,
-        "legend_data":legend_data
-    })
+        "legend_data":legend_data,
+        "cpjsonlist":cpjsonlist
+    }
+    ) 
