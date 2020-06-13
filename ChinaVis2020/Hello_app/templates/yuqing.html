@@ -7,9 +7,6 @@
     <script src="../static/scripts/Plugin/jquery-3.3.1.min.js"></script>
     <script src="../static/scripts/Plugin/echarts.min.js"></script>
     <script src="../static/scripts/common.js"></script>
-    <script>
-
-    </script>
 {#    <script src="../static/scripts/yuqing.js?random=123500"></script>#}
 </head>
 <body>
@@ -17,9 +14,9 @@
 <header class="header left">
   <div class="left nav">
       <ul>
-          <li><i class="nav_1"></i><a href="{% url 'home' %}">主界面</a> </li>
-          <li><i class="nav_2"></i><a href="{% url 'timezone' %}">时空态势</a> </li>
-          <li><i class="nav_3"></i><a href="{% url 'yuqing' %}">舆情分析</a> </li>
+          <li><a href="{% url 'home' %}">主界面</a> </li>
+          <li><a href="{% url 'timezone' %}">时空态势</a> </li>
+          <li class="nav_active"><a href="{% url 'yuqing' %}">舆情分析</a> </li>
           <!-- <li class="nav_active"><i class="nav_4"></i><a href="chronic.html">慢病病人列表</a> </li> -->
           </ul>
   </div>
@@ -44,18 +41,6 @@
                 <div class="div_any_title"><img src="../static/images/title_13.png">舆情词云</div>
                 <div id="histogramChart1"  style="width: 45%;display: inline-block;height: 400px;margin-top: 15px;"></div>
                 <div id="lineChart1"  style="width: 52%;height: 66%;display: inline-block;"></div>
-{#                <div style="width: 50%;height: 20%;display: inline-block;color:red;position: absolute;right: 2%;top: 8%;">#}
-{#                  <div style="display: inline-block;width:33%;text-align:center;">#}
-{#                    <div style="color:#fff;font-size: 18px;line-height: 32px;">词频分析</div>#}
-{#                    <div style="color:#87cefa;font-size: 30px;line-height: 42px;">2354</div>#}
-{#                  </div><div style="display: inline-block;width:33%;text-align:center;">#}
-{#                    <div style="color:#fff;font-size: 18px;line-height: 32px;">死亡数</div>#}
-{#                    <div style="color:red;font-size: 30px;line-height: 42px;">26</div>#}
-{#                  </div><div style="display: inline-block;width:33%;text-align:center;">#}
-{#                    <div style="color:#fff;font-size: 18px;line-height: 32px;">同比发病数趋势</div>#}
-{#                    <div style="color:#ff7f50;font-size: 30px;line-height: 42px;">5.36%</div>#}
-{#                  </div>#}
-{#                </div>#}
             </div>
         </div>
         <div class="left div_any01" style="width:200%;">
@@ -64,32 +49,6 @@
               <p id="histogramChart2" class="p_chart" style="height: 400px;"></p>
           </div>
         </div>
-{#          <div class="left div_table_box" style="width: 48%;">#}
-{#              <div class="div_any_child" style="height: 420px;">#}
-{#                  <div class="div_any_title"><img src="../static/images/title_16.png">预警信息</div>#}
-{#                  <div class="table_p">#}
-{#                      <table>#}
-{#                          <thead><tr>#}
-{#                              <th>序号</th>#}
-{#                              <th>内容</th>#}
-{#                              <th>发布时间</th>#}
-{#                          </tr>#}
-{#                          </thead>#}
-{#                          <tbody>#}
-{#                          <tr><td>1</td><td>9月21日感染性腹泻发病：123人次</td><td>2018-11-05</td></tr>#}
-{#                          <tr><td>2</td><td>9月20日流行性感冒：57人次</td><td>2018-11-03</td></tr>#}
-{#                          <tr><td>3</td><td>9月19日:手足口病发病同比增长220%</td><td>2018-11-01</td></tr>#}
-{#                          <tr><td>4</td><td>9月18日登革热死亡:2人</td><td>2018-10-29</td></tr>#}
-{#                          <tr><td>5</td><td>9月17日流行性感冒：157人次</td><td>2018-10-27</td></tr>#}
-{#                          <tr><td>6</td><td>9月15日全区传染病发病人数较低</td><td>2018-10-25</td></tr>#}
-{#                          <tr><td>7</td><td>9月14日流行性感冒：157人次</td><td>2018-10-23</td></tr>#}
-{#                          <tr><td>8</td><td>9月13日全区传染病发病人数较低</td><td>2018-10-21</td></tr>#}
-{#                          <tr><td>9</td><td>9月12日流行性感冒：157人次</td><td>2018-10-20</td></tr>#}
-{#                          </tbody>#}
-{#                      </table>#}
-{#                  </div>#}
-{#              </div>#}
-{#          </div>#}
       </div>
     </div>
 </div>
@@ -102,23 +61,12 @@
               <div id="lineChart2"  style="width: 52%;height: 90%;display: inline-block;"></div>
           </div>
       </div>
-{#      <div class="left div_any01" style="width:48%;">#}
-{#        <div class="div_any_child" style="height: 420px;">#}
-{#            <div class="div_any_title"><img src="../static/images/title_18.png">年龄分布</div>#}
-{#            <p id="pieChart1" class="p_chart" style="height: 400px;"></p>#}
-{#        </div>#}
-{#      </div>#}
-{#      <div class="right div_any01" style="width:48%;">#}
-{#          <div class="div_any_child" style="height: 420px;">#}
-{#              <div class="div_any_title"><img src="../static/images/title_19.png">性别分布</div>#}
-{#              <p id="pieChart2" class="p_chart" style="height: 400px;"></p>#}
-{#          </div>#}
-{#      </div>#}
   </div>
 </div>
 </body>
+
 <script>
-    //主要症状
+    //情感分析
    var histogramChart2 = echarts.init(document.getElementById('histogramChart2'));
    histogramChart2.setOption({
        color: ['rgb(194,53,49)', "#FFCC99", 'rgb(83,122,149)'],
@@ -142,10 +90,9 @@
            },
        },
        legend: {
-           //data:['直接访问','邮件营销','联盟广告','视频广告','搜索引擎','百度','谷歌','必应','其他']
            data:{{ legend_data|safe }},
            textStyle: {
-                       color: '#fff'
+               color: '#fff'
            }
        },
        grid: {
@@ -180,7 +127,15 @@
                    textStyle: {
                        color: '#fff'
                    }
-               }
+               },
+               // y軸的分割線顏色
+              splitLine: {
+                show: true,
+                lineStyle: {
+                  color: "rgb(133,133,133)",
+                  width: 1,
+                }
+              }
            }
        ],
        series:{{ series|safe }},
@@ -197,6 +152,5 @@
            }
         ],
    })
-
 </script>
 </html>
