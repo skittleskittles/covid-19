@@ -44,19 +44,26 @@ def yuqing(request):
     # print(rows)
     print('---cipin----')
     cpdate = CipinTop300.objects.all()
+    cpjsonlist = []
+    cpCloud = {}
+    for cp in cpdate:
+        cpCloud['keyword'] = cp.keyword
+        cpCloud['value'] = cp.total
+        cpjsonlist.push(cpCloud)
+    print(cpjsonlist)
     # print(CipinTop300.objects.get(keyword= '新型').total)
-    cpword = CipinTop300.objects.values("keyword")
-    cpid = CipinTop300.objects.values("cpid")
-    cptotal = CipinTop300.objects.values("total")
-    cpm0122 = CipinTop300.objects.values("m0122")
+    # cpword = CipinTop300.objects.values("keyword")
+    # cpid = CipinTop300.objects.values("cpid")
+    # cptotal = CipinTop300.objects.values("total")
+    # cpm0122 = CipinTop300.objects.values("m0122")
     # cpword = Cipin1.objects.values("keyword")
     # cpid = Cipin1.objects.values("id")
     # cptotal = Cipin1.objects.values("total")
     # cpm0122 = Cipin1.objects.values("m0122")
-    for (cid, kw,m122) in zip(cpid,cpword,cpm0122):
-        print(cid)
-        print(kw)
-        print(m122)
+    # for (cid, kw,m122) in zip(cpid,cpword,cpm0122):
+    #     print(cid)
+    #     print(kw)
+    #     print(m122)
 
     # by月份 by正向中性负向
     # Echarts官网source参考： 获取legend
