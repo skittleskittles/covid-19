@@ -4,12 +4,53 @@
     <meta charset="UTF-8">
     <title>数据可视化demo</title>
     <link href="../static/styles/common.css?random=120100" rel="stylesheet">
-    <script src="../static/scripts/Plugin/jquery-3.3.1.min.js"></script>
-    <script src="../static/scripts/Plugin/echarts.min.js"></script>
+<!--    <script src="../static/scripts/Plugin/jquery-3.3.1.min.js"></script>-->
+<!--    <script src="../static/scripts/Plugin/echarts.min.js"></script>-->
+    <script src="../static/scripts/libs/echarts.min.js"></script>
+    <script src="../static/scripts/libs/jquery1.9.1.js"></script>
+    <script src="../static/scripts/libs/jquery.csv.min.js"></script>
     <script src="../static/scripts/Plugin/bmap.min.js"></script>
-    <script src="http://api.map.baidu.com/api?v=2.0&ak=LelFSt6BfykGf8m3PB5zr8LaXAG2cMg6"></script>
     <script src="../static/scripts/common.js"></script>
     <script src="../static/scripts/timezone.js"></script>
+
+
+    <!--引入中国的地图数据js文件，引入后会自动注册地图名字和数据-->
+    <script src="https://www.echartsjs.com/examples/vendors/echarts/map/js/china.js?_v_=1578305236132"></script>
+    <!--引入中国各个省份的地图数据js文件，引入后会自动注册地图名字和数据-->
+    <script src="../static/scripts/maps/hebei.js"></script><!-- 河北 -->
+    <script src="../static/scripts/maps/shanxi.js"></script><!-- 山西 -->
+    <script src="../static/scripts/maps/liaoning.js"></script><!-- 辽宁 -->
+    <script src="../static/scripts/maps/jilin.js"></script><!-- 吉林 -->
+    <script src="../static/scripts/maps/heilongjiang.js"></script><!-- 黑龙江 -->
+    <script src="../static/scripts/maps/jiangsu.js"></script><!-- 江苏 -->
+    <script src="../static/scripts/maps/zhejiang.js"></script><!-- 浙江 -->
+    <script src="../static/scripts/maps/anhui.js"></script><!-- 安徽 -->
+    <script src="../static/scripts/maps/fujian.js"></script><!-- 福建 -->
+    <script src="../static/scripts/maps/jiangxi.js"></script><!-- 江西 -->
+    <script src="../static/scripts/maps/shandong.js"></script><!-- 山东 -->
+    <script src="../static/scripts/maps/henan.js"></script><!-- 河南 -->
+    <script src="../static/scripts/maps/hubei.js"></script><!-- 湖北 -->
+    <script src="../static/scripts/maps/hunan.js"></script><!-- 湖南 -->
+    <script src="../static/scripts/maps/guangdong.js"></script><!-- 广东 -->
+    <script src="../static/scripts/maps/hainan.js"></script><!-- 海南 -->
+    <script src="../static/scripts/maps/sichuan.js"></script><!-- 四川 -->
+    <script src="../static/scripts/maps/guizhou.js"></script><!-- 贵州 -->
+    <script src="../static/scripts/maps/yunnan.js"></script><!-- 云南 -->
+    <script src="../static/scripts/maps/shanxi1.js"></script><!-- 陕西 -->
+    <script src="../static/scripts/maps/gansu.js"></script><!-- 甘肃 -->
+    <script src="../static/scripts/maps/qinghai.js"></script><!-- 青海 -->
+    <script src="../static/scripts/maps/taiwan.js"></script><!-- 台湾 -->
+    <script src="../static/scripts/maps/neimenggu.js"></script><!-- 内蒙古 -->
+    <script src="../static/scripts/maps/guangxi.js"></script><!-- 广西 -->
+    <script src="../static/scripts/maps/xizang.js"></script><!-- 西藏 -->
+    <script src="../static/scripts/maps/ningxia.js"></script><!-- 宁夏 -->
+    <script src="../static/scripts/maps/xinjiang.js"></script><!-- 新疆 -->
+    <script src="../static/scripts/maps/beijing.js"></script><!-- 北京 -->
+    <script src="../static/scripts/maps/shanghai.js"></script><!-- 上海 -->
+    <script src="../static/scripts/maps/tianjin.js"></script><!-- 天津 -->
+    <script src="../static/scripts/maps/chongqing.js"></script><!-- 重庆 -->
+    <script src="../static/scripts/maps/xianggang.js"></script><!-- 香港 -->
+    <script src="../static/scripts/maps/aomen.js"></script><!-- 澳门 -->
 </head>
 <body>
 <!--顶部-->
@@ -35,111 +76,218 @@
     </div>
 
 </header>
+
 <!--内容部分-->
 <div class="con left">
-  <!--数据总概-->
-  <div class="con_div">
-      <div class="con_div_text left">
-          <div class="con_div_text01 left">
-              <img src="../static/images/info_7.png" class="left text01_img"/>
-              <div class="left text01_div">
-                  <p>全年医疗费用(万元)</p>
-                  <p>1235</p>
-              </div>
-          </div>
-          <div class="con_div_text01 right">
-              <img src="../static/images/info_8.png" class="left text01_img"/>
-              <div class="left text01_div">
-                  <p>当月医疗费用(万元)</p>
-                  <p>235</p>
-              </div>
-          </div>
-      </div>
-      <div class="con_div_text left">
-          <div class="con_div_text01 left">
-              <img src="../static/images/info_9.png" class="left text01_img"/>
-              <div class="left text01_div">
-                  <p>全年体检人数(人)</p>
-                  <p class="sky">12356</p>
-              </div>
-          </div>
-          <div class="con_div_text01 right">
-              <img src="../static/images/info_10.png" class="left text01_img"/>
-              <div class="left text01_div">
-                  <p>当月体检人数(人)</p>
-                  <p class="sky">12356</p>
-              </div>
-          </div>
-      </div>
-      <div class="con_div_text left">
+    <!--数据总概-->
+    <div class="con_div">
+        <div class="con_div_text left">
+            <div class="con_div_text01 left">
+                <img src="../static/images/info_7.png" class="left text01_img"/>
+                <div class="left text01_div">
+                    <p>全年医疗费用(万元)</p>
+                    <p>1235</p>
+                </div>
+            </div>
+            <div class="con_div_text01 right">
+                <img src="../static/images/info_8.png" class="left text01_img"/>
+                <div class="left text01_div">
+                    <p>当月医疗费用(万元)</p>
+                    <p>235</p>
+                </div>
+            </div>
+        </div>
+        <div class="con_div_text left">
+            <div class="con_div_text01 left">
+                <img src="../static/images/info_9.png" class="left text01_img"/>
+                <div class="left text01_div">
+                    <p>全年体检人数(人)</p>
+                    <p class="sky">12356</p>
+                </div>
+            </div>
+            <div class="con_div_text01 right">
+                <img src="../static/images/info_10.png" class="left text01_img"/>
+                <div class="left text01_div">
+                    <p>当月体检人数(人)</p>
+                    <p class="sky">12356</p>
+                </div>
+            </div>
+        </div>
+        <div class="con_div_text left">
 
-          <div class="con_div_text01 left">
-              <img src="../static/images/info_11.png" class="left text01_img"/>
-              <div class="left text01_div">
-                  <p>西药占比</p>
-                  <p class="org">92%</p>
-              </div>
-          </div>
-          <div class="con_div_text01 right">
-              <img src="../static/images/info_12.png" class="left text01_img"/>
-              <div class="left text01_div">
-                  <p>中药占比</p>
-                  <p class="org">8%</p>
-              </div>
-          </div>
-      </div>
-  </div>
+            <div class="con_div_text01 left">
+                <img src="../static/images/info_11.png" class="left text01_img"/>
+                <div class="left text01_div">
+                    <p>西药占比</p>
+                    <p class="org">92%</p>
+                </div>
+            </div>
+            <div class="con_div_text01 right">
+                <img src="../static/images/info_12.png" class="left text01_img"/>
+                <div class="left text01_div">
+                    <p>中药占比</p>
+                    <p class="org">8%</p>
+                </div>
+            </div>
+        </div>
+    </div>
     <!--统计分析图-->
     <div class="div_any">
-        <div class="left div_any01">
-            <div class="div_any_child">
-                <div class="div_any_title"><img src="../static/images/title_5.png">各医院门诊人次(人)</div>
-                <p id="histogramChart1" class="p_chart"></p>
+        <div class="left div_any02" style="width: 48%">
+            <div class="div_any_child ">
+                <div class="div_any_title"><img src="../static/images/title_0.png">疫情地图</div>
+                <div id="mapChart" class="p_chart"></div>
             </div>
             <div class="div_any_child">
-                <div class="div_any_title"><img src="../static/images/title_6.png">各医院住院人次(人)</div>
-                <p id="histogramChart2" class="p_chart"></p>
+                <!--                <div class="div_any_title"><img src="../images/title_12.png">疫情控制情况</div>-->
+                <div class="div_any_title"><img src="../static/images/title_0.png">疫情控制情况</div>
+                <p id="pieChart2" class="p_chart"></p>
             </div>
         </div>
-        <div class="div_any02 left ">
-            <div class="div_any_child div_height">
-                <div class="div_any_title any_title_width"><img src="../static/images/title_0.png">疫情地图 </div>
-                <div id="mapChart" style="width:97.5%;height:95%;display: inline-block;padding-left: 1.25%;padding-top:2.2%"></div>
-            </div>
-        </div>
+        <!--        <div class="div_any01 left ">-->
+
+        <!--        </div>-->
         <!-- <div class="left div_any01">
             <div class="div_any_child">
-                <div class="div_any_title"><img src="../static/images/title_7.png">各医院医疗费用(元)</div>
+                <div class="div_any_title"><img src="../images/title_7.png">各医院医疗费用(元)</div>
                 <p id="lineChart1" class="p_chart"></p>
             </div>
             <div class="div_any_child">
-                <div class="div_any_title"><img src="../static/images/title_8.png">各医院体检人次(人)</div>
+                <div class="div_any_title"><img src="../images/title_8.png">各医院体检人次(人)</div>
                 <p id="lineChart2" class="p_chart"></p>
             </div>
         </div>
         <div class="left div_any01">
             <div class="div_any_child">
-                <div class="div_any_title"><img src="../static/images/title_9.png">药占比(%)</div>
+                <div class="div_any_title"><img src="../images/title_9.png">药占比(%)</div>
                 <p id="histogramChart3" class="p_chart"></p>
             </div>
             <div class="div_any_child">
-                <div class="div_any_title"><img src="../static/images/title_10.png">平均住院天数(天)</div>
+                <div class="div_any_title"><img src="../images/title_10.png">平均住院天数(天)</div>
                 <p id="histogramChart4" class="p_chart"></p>
             </div>
         </div> -->
-        <div class="left div_any01">
+        <div class="right div_any02" style="width: 48%"  >
             <div class="div_any_child">
-                <div class="div_any_title"><img src="../static/images/title_11.png">手术工作量(台)</div>
+                <div class="div_any_title"><img src="../static/images/title_11.png">具体省份地图</div>
                 <p id="pieChart1" class="p_chart"></p>
             </div>
             <div class="div_any_child">
-                <div class="div_any_title"><img src="../static/images/title_12.png">床位数量分布(床)</div>
-                <p id="pieChart2" class="p_chart"></p>
+                <div class="div_any_title"><img src="../static/images/title_5.png">省份动态折线图</div>
+                <p id="histogramChart1" class="p_chart"></p>
             </div>
         </div>
     </div>
 
 
 </div>
+
+
+<!--内容部分-->
+<!--<div class="con left">-->
+<!--  &lt;!&ndash;数据总概&ndash;&gt;-->
+<!--  <div class="con_div">-->
+<!--      <div class="con_div_text left">-->
+<!--          <div class="con_div_text01 left">-->
+<!--              <img src="../static/images/info_7.png" class="left text01_img"/>-->
+<!--              <div class="left text01_div">-->
+<!--                  <p>全年医疗费用(万元)</p>-->
+<!--                  <p>1235</p>-->
+<!--              </div>-->
+<!--          </div>-->
+<!--          <div class="con_div_text01 right">-->
+<!--              <img src="../static/images/info_8.png" class="left text01_img"/>-->
+<!--              <div class="left text01_div">-->
+<!--                  <p>当月医疗费用(万元)</p>-->
+<!--                  <p>235</p>-->
+<!--              </div>-->
+<!--          </div>-->
+<!--      </div>-->
+<!--      <div class="con_div_text left">-->
+<!--          <div class="con_div_text01 left">-->
+<!--              <img src="../static/images/info_9.png" class="left text01_img"/>-->
+<!--              <div class="left text01_div">-->
+<!--                  <p>全年体检人数(人)</p>-->
+<!--                  <p class="sky">12356</p>-->
+<!--              </div>-->
+<!--          </div>-->
+<!--          <div class="con_div_text01 right">-->
+<!--              <img src="../static/images/info_10.png" class="left text01_img"/>-->
+<!--              <div class="left text01_div">-->
+<!--                  <p>当月体检人数(人)</p>-->
+<!--                  <p class="sky">12356</p>-->
+<!--              </div>-->
+<!--          </div>-->
+<!--      </div>-->
+<!--      <div class="con_div_text left">-->
+
+<!--          <div class="con_div_text01 left">-->
+<!--              <img src="../static/images/info_11.png" class="left text01_img"/>-->
+<!--              <div class="left text01_div">-->
+<!--                  <p>西药占比</p>-->
+<!--                  <p class="org">92%</p>-->
+<!--              </div>-->
+<!--          </div>-->
+<!--          <div class="con_div_text01 right">-->
+<!--              <img src="../static/images/info_12.png" class="left text01_img"/>-->
+<!--              <div class="left text01_div">-->
+<!--                  <p>中药占比</p>-->
+<!--                  <p class="org">8%</p>-->
+<!--              </div>-->
+<!--          </div>-->
+<!--      </div>-->
+<!--  </div>-->
+<!--    &lt;!&ndash;统计分析图&ndash;&gt;-->
+<!--    <div class="div_any">-->
+<!--        <div class="left div_any01">-->
+<!--            <div class="div_any_child">-->
+<!--                <div class="div_any_title"><img src="../static/images/title_5.png">各医院门诊人次(人)</div>-->
+<!--                <p id="histogramChart1" class="p_chart"></p>-->
+<!--            </div>-->
+<!--            <div class="div_any_child">-->
+<!--                <div class="div_any_title"><img src="../static/images/title_6.png">各医院住院人次(人)</div>-->
+<!--                <p id="histogramChart2" class="p_chart"></p>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="div_any02 left ">-->
+<!--            <div class="div_any_child div_height">-->
+<!--                <div class="div_any_title any_title_width"><img src="../static/images/title_0.png">疫情地图 </div>-->
+<!--                <div id="mapChart" style="width:97.5%;height:95%;display: inline-block;padding-left: 1.25%;padding-top:2.2%"></div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        &lt;!&ndash; <div class="left div_any01">-->
+<!--            <div class="div_any_child">-->
+<!--                <div class="div_any_title"><img src="../static/images/title_7.png">各医院医疗费用(元)</div>-->
+<!--                <p id="lineChart1" class="p_chart"></p>-->
+<!--            </div>-->
+<!--            <div class="div_any_child">-->
+<!--                <div class="div_any_title"><img src="../static/images/title_8.png">各医院体检人次(人)</div>-->
+<!--                <p id="lineChart2" class="p_chart"></p>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="left div_any01">-->
+<!--            <div class="div_any_child">-->
+<!--                <div class="div_any_title"><img src="../static/images/title_9.png">药占比(%)</div>-->
+<!--                <p id="histogramChart3" class="p_chart"></p>-->
+<!--            </div>-->
+<!--            <div class="div_any_child">-->
+<!--                <div class="div_any_title"><img src="../static/images/title_10.png">平均住院天数(天)</div>-->
+<!--                <p id="histogramChart4" class="p_chart"></p>-->
+<!--            </div>-->
+<!--        </div> &ndash;&gt;-->
+<!--        <div class="left div_any01">-->
+<!--            <div class="div_any_child">-->
+<!--                <div class="div_any_title"><img src="../static/images/title_11.png">手术工作量(台)</div>-->
+<!--                <p id="pieChart1" class="p_chart"></p>-->
+<!--            </div>-->
+<!--            <div class="div_any_child">-->
+<!--                <div class="div_any_title"><img src="../static/images/title_12.png">床位数量分布(床)</div>-->
+<!--                <p id="pieChart2" class="p_chart"></p>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+
+
+<!--</div>-->
 </body>
 </html>
