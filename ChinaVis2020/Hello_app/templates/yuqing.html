@@ -79,8 +79,9 @@
             },
             calculable: true,
             legend: {
-                // data: ['Growth', 'Budget 2011', 'Budget 2012'],
-                // itemGap: 5
+                textStyle: {
+                   color: '#c4e1e1'
+               }
             },
             grid: {
                 top: '12%',
@@ -182,12 +183,15 @@
              },
             legend: {
                 data: ['总词频','迁移相关词频'],
-                // selectedMode : 'single',
-                // selected:{
-                //     '迁移相关词频':false,
-                //     '总词频':false
-                // },
-                // itemGap: 5
+                textStyle: {
+                   color: '#c4e1e1'
+               },
+                {#selectedMode : 'single',#}
+                {#selected:{#}
+                {#     '迁移相关词频':false,#}
+                {#     '总词频':true#}
+                {# },#}
+                {# itemGap: 5#}
             },
             tooltip:{
                 show: true,
