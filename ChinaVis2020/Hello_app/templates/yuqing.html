@@ -80,8 +80,9 @@
             },
             calculable: true,
             legend: {
-                // data: ['Growth', 'Budget 2011', 'Budget 2012'],
-                // itemGap: 5
+                textStyle: {
+                   color: '#c4e1e1'
+               }
             },
             grid: {
                 top: '12%',
@@ -98,7 +99,8 @@
                         lineStyle: {
                             color: '#c4e1e1', // 颜色
                             width: 2 // 粗细
-                        }
+                        },
+                        show:false
                     },
                     textStyle: {
                         color: '#ffffff'
@@ -110,17 +112,25 @@
                 {
                     type: 'value',
                     name: chartname,
-                    textStyle: {
-                        color: '#ffffff'
+                    nameTextStyle:{
+                        color:'#c4e1e1',
                     },
-                    axisLine: {
-                        lineStyle: {
-                            color: '#c4e1e1', // 颜色
-                        },
-                        show: false,
-                    },
-                    axisLabel: {
+                    axisLine:{
+                        show: false,//不显示坐标轴线
+                   },
+                   axisLabel : {
+                       textStyle: {
+                           color: '#c4e1e1'
+                       }
+                   },
+                    // y軸的分割線顏色
+                  splitLine: {
+                    show: true,
+                    lineStyle: {
+                      color: "rgb(133,133,133)",
+                      width: 1,
                     }
+                  }
                 }
             ],
             dataZoom: [
@@ -166,12 +176,15 @@
              },
             legend: {
                 data: ['总词频','迁移相关词频'],
-                // selectedMode : 'single',
-                // selected:{
-                //     '迁移相关词频':false,
-                //     '总词频':false
-                // },
-                // itemGap: 5
+                textStyle: {
+                   color: '#c4e1e1'
+               },
+                {#selectedMode : 'single',#}
+                {#selected:{#}
+                {#     '迁移相关词频':false,#}
+                {#     '总词频':true#}
+                {# },#}
+                {# itemGap: 5#}
             },
             tooltip:{
                 show: true,
@@ -255,7 +268,6 @@
 </script>
 
 <script>
-    //主要症状
    var histogramChart2 = echarts.init(document.getElementById('histogramChart2'));
    histogramChart2.setOption({
        color: ['rgb(194,53,49)',"#FFCC99", 'rgb(83,122,149)','rgb(188,111,151)','rgb(137,183,158)','rgb(40,67,167)'],
@@ -283,7 +295,7 @@
        legend: {
            data:{{ legend_data|safe }},
            textStyle: {
-               color: '#fff'
+               color: '#c4e1e1'
            }
        },
        grid: {
@@ -302,7 +314,7 @@
                },
                axisLabel : {
                    textStyle: {
-                       color: '#fff'
+                       color: '#c4e1e1'
                    }
                }
            }
@@ -319,7 +331,7 @@
                },
                axisLabel : {
                    textStyle: {
-                       color: '#fff'
+                       color: '#c4e1e1'
                    }
                },
                // y軸的分割線顏色
@@ -338,14 +350,14 @@
                 color:"#FFF",
             },
            textStyle: {
-                   color: '#fff'
+                   color: '#c4e1e1'
                },
             axisLine:{
                    show: false,//不显示坐标轴线
                },
                axisLabel : {
                    textStyle: {
-                       color: '#fff'
+                       color: '#c4e1e1'
                    }
                },
                 // y軸的分割線顏色
