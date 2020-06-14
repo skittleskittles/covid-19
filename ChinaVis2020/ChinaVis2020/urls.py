@@ -18,6 +18,9 @@ from django.urls import path
 from Hello_app import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', views.get_list)  # 添加路径对应函数,''表示运行首页访问路径
+    #path('admin/', admin.site.urls),
+    #path('', views.get_list),  # 添加路径对应函数,''表示运行首页访问路径
+    path('',views.home, name='home'),#添加index/路径配置
+    path('timezone/', views.timezone, name='timezone'),
+    path('yuqing/', views.yuqing, name='yuqing')
 ]
