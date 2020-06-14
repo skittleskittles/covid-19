@@ -38,12 +38,10 @@
 <div class="con left">
     <!--统计分析图-->
     <div class="div_any">
-        <div class="left div_any02">
+        <div class="left div_any02" style="width:47%;margin-left:30px">
             <div class="div_any_child">
                 <div class="div_any_title"><img src="../static/images/title_0.png">传播地图</div>
-
-                	<div id="echarts_map" style="height: 95%; width:95%;padding:14px;left:0px; border: 0px solid #CCC"></div>
-                <div id="transportChart" class="p_chart"></div>
+                <div id="echarts_map" style="height: 90%; width:90%; margin-left:5%;margin-top:5%;border: 0px solid #CCC"></div>
             </div>
         </div>
         <div class="left div_any01">
@@ -60,11 +58,8 @@
     <div class="div_any">
         <div class="left div_any03">
             <div class="div_any_childr">
-
                 <div class="div_any_title"><img src="../static/images/title_0.png">疫情趋势与迁移趋势关系图</div>
-
                  <div id="container" style="height: 260px;padding: 25px"></div>
-{#                <div id="transportChart" class="p_chart"></div>#}
             </div>
         </div>
     </div>
@@ -532,6 +527,12 @@ backgroundColor: '#081832',
             realtime: true,
             start: 65,
             end: 85
+        },
+        {
+            type: 'slider',
+            realtime: true,
+            start: 65,
+            end: 85
         }
     ],
     xAxis: [
@@ -643,37 +644,31 @@ if (option && typeof option === "object") {
 }
        </script>
     <script type="text/javascript">
-                               
-
-
     // Step:3 conifg ECharts's path, link to echarts.js from current page.
     // Step:3 为模块加载器配置echarts的路径，从当前页面链接到echarts.js，定义所需图表路径
 	 var mapoption = {
      timeline: {
-                                bottom: '6%',
-                                autoPlay: true,
-                               //backgroundColor:'#FFF',
+            bottom: '6%',
+            autoPlay: true,
+           //backgroundColor:'#FFF',
 
-                                data: ['2020-01-01', '2020-01-02', '2020-01-03','2020-01-04', '2020-01-05', '2020-01-06',
-                                '2020-01-07', '2020-01-08', '2020-01-09','2020-01-10', '2020-01-11', '2020-01-12',
-                                '2020-01-13', '2020-01-14', '2020-01-15','2020-01-16', '2020-01-17', '2020-01-18',
-                                '2020-01-19', '2020-01-20', '2020-01-21','2020-01-22', '2020-01-23', '2020-01-24',
-                                '2020-01-25', '2020-01-26', '2020-01-27','2020-01-28', '2020-01-29', '2020-01-30','2020-01-31',
+            data: ['2020-01-01', '2020-01-02', '2020-01-03','2020-01-04', '2020-01-05', '2020-01-06',
+            '2020-01-07', '2020-01-08', '2020-01-09','2020-01-10', '2020-01-11', '2020-01-12',
+            '2020-01-13', '2020-01-14', '2020-01-15','2020-01-16', '2020-01-17', '2020-01-18',
+            '2020-01-19', '2020-01-20', '2020-01-21','2020-01-22', '2020-01-23', '2020-01-24',
+            '2020-01-25', '2020-01-26', '2020-01-27','2020-01-28', '2020-01-29', '2020-01-30','2020-01-31',
 
-                                '2020-02-01', '2020-02-02', '2020-02-03','2020-02-04', '2020-02-05', '2020-02-06',
-                                '2020-02-07', '2020-02-08', '2020-02-09','2020-02-10', '2020-02-11', '2020-02-12',
-                                '2020-02-13', '2020-02-14', '2020-02-15','2020-02-16', '2020-02-17', '2020-02-18',
-                                '2020-02-19', '2020-02-20', '2020-02-21','2020-02-22', '2020-02-23', '2020-02-24',
-                                '2020-02-25', '2020-02-26', '2020-02-27','2020-02-28', '2020-02-29'
+            '2020-02-01', '2020-02-02', '2020-02-03','2020-02-04', '2020-02-05', '2020-02-06',
+            '2020-02-07', '2020-02-08', '2020-02-09','2020-02-10', '2020-02-11', '2020-02-12',
+            '2020-02-13', '2020-02-14', '2020-02-15','2020-02-16', '2020-02-17', '2020-02-18',
+            '2020-02-19', '2020-02-20', '2020-02-21','2020-02-22', '2020-02-23', '2020-02-24',
+            '2020-02-25', '2020-02-26', '2020-02-27','2020-02-28', '2020-02-29'
 
-                                ],
-                                textStyle : {
-                                color: '#fff'
-                                }
-                                },
-
-    
-
+            ],
+            textStyle : {
+            color: '#fff'
+            }
+     },
 
 options: [
 
@@ -16602,25 +16597,12 @@ backgroundColor: '#081832',
     require(
         [
             'echarts',
-            'echarts/chart/map'
-             
-			 
+            'echarts/chart/map',
         ],
         function (ec) {
-		
-		
-		
-
-		var mapChart = ec.init(document.getElementById('echarts_map'));
-		mapChart.setOption(mapoption);
-
-
-			 
-             
-            
+            var mapChart = ec.init(document.getElementById('echarts_map'));
+            mapChart.setOption(mapoption);
         }
-		  
-
     );
 	 
 	

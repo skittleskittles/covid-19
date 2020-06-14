@@ -14,15 +14,7 @@ def convert_to_dicts(objs):
         obj_arr.append(dict)
     return obj_arr
 
-
-def get_list(request):
-    confirmed_data = Confirmed.objects.all()
-    return render(request, 'test.html', {'Confirmed': confirmed_data})
-
-
 def home(request):
-    # confirmed_data = Confirmed.objects.all()
-    # print(confirmed_data)
     date_index = ['人数种类', '1/22/2020', '1/23/2020', '1/24/2020', '1/25/2020', '1/26/2020', '1/27/2020', '1/28/2020',
                   '1/29/2020', '1/30/2020', '1/31/2020', '2/1/2020', '2/2/2020', '2/3/2020', '2/4/2020', '2/5/2020',
                   '2/6/2020', '2/7/2020', '2/8/2020', '2/9/2020', '2/10/2020', '2/11/2020', '2/12/2020', '2/13/2020',
@@ -71,31 +63,25 @@ def home(request):
                  'm5_21', 'm5_22', 'm5_23', 'm5_24', 'm5_25', 'm5_26', 'm5_27', 'm5_28', 'm5_29', 'm5_30', 'm5_31',
                  'm6_01',
                  'm6_02']
-    # print(Confirmed.objects.values(date[0]))
 
     time_confirmed_data = {}
     time_cured_data = {}
     time_death_data = {}
-
     # 缓存，根据假定只有34个省级单位，可以认为数据量不大
     tmpConfirmed = Confirmed.objects.all()
-    for i, x in enumerate(tmpConfirmed):
+    for x in tmpConfirmed:
         name = x.province
         time_confirmed_data[name] = ['确诊人数'] + [getattr(x, index) for index in date_attr]
-
     tmpCure = Cure.objects.all()
-    for i, x in enumerate(tmpCure):
+    for x in tmpCure:
         name = x.province
         time_cured_data[name] = ['治愈人数'] + [getattr(x, index) for index in date_attr]
-
     tmpDeath = Death.objects.all()
-    for i, x in enumerate(tmpDeath):
+    for x in tmpDeath:
         name = x.province
         time_death_data[name] = ['死亡人数'] + [getattr(x, index) for index in date_attr]
-    #print(time_confirmed_data['湖北'])
 
     zoom_date_index = date_index[1:]
-
     zoom_confirmed_data = {}
     zoom_cured_data = {}
     zoom_death_data = {}
@@ -137,34 +123,53 @@ def home(request):
     cured_province = {}
     death_province = {}
     city_info = {}
-    all_provinces = Epidemic.objects.values('province')
-    for i in range(len(all_provinces)):
-        name = all_provinces[i]['province']
-        if name not in confirmed_province:
-            confirm_arr = [Epidemic.objects.values('quezhen')[i]['quezhen']]
-            confirmed_province[name] = confirm_arr
-            cure_arr = [Epidemic.objects.values('cure')[i]['cure']]
-            cured_province[name] = cure_arr
-            death_arr = [Epidemic.objects.values('death')[i]['death']]
-            death_province[name] = death_arr
 
-            city_arr = [Epidemic.objects.values('city')[i]['city']]
-            # city_arr中是一个省份中的所有城市
-            city_info[name] = city_arr
-            # city_info是key为省份名，data为城市名的字典
-        else:
-            confirm_arr = confirmed_province[name]
-            confirm_arr.append(Epidemic.objects.values('quezhen')[i]['quezhen'])
-            cure_arr = cured_province[name]
-            cure_arr.append(Epidemic.objects.values('cure')[i]['cure'])
-            death_arr = death_province[name]
-            death_arr.append(Epidemic.objects.values('death')[i]['death'])
+    # 缓存，根据目前的数据只有457个城市
+    tmpEpidemic = Epidemic.objects.all()
+    all_provinces = [x.province for x in tmpEpidemic]
 
-            city_arr = city_info[name]
-            city_arr.append(Epidemic.objects.values('city')[i]['city'])
+    for x in tmpEpidemic:
+        name = x.province
+        confirmed_province.setdefault(name, []).append(x.quezhen)
+        cured_province.setdefault(name, []).append(x.cure)
+        death_province.setdefault(name, []).append(x.death)
+        city_info.setdefault(name, []).append(x.city)
 
+    # cipin
+    #print('---cipin----')
+    cpdate = CipinTop300.objects.all()
+    cpjsonlist = []
+    for cp in cpdate:
+        cpCloud = {}
+        cpCloud['name'] = cp.keyword
+        cpCloud['value'] = cp.total
+        cpjsonlist.append(cpCloud)
+    #print(cpjsonlist)
+    cpkeyword = {}
+    cpkey = []
+    f = 0
+    for cp in cpdate:
+
+        cpkeyword[cp.keyword] = []
+        i = 0
+        for item in cp.__dict__.items():
+
+            if i >= 3 and i != 103:
+                cpkeyword[cp.keyword].append(item[1])
+                if f == 0:
+                    if item[0][3] != '0':
+                        date = item[0][2] + '月' + item[0][3] + item[0][4] + '日'
+                    else:
+                        date = item[0][2] + '月' + item[0][4] + '日'
+                    cpkey.append(date)
+
+            i += 1
+        if f == 0:
+            f = 1
+    #print(cpkey)
     return render(request, 'index.html',
-                  {'dateIndex': date_index, 'time_confirmed': time_confirmed_data, 'time_cured': time_cured_data,
+                  {"cpjsonlist":cpjsonlist,"cpkeyword":cpkeyword,"cpkey":cpkey,
+                    'dateIndex': date_index, 'time_confirmed': time_confirmed_data, 'time_cured': time_cured_data,
                    'time_death': time_death_data, 'zoom_data_index': zoom_date_index,
                    'zoom_confirmed': zoom_confirmed_data, 'zoom_cured': zoom_cured_data, 'zoom_death': zoom_death_data,
                    'confirmProvince': confirmed_province, 'cureProvince': cured_province,
@@ -291,7 +296,6 @@ def timezone(request):
         cured_province.setdefault(name,[]).append(x.cure)
         death_province.setdefault(name,[]).append(x.death)
         city_info.setdefault(name,[]).append(x.city)
-
     return render(request, 'timezone.html',
                   {'dateIndex': date_index, 'time_confirmed': time_confirmed_data, 'time_cured': time_cured_data,
                    'time_death': time_death_data, 'zoom_data_index': zoom_date_index,
@@ -337,7 +341,7 @@ def yuqing(request):
             i+=1
         if f==0:
             f=1
-    print(cpkey)
+    #print(cpkey)
     # print(cpkeyword)
     # a = cpkeyword['肺炎']
 
