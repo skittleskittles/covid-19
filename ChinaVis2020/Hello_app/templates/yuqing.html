@@ -35,12 +35,13 @@
         <div class="div_any01" style="width:100%;height:460px">
             <div class="div_any_child" style="width:98%;position:relative;height: 100%;">
                 <div class="div_any_title"><img src="../static/images/title_13.png">舆情词云</div>
+{#                <p>数据来源：微博</p>#}
                 <div id="histogramChart1"  style="width: 120%; height:115%;margin-top:-40px;margin-left:-70px;"></div>
             </div>
         </div>
         <div class="div_any01" style="width:257%;height:380px; margin-top: 40px;">
             <div class="div_any_child" style="position:relative;width:100%;height: 100%;">
-                <div class="div_any_title"><img src="../static/images/title_14.png">情感倾向</div>
+                <div class="div_any_title"><img src="../static/images/title_15.png">情感倾向</div>
                 <p id="histogramChart2" class="p_chart" style="height: 94%;"></p>
             </div>
         </div>
@@ -49,7 +50,7 @@
 <div class="con right" style="width:58%;height:460px;margin-right: 20px;">
     <div class="div_any01" style="width:100%;height:460px">
         <div class="div_any_child" style="width:98%;position:relative;height: 100%;">
-            <div class="div_any_title"><img src="../static/images/title_17.png">热词词频</div>
+            <div class="div_any_title"><img src="../static/images/title_3.png">热词词频</div>
             <div id="histogramChart3"  style="width: 100%;display: inline-block;height: 100%;margin-left: -25px;"></div>
         </div>
     </div>
@@ -170,10 +171,15 @@
     var histogramChart1 = echarts.init(document.getElementById('histogramChart1'));
     var option ={
             //设置标题，居中显示
-            title:{
-                // text: 'E词云图',
-                // left:'center',
-             },
+                title: {
+                    subtext: '数据来自微博',
+                    left: '55px',
+                    top:'55px',
+                    align: 'right',
+                    textStyle : {
+                        color: '#fff'
+                    }
+                },
             legend: {
                 data: ['总词频','迁移相关词频'],
                 textStyle: {
