@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>新冠疫情可视分析系统</title>
+    <title>数据可视化demo</title>
     <link href="../static/styles/common.css?random=120100" rel="stylesheet">
     <script src="../static/scripts/Plugin/jquery-3.3.1.min.js"></script>
     <script src="../static/scripts/Plugin/echarts.min.js"></script>
@@ -38,7 +38,7 @@
                 <div id="histogramChart1"  style="width: 120%; height:115%;margin-top:-40px;margin-left:-70px;"></div>
             </div>
         </div>
-        <div class="div_any01" style="width:254%;height:380px; margin-top: 40px;">
+        <div class="div_any01" style="width:257%;height:380px; margin-top: 40px;">
             <div class="div_any_child" style="position:relative;width:100%;height: 100%;">
                 <div class="div_any_title"><img src="../static/images/title_14.png">情感倾向</div>
                 <p id="histogramChart2" class="p_chart" style="height: 94%;"></p>
@@ -53,6 +53,7 @@
             <div id="histogramChart3"  style="width: 100%;display: inline-block;height: 100%;margin-left: -25px;"></div>
         </div>
     </div>
+
 </div>
 </body>
 
@@ -136,15 +137,7 @@
                     end: 100,
                     top:'88%'
                 },
-                // {
-                //     show: true,
-                //     yAxisIndex: 0,
-                //     filterMode: 'empty',
-                //     width: 30,
-                //     height: '80%',
-                //     showDataShadow: false,
-                //     left: '96%'
-                // }
+
             ],
             series: [
                 {
@@ -278,7 +271,7 @@
                     value += params[i].value;
                 }
                 for (var i = 0, l = params.length; i < l; i++) {
-                    if(params[i].seriesName === "新增")
+                    if(params[i].seriesName === "新增确诊" || params[i].seriesName === "新增死亡" || params[i].seriesName === "新增治愈") 
                         relVal += '<br/>'+ params[i].marker + params[i].seriesName + ' : '+ parseFloat(params[i].value);
                     else
                         relVal += '<br/>'+ params[i].marker + params[i].seriesName + ' : '+ parseFloat(params[i].value) +' (' + (100 *
@@ -372,29 +365,7 @@
                type: 'inside', // 这个 dataZoom 组件是 inside 型 dataZoom 组件
                start: 20,      // 左边在 10% 的位置。
                end: 100         // 右边在 60% 的位置。
-           },
-            {
-                show: true,
-                filterMode: 'empty',
-                width: 30,
-                height: '70%',
-                showDataShadow: false,
-                left: '0%',
-                yAxisIndex: 0,
-                start: 0,
-                end: 100
-            },
-            {
-                show: true,
-                filterMode: 'empty',
-                width: 30,
-                height: '70%',
-                showDataShadow: false,
-                left: '97%',
-                yAxisIndex: 1,
-                start: 0,
-                end: 100
-            }
+           }
         ],
    })
 </script>
