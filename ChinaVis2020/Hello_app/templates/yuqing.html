@@ -134,7 +134,7 @@
                     value += params[i].value;
                 }
                 for (var i = 0, l = params.length; i < l; i++) {
-                    if(params[i].seriesName === "新增确诊")
+                    if(params[i].seriesName === "新增")
                         relVal += '<br/>'+ params[i].marker + params[i].seriesName + ' : '+ parseFloat(params[i].value);
                     else
                         relVal += '<br/>'+ params[i].marker + params[i].seriesName + ' : '+ parseFloat(params[i].value) +' (' + (100 *
@@ -196,7 +196,7 @@
            },
            {
             type: 'value',
-            name: '新增确诊',
+            name: '新增',
            nameTextStyle:{
                 color:"#FFF",
             },
