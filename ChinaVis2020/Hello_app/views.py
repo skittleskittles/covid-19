@@ -374,7 +374,6 @@ def yuqing(request):
         month = row['date']
         if month not in rows:
             rows.append(month)
-    rows.sort()
     #print(rows)
     legend_data = cols
     x_data = rows

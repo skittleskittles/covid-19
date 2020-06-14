@@ -253,7 +253,7 @@
                     value += params[i].value;
                 }
                 for (var i = 0, l = params.length; i < l; i++) {
-                    if(params[i].seriesName === "新增")
+                    if(params[i].seriesName === "新增确诊" || params[i].seriesName === "新增死亡" || params[i].seriesName === "新增治愈")
                         relVal += '<br/>'+ params[i].marker + params[i].seriesName + ' : '+ parseFloat(params[i].value);
                     else
                         relVal += '<br/>'+ params[i].marker + params[i].seriesName + ' : '+ parseFloat(params[i].value) +' (' + (100 *
