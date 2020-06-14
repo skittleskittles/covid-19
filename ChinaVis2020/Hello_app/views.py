@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from Hello_app.models import Confirmed, Epidemic, CountryMovein,CountryMoveout,HubeiMoveout,Cure,Death,\
-    EmotionalTendency,CipinTop300,Cipin1,ConfirmedEmotional
+    EmotionalTendency,CipinTop300,Cipin1,ConfirmedEmotional,CipinQianyi
 
 def convert_to_dicts(objs):
     '''把对象列表转换为字典列表'''
@@ -311,7 +311,8 @@ def qianyi(request):
 
 
 def yuqing(request):
-    print('---cipin----')
+    # print('---cipin----')
+# 总词频
     cpdate = CipinTop300.objects.all()
     cpjsonlist = []
     for cp in cpdate:
@@ -320,6 +321,7 @@ def yuqing(request):
         cpCloud['value'] = cp.total
         cpjsonlist.append(cpCloud)
     # print(cpjsonlist)
+
     cpkeyword = {}
     cpkey = []
     f = 0
@@ -341,28 +343,25 @@ def yuqing(request):
             i+=1
         if f==0:
             f=1
-    #print(cpkey)
-    # print(cpkeyword)
-    # a = cpkeyword['肺炎']
+# 迁徙相关词频
+    cpqydate = CipinQianyi.objects.all()
+    cpqyjsonlist = []
+    for cpqy in cpqydate:
+        cpCloud = {}
+        cpCloud['name'] = cpqy.keyword
+        cpCloud['value'] = cpqy.total
+        cpqyjsonlist.append(cpCloud)
+    # print(cpqyjsonlist)
+    for cpqy in cpqydate:
+        cpkeyword[cpqy.keyword] = []
+        i = 0
+        for item in cpqy.__dict__.items():
+            if i>=3 and i!=103:
+                cpkeyword[cpqy.keyword].append(item[1])
+            i+=1
+ 
 
-    # print(a.__dict__.items())
-    # for item in a.__dict__.items():
-    #     print (item)
-    # print (', '.join(['%s:%s' % item for item in a.__dict__.items()]))
-    # print(CipinTop300.objects.get(keyword= '新型').total)
-    # cpword = CipinTop300.objects.values("keyword")
-    # cpid = CipinTop300.objects.values("cpid")
-    # cptotal = CipinTop300.objects.values("total")
-    # cpm0122 = CipinTop300.objects.values("m0122")
-    # cpword = Cipin1.objects.values("keyword")
-    # cpid = Cipin1.objects.values("id")
-    # cptotal = Cipin1.objects.values("total")
-    # cpm0122 = Cipin1.objects.values("m0122")
-    # for (cid, kw,m122) in zip(cpid,cpword,cpm0122):
-    #     print(cid)
-    #     print(kw)
-    #     print(m122)
-
+    print(len(cpkeyword))
     # by月份 by正向中性负向
     # 首先获取列名
     cols = ['正向', '中立', '负向', '新增确诊','新增治愈','新增死亡']
@@ -434,6 +433,7 @@ def yuqing(request):
         "legend_data":legend_data,
         "cpjsonlist":cpjsonlist,
         "cpkeyword":cpkeyword,
+        "cpqyjsonlist":cpqyjsonlist,
         "cpkey":cpkey
     }
     ) 
