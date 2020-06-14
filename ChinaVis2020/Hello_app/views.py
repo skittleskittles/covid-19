@@ -260,21 +260,21 @@ def timezone(request):
             m = getattr(tmpConfirmed[i], date_attr[j])
             n = getattr(tmpConfirmed[i], date_attr[j + 1])
             if m != 0:
-                zoom_confirmed.append(1.0 * (n - m) / m)
+                zoom_confirmed.append(round(1.0 * (n - m) / m, 5))
             else:
                 zoom_confirmed.append(0)
 
             m = getattr(tmpCure[i], date_attr[j])
             n = getattr(tmpCure[i], date_attr[j + 1])
             if m != 0:
-                zoom_cured.append(1.0 * (n - m) / m)
+                zoom_cured.append(round(1.0 * (n - m) / m, 5))
             else:
                 zoom_cured.append(0)
 
             m = getattr(tmpDeath[i], date_attr[j])
             n = getattr(tmpDeath[i], date_attr[j + 1])
             if m != 0:
-                zoom_death.append(1.0 * (n - m) / m)
+                zoom_death.append(round(1.0 * (n - m) / m, 5))
             else:
                 zoom_death.append(0)
         zoom_confirmed_data[name] = zoom_confirmed
@@ -292,10 +292,11 @@ def timezone(request):
 
     for x in tmpEpidemic:
         name = x.province
-        confirmed_province.setdefault(name,[]).append(x.quezhen)
-        cured_province.setdefault(name,[]).append(x.cure)
-        death_province.setdefault(name,[]).append(x.death)
-        city_info.setdefault(name,[]).append(x.city)
+        confirmed_province.setdefault(name, []).append(x.quezhen)
+        cured_province.setdefault(name, []).append(x.cure)
+        death_province.setdefault(name, []).append(x.death)
+        city_info.setdefault(name, []).append(x.city)
+
     return render(request, 'timezone.html',
                   {'dateIndex': date_index, 'time_confirmed': time_confirmed_data, 'time_cured': time_cured_data,
                    'time_death': time_death_data, 'zoom_data_index': zoom_date_index,
