@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>数据可视化demo</title>
+    <title>新冠疫情可视分析系统</title>
     <link href="../static/styles/common_lrf.css" rel="stylesheet">
 <!--    <script src="../scripts/Plugin/echarts.min.js"></script>-->
     <script src="../static/scripts/Plugin/bmap.min.js"></script>
@@ -15,7 +15,6 @@
        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/dataTool.min.js"></script>
        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/china.js"></script>
        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/world.js"></script>
-       <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=xfhhaTThl11qYVrqLZii6w8qE5ggnhrY&__ec_v__=20190126"></script>
        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/bmap.min.js"></script>
 
 </head>
@@ -24,96 +23,25 @@
 <header class="header left">
   <div class="left nav">
       <ul>
-
-          <li><i class="nav_1"></i><a href="{% url 'index' %}">主界面</a> </li>
-          <li><i class="nav_2"></i><a href="{% url 'timezone' %}">时空态势</a> </li>
-          <li class="nav_active"><i class="nav_3"></i><a href="{% url 'qianyi' %}">迁徙传播</a> </li>
-          <li><i class="nav_4"></i><a href="{% url 'yuqing' %}">舆情分析</a> </li> 
-
+          <li><a href="{% url 'home' %}">主界面</a> </li>
+          <li><a href="{% url 'timezone' %}">时空态势</a> </li>
+          <li class="nav_active"><a href="{% url 'qianyi' %}">迁徙传播</a> </li>
+          <li></i><a href="{% url 'yuqing' %}">舆情分析</a> </li>
       </ul>
   </div>
     <div class="header_center left" style="position:relative">
         
         <h2><strong>新冠疫情可视分析系统</strong></h2>
-
     </div>
-    <div class="right nav text_right">
-        <ul>
-
-        </ul>
-    </div>
-
 </header>
 <!--内容部分-->
 <div class="con left">
-  <!--数据总概
-  <div class="con_div">
-      <div class="con_div_text left">
-          <div class="con_div_text01 left">
-              <img src="../static/images/info_7.png" class="left text01_img"/>
-
-              <div class="left text01_div">
-                  <p>新增确诊病例(例)</p>
-                  <p>11</p>
-              </div>
-          </div>
-          <div class="con_div_text01 right">
-              <img src="../static/images/info_8.png" class="left text01_img"/>
-
-              <div class="left text01_div">
-                  <p>境外输入病例(例)</p>
-                  <p>11</p>
-              </div>
-          </div>
-      </div>
-      <div class="con_div_text left">
-          <div class="con_div_text01 left">
-              <img src="../static/images/info_9.png" class="left text01_img"/>
-
-              <div class="left text01_div">
-                  <p>累计报告确诊病例(人)</p>
-                  <p class="sky">83057</p>
-              </div>
-          </div>
-          <div class="con_div_text01 right">
-
-              <img src="../static/images/info_10.png" class="left text01_img"/>
-
-              <div class="left text01_div">
-                  <p>累计治愈出院病例(人)</p>
-                  <p class="sky">78361</p>
-              </div>
-          </div>
-      </div>
-      <div class="con_div_text left">
-
-          <div class="con_div_text01 left">
-
-              <img src="../static/images/info_11.png" class="left text01_img"/>
-
-              <div class="left text01_div">
-                  <p>西药占比</p>
-                  <p class="org">92%</p>
-              </div>
-          </div>
-          <div class="con_div_text01 right">
-              <img src="../static/images/info_12.png" class="left text01_img"/>
-
-              <div class="left text01_div">
-                  <p>中药占比</p>
-                  <p class="org">8%</p>
-              </div>
-          </div>
-      </div>
-  </div>-->
     <!--统计分析图-->
     <div class="div_any">
-        <div class="left div_any02">
+        <div class="left div_any02" style="width:47%;margin-left:30px">
             <div class="div_any_child">
                 <div class="div_any_title"><img src="../static/images/title_0.png">传播地图</div>
-
-                	<div id="echarts_map" style="height: 95%; width:95%;padding:8px;"></div>
-                <div id="transportChart" class="p_chart"></div>
+                <div id="echarts_map" style="height: 90%; width:90%; margin-left:5%;margin-top:5%;border: 0px solid #CCC"></div>
             </div>
         </div>
         <div class="left div_any01">
@@ -128,13 +56,10 @@
         </div>
     </div>
     <div class="div_any">
-        <div class="left div_any03">
+        <div class="left div_any03" style="width:94%;margin-left:30px">
             <div class="div_any_childr">
-
                 <div class="div_any_title"><img src="../static/images/title_0.png">疫情趋势与迁移趋势关系图</div>
-
                  <div id="container" style="height: 260px;padding: 25px"></div>
-                <div id="transportChart" class="p_chart"></div>
             </div>
         </div>
     </div>
@@ -242,10 +167,10 @@ option = {
 if (option && typeof option === "object") {
     myChart.setOption(option, true);
 }
-       </script>
+</script>
 
 
-       <script type="text/javascript">
+<script>
 var dom = document.getElementById("container2");
 var myChart = echarts.init(dom);
 var app = {};
@@ -425,7 +350,12 @@ option = {
             lineStyle: {
                 color: '#eee'
             }
-        }
+        },
+         axisLabel : {
+           textStyle: {
+               color: '#fff'
+           }
+         }
     },
     yAxis: {
         type: 'value',
@@ -443,7 +373,12 @@ option = {
         },
         splitLine: {
             show: false
-        }
+        },
+          axisLabel : {
+           textStyle: {
+               color: '#fff'
+           }
+         }
     },
     visualMap: [
         {
@@ -527,16 +462,15 @@ option = {
             data: dataGZ
         }
     ]
-};;
+};
 if (option && typeof option === "object") {
     myChart.setOption(option, true);
 }
-       </script>
+</script>
 
      
     <!--Step:2 Import echarts.js-->
-    <!--Step:2 引入echarts.js-->
-    <script src="source/echarts.js"></script>
+    <script src="../static/source/echarts.js"></script>
      <script type="text/javascript">
 
 var dom = document.getElementById("container");
@@ -595,6 +529,12 @@ backgroundColor: '#081832',
             realtime: true,
             start: 65,
             end: 85
+        },
+        {
+            type: 'slider',
+            realtime: true,
+            start: 65,
+            end: 85
         }
     ],
     xAxis: [
@@ -602,6 +542,11 @@ backgroundColor: '#081832',
             type: 'category',
             boundaryGap: false,
             axisLine: {onZero: false},
+            axisLabel : {
+                   textStyle: {
+                       color: '#fff'
+                   }
+            },
             nameTextStyle: {
             color: '#fff'},
             data: [
@@ -624,7 +569,12 @@ backgroundColor: '#081832',
             color:'#fff',
             nameTextStyle: {
             color: '#fff'},
-            max: 100
+            max: 100,
+            axisLabel : {
+                   textStyle: {
+                       color: '#fff'
+                   }
+            },
         },
         {
             name: '疫情趋势',
@@ -633,7 +583,12 @@ backgroundColor: '#081832',
             type: 'value',
             nameTextStyle: {
             color: '#fff'},
-            inverse: true
+            inverse: true,
+            axisLabel : {
+                   textStyle: {
+                       color: '#fff'
+                   }
+            },
         }
     ],
     series: [
@@ -691,37 +646,31 @@ if (option && typeof option === "object") {
 }
        </script>
     <script type="text/javascript">
-                               
-
-
     // Step:3 conifg ECharts's path, link to echarts.js from current page.
     // Step:3 为模块加载器配置echarts的路径，从当前页面链接到echarts.js，定义所需图表路径
 	 var mapoption = {
      timeline: {
-                                bottom: '6%',
-                                autoPlay: true,
-                               //backgroundColor:'#FFF',
+            bottom: '6%',
+            autoPlay: true,
+           //backgroundColor:'#FFF',
 
-                                data: ['01-01', '01-02', '01-03','01-04', '01-05', '01-06',
-                                '01-07', '01-08', '01-09','01-10', '01-11', '01-12',
-                                '01-13', '01-14', '01-15','01-16', '01-17', '01-18',
-                                '01-19', '01-20', '01-21','01-22', '01-23', '01-24',
-                                '01-25', '01-26', '01-27','01-28', '01-29', '01-30','01-31',
+            data: ['2020-01-01', '2020-01-02', '2020-01-03','2020-01-04', '2020-01-05', '2020-01-06',
+            '2020-01-07', '2020-01-08', '2020-01-09','2020-01-10', '2020-01-11', '2020-01-12',
+            '2020-01-13', '2020-01-14', '2020-01-15','2020-01-16', '2020-01-17', '2020-01-18',
+            '2020-01-19', '2020-01-20', '2020-01-21','2020-01-22', '2020-01-23', '2020-01-24',
+            '2020-01-25', '2020-01-26', '2020-01-27','2020-01-28', '2020-01-29', '2020-01-30','2020-01-31',
 
-                                '02-01', '02-02', '02-03','02-04', '02-05', '02-06',
-                                '02-07', '02-08', '02-09','02-10', '02-11', '02-12',
-                                '02-13', '02-14', '02-15','02-16', '02-17', '02-18',
-                                '02-19', '02-20', '02-21','02-22', '02-23', '02-24',
-                                '02-25', '02-26', '02-27','02-28', '02-29'
+            '2020-02-01', '2020-02-02', '2020-02-03','2020-02-04', '2020-02-05', '2020-02-06',
+            '2020-02-07', '2020-02-08', '2020-02-09','2020-02-10', '2020-02-11', '2020-02-12',
+            '2020-02-13', '2020-02-14', '2020-02-15','2020-02-16', '2020-02-17', '2020-02-18',
+            '2020-02-19', '2020-02-20', '2020-02-21','2020-02-22', '2020-02-23', '2020-02-24',
+            '2020-02-25', '2020-02-26', '2020-02-27','2020-02-28', '2020-02-29'
 
-                                ],
-                                textStyle : {
-                                color: '#fff'
-                                }
-                                },
-
-    
-
+            ],
+            textStyle : {
+            color: '#fff'
+            }
+     },
 
 options: [
 
@@ -16638,7 +16587,7 @@ backgroundColor: '#081832',
 	
     require.config({
         paths: {
-            echarts: './source'
+            echarts: '../static/source'
         }
     });
    
@@ -16650,25 +16599,12 @@ backgroundColor: '#081832',
     require(
         [
             'echarts',
-            'echarts/chart/map'
-             
-			 
+            'echarts/chart/map',
         ],
         function (ec) {
-		
-		
-		
-
-		var mapChart = ec.init(document.getElementById('echarts_map'));
-		mapChart.setOption(mapoption);
-
-
-			 
-             
-            
+            var mapChart = ec.init(document.getElementById('echarts_map'));
+            mapChart.setOption(mapoption);
         }
-		  
-
     );
 	 
 	
