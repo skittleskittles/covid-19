@@ -25,10 +25,10 @@
 <header class="header left">
   <div class="left nav">
       <ul>
-          <li><i class="nav_1"></i><a href="{% url 'index' %}">主界面</a> </li>
-          <li><i class="nav_2"></i><a href="{% url 'timezone' %}">时空态势</a> </li>
-          <li class="nav_active"><i class="nav_3"></i><a href="{% url 'qianyi' %}">迁徙传播</a> </li>
-          <li><i class="nav_4"></i><a href="{% url 'yuqing' %}">舆情分析</a> </li> 
+          <li><a href="{% url 'home' %}">主界面</a> </li>
+          <li><a href="{% url 'timezone' %}">时空态势</a> </li>
+          <li class="nav_active"><a href="{% url 'qianyi' %}">迁徙传播</a> </li>
+          <li></i><a href="{% url 'yuqing' %}">舆情分析</a> </li>
       </ul>
   </div>
     <div class="header_center left" style="position:relative">
@@ -135,8 +135,7 @@
 
      
     <!--Step:2 Import echarts.js-->
-    <!--Step:2 引入echarts.js-->
-    <script src="source/echarts.js"></script>
+    <script src="../static/source/echarts.js"></script>
      <script type="text/javascript">
 var dom = document.getElementById("container");
 var myChart = echarts.init(dom);
