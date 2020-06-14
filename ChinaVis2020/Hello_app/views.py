@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from Hello_app.models import Confirmed, CountryMovein,CountryMoveout,HubeiMoveout,Cure,Death,\
+from Hello_app.models import Confirmed, Epidemic, CountryMovein,CountryMoveout,HubeiMoveout,Cure,Death,\
     EmotionalTendency,CipinTop300,Cipin1,ConfirmedEmotional
 
 def convert_to_dicts(objs):
