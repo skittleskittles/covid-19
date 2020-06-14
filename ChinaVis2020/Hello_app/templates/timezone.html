@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>数据可视化demo</title>
     <link href="../static/styles/common.css?random=120100" rel="stylesheet">
-<!--    <script src="../static/scripts/Plugin/jquery-3.3.1.min.js"></script>-->
-<!--    <script src="../static/scripts/Plugin/echarts.min.js"></script>-->
+    <!--    <script src="../static/scripts/Plugin/jquery-3.3.1.min.js"></script>-->
+    <!--    <script src="../static/scripts/Plugin/echarts.min.js"></script>-->
     <script src="../static/scripts/libs/echarts.min.js"></script>
     <script src="../static/scripts/libs/jquery1.9.1.js"></script>
     <script src="../static/scripts/libs/jquery.csv.min.js"></script>
     <script src="../static/scripts/Plugin/bmap.min.js"></script>
     <script src="../static/scripts/common.js"></script>
-    <script src="../static/scripts/timezone.js"></script>
-
 
     <!--引入中国的地图数据js文件，引入后会自动注册地图名字和数据-->
     <script src="https://www.echartsjs.com/examples/vendors/echarts/map/js/china.js?_v_=1578305236132"></script>
@@ -52,19 +51,20 @@
     <script src="../static/scripts/maps/xianggang.js"></script><!-- 香港 -->
     <script src="../static/scripts/maps/aomen.js"></script><!-- 澳门 -->
 </head>
+
 <body>
 <!--顶部-->
 <header class="header left">
-  <div class="left nav">
-      <ul>
-          <li><i class="nav_1"></i><a href="{% url 'home' %}">主界面</a> </li>
-          <li><i class="nav_2"></i><a href="{% url 'timezone' %}">时空态势</a> </li>
-          <li><i class="nav_3"></i><a href="{% url 'yuqing' %}">舆情分析</a> </li>
-          <!-- <li class="nav_active"><i class="nav_4"></i><a href="chronic.html">慢病病人列表</a> </li> -->
-          </ul>
-  </div>
+    <div class="left nav">
+        <ul>
+            <li><i class="nav_1"></i><a href="{% url 'home' %}">主界面</a></li>
+            <li><i class="nav_2"></i><a href="{% url 'timezone' %}">时空态势</a></li>
+            <li><i class="nav_3"></i><a href="{% url 'yuqing' %}">舆情分析</a></li>
+            <!-- <li class="nav_active"><i class="nav_4"></i><a href="chronic.html">慢病病人列表</a> </li> -->
+        </ul>
+    </div>
     <div class="header_center left" style="position:relative">
-        
+
         <h2><strong>新冠疫情可视分析系统</strong></h2>
 
     </div>
@@ -147,26 +147,26 @@
 
         <!--        </div>-->
         <!-- <div class="left div_any01">
-            <div class="div_any_child">
-                <div class="div_any_title"><img src="../images/title_7.png">各医院医疗费用(元)</div>
-                <p id="lineChart1" class="p_chart"></p>
-            </div>
-            <div class="div_any_child">
-                <div class="div_any_title"><img src="../images/title_8.png">各医院体检人次(人)</div>
-                <p id="lineChart2" class="p_chart"></p>
-            </div>
+        <div class="div_any_child">
+            <div class="div_any_title"><img src="../images/title_7.png">各医院医疗费用(元)</div>
+            <p id="lineChart1" class="p_chart"></p>
         </div>
-        <div class="left div_any01">
-            <div class="div_any_child">
-                <div class="div_any_title"><img src="../images/title_9.png">药占比(%)</div>
-                <p id="histogramChart3" class="p_chart"></p>
-            </div>
-            <div class="div_any_child">
-                <div class="div_any_title"><img src="../images/title_10.png">平均住院天数(天)</div>
-                <p id="histogramChart4" class="p_chart"></p>
-            </div>
-        </div> -->
-        <div class="right div_any02" style="width: 48%"  >
+        <div class="div_any_child">
+            <div class="div_any_title"><img src="../images/title_8.png">各医院体检人次(人)</div>
+            <p id="lineChart2" class="p_chart"></p>
+        </div>
+    </div>
+    <div class="left div_any01">
+        <div class="div_any_child">
+            <div class="div_any_title"><img src="../images/title_9.png">药占比(%)</div>
+            <p id="histogramChart3" class="p_chart"></p>
+        </div>
+        <div class="div_any_child">
+            <div class="div_any_title"><img src="../images/title_10.png">平均住院天数(天)</div>
+            <p id="histogramChart4" class="p_chart"></p>
+        </div>
+    </div> -->
+        <div class="right div_any02" style="width: 48%">
             <div class="div_any_child">
                 <div class="div_any_title"><img src="../static/images/title_11.png">具体省份地图</div>
                 <p id="pieChart1" class="p_chart"></p>
@@ -177,116 +177,516 @@
             </div>
         </div>
     </div>
-
-
 </div>
 
-
-<!--内容部分-->
-<!--<div class="con left">-->
-<!--  &lt;!&ndash;数据总概&ndash;&gt;-->
-<!--  <div class="con_div">-->
-<!--      <div class="con_div_text left">-->
-<!--          <div class="con_div_text01 left">-->
-<!--              <img src="../static/images/info_7.png" class="left text01_img"/>-->
-<!--              <div class="left text01_div">-->
-<!--                  <p>全年医疗费用(万元)</p>-->
-<!--                  <p>1235</p>-->
-<!--              </div>-->
-<!--          </div>-->
-<!--          <div class="con_div_text01 right">-->
-<!--              <img src="../static/images/info_8.png" class="left text01_img"/>-->
-<!--              <div class="left text01_div">-->
-<!--                  <p>当月医疗费用(万元)</p>-->
-<!--                  <p>235</p>-->
-<!--              </div>-->
-<!--          </div>-->
-<!--      </div>-->
-<!--      <div class="con_div_text left">-->
-<!--          <div class="con_div_text01 left">-->
-<!--              <img src="../static/images/info_9.png" class="left text01_img"/>-->
-<!--              <div class="left text01_div">-->
-<!--                  <p>全年体检人数(人)</p>-->
-<!--                  <p class="sky">12356</p>-->
-<!--              </div>-->
-<!--          </div>-->
-<!--          <div class="con_div_text01 right">-->
-<!--              <img src="../static/images/info_10.png" class="left text01_img"/>-->
-<!--              <div class="left text01_div">-->
-<!--                  <p>当月体检人数(人)</p>-->
-<!--                  <p class="sky">12356</p>-->
-<!--              </div>-->
-<!--          </div>-->
-<!--      </div>-->
-<!--      <div class="con_div_text left">-->
-
-<!--          <div class="con_div_text01 left">-->
-<!--              <img src="../static/images/info_11.png" class="left text01_img"/>-->
-<!--              <div class="left text01_div">-->
-<!--                  <p>西药占比</p>-->
-<!--                  <p class="org">92%</p>-->
-<!--              </div>-->
-<!--          </div>-->
-<!--          <div class="con_div_text01 right">-->
-<!--              <img src="../static/images/info_12.png" class="left text01_img"/>-->
-<!--              <div class="left text01_div">-->
-<!--                  <p>中药占比</p>-->
-<!--                  <p class="org">8%</p>-->
-<!--              </div>-->
-<!--          </div>-->
-<!--      </div>-->
-<!--  </div>-->
-<!--    &lt;!&ndash;统计分析图&ndash;&gt;-->
-<!--    <div class="div_any">-->
-<!--        <div class="left div_any01">-->
-<!--            <div class="div_any_child">-->
-<!--                <div class="div_any_title"><img src="../static/images/title_5.png">各医院门诊人次(人)</div>-->
-<!--                <p id="histogramChart1" class="p_chart"></p>-->
-<!--            </div>-->
-<!--            <div class="div_any_child">-->
-<!--                <div class="div_any_title"><img src="../static/images/title_6.png">各医院住院人次(人)</div>-->
-<!--                <p id="histogramChart2" class="p_chart"></p>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="div_any02 left ">-->
-<!--            <div class="div_any_child div_height">-->
-<!--                <div class="div_any_title any_title_width"><img src="../static/images/title_0.png">疫情地图 </div>-->
-<!--                <div id="mapChart" style="width:97.5%;height:95%;display: inline-block;padding-left: 1.25%;padding-top:2.2%"></div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        &lt;!&ndash; <div class="left div_any01">-->
-<!--            <div class="div_any_child">-->
-<!--                <div class="div_any_title"><img src="../static/images/title_7.png">各医院医疗费用(元)</div>-->
-<!--                <p id="lineChart1" class="p_chart"></p>-->
-<!--            </div>-->
-<!--            <div class="div_any_child">-->
-<!--                <div class="div_any_title"><img src="../static/images/title_8.png">各医院体检人次(人)</div>-->
-<!--                <p id="lineChart2" class="p_chart"></p>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="left div_any01">-->
-<!--            <div class="div_any_child">-->
-<!--                <div class="div_any_title"><img src="../static/images/title_9.png">药占比(%)</div>-->
-<!--                <p id="histogramChart3" class="p_chart"></p>-->
-<!--            </div>-->
-<!--            <div class="div_any_child">-->
-<!--                <div class="div_any_title"><img src="../static/images/title_10.png">平均住院天数(天)</div>-->
-<!--                <p id="histogramChart4" class="p_chart"></p>-->
-<!--            </div>-->
-<!--        </div> &ndash;&gt;-->
-<!--        <div class="left div_any01">-->
-<!--            <div class="div_any_child">-->
-<!--                <div class="div_any_title"><img src="../static/images/title_11.png">手术工作量(台)</div>-->
-<!--                <p id="pieChart1" class="p_chart"></p>-->
-<!--            </div>-->
-<!--            <div class="div_any_child">-->
-<!--                <div class="div_any_title"><img src="../static/images/title_12.png">床位数量分布(床)</div>-->
-<!--                <p id="pieChart2" class="p_chart"></p>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
+<!-- <script src="../static/scripts/timezone.js"></script> -->
 
 
-<!--</div>-->
+<script>
+        var myColor = ['#1089E7', '#F57474', '#56D0E3', '#F8B448', '#8B78F6'];
+
+        // 国家地图
+        let myChart = echarts.init(document.getElementById('mapChart'),'dark');
+        // 指定图表的配置项和数据
+        option = {
+            tooltip: {  // 配置提示信息
+                trigger: 'item'
+            },
+            backgroundColor: '#081832',
+            legend: {  // 图例组件展现了不同系列的标记(symbol)，颜色和名字。可以通过点击图例控制哪些系列不显示
+                orient: 'vertical',
+                left: 'left',
+                data: ['中国疫情图']
+            },
+            visualMap: {
+                type: 'piecewise',
+                pieces: [
+                    { min: 1000, max: 1000000, label: '大于等于1000人', color: '#372a28' },
+                    { min: 500, max: 999, label: '确诊500-999人', color: '#4e160f' },
+                    { min: 100, max: 499, label: '确诊100-499人', color: '#974236' },
+                    { min: 10, max: 99, label: '确诊10-99人', color: '#ee7263' },
+                    { min: 1, max: 9, label: '确诊1-9人', color: '#f5bba7' },
+                ],
+                color: ['#E0022B', '#E09107', '#A3E00B']
+            },
+            toolbox: {
+                show: true,
+                orient: 'vertical',
+                left: 'right',
+                top: 'center',
+                feature: {
+                    mark: { show: true },
+                    dataView: { show: true, readOnly: false },
+                    restore: { show: true },
+                    saveAsImage: { show: true }
+                }
+            },
+            roamController: {
+                show: true,
+                left: 'right',
+                mapTypeControl: {
+                    'china': true
+                }
+            },
+            series: [  // 每个系列通过 type 决定自己的图表类型
+                {
+                    name: '确诊数',
+                    type: 'map',
+                    mapType: 'china',
+                    roam: false,
+                    label: {
+                        show: true,
+                        color: 'rgb(249, 249, 249)'
+                    },
+                    data: []
+                }
+            ]
+        };
+
+        //使用指定的配置项和数据显示图表
+        myChart.setOption(option);
+
+        //获取数据
+        function getData() {
+            $.ajax({
+                url: "https://view.inews.qq.com/g2/getOnsInfo?name=disease_h5",
+                dataType: "jsonp",
+                success: function (data) {
+                    //  console.log(data.data)
+                    var res = data.data || "";
+                    res = JSON.parse(res);
+                    var newArr = [];
+                    //newArr的数据格式为：
+                    // [{
+                    //   name: '北京11',
+                    //   value: 212
+                    // }, {
+                    //   name: '天津',
+                    //   value: 60
+                    // }]
+                    if (res) {
+                        //获取到各个省份的数据
+                        var province = res.areaTree[0].children;
+                        for (var i = 0; i < province.length; i++) {
+                            var json = {
+                                name: province[i].name,
+                                value: province[i].total.confirm
+                            };
+                            newArr.push(json)
+                        }
+                        console.log(newArr);
+                        console.log(JSON.stringify(newArr));
+                        //使用指定的配置项和数据显示图表
+                        myChart.setOption({
+                            series: [
+                                {
+                                    name: '确诊数',
+                                    type: 'map',
+                                    mapType: 'china',
+                                    roam: false,
+                                    zoom:1,
+                                    label: {
+                                        show: true,
+                                        color: 'rgb(249, 249, 249)'
+                                    },
+                                    data: newArr
+                                }
+                            ]
+                        });
+                    }
+                }
+
+            })
+        }
+        getData();
+
+        // 缓存
+        var confirmProvince = {{ confirmProvince|safe }};
+        var cureProvince = {{ cureProvince|safe }};
+        var deathProvince = {{ deathProvince|safe }};
+        var cityInfo = {{ cityInfo|safe }};
+
+        function drawProvince(pName) {
+            let mapArea = document.getElementById("pieChart1");
+            mapArea.removeAttribute('_echarts_instance_');
+            let provinceChart = echarts.init(mapArea,'dark');
+            let confirm_province_data = confirmProvince[pName];
+            let cure_province_data = cureProvince[pName];
+            let death_province_data = deathProvince[pName];
+            let city_data = cityInfo[pName];
+            let length = confirm_province_data.length;
+            let confirmArr = []
+            let cureArr = []
+            let deathArr = []
+            for (let i=0;i<length;i++){
+                let confirmJson = {
+                    name:city_data[i],
+                    value:confirm_province_data[i]
+                };
+                let cureJson = {
+                    name:city_data[i],
+                    value:cure_province_data[i]
+                }
+                let deathJson = {
+                    name:city_data[i],
+                    value:death_province_data[i]
+                }
+
+                confirmArr.push(confirmJson);
+                cureArr.push(cureJson);
+                deathArr.push(deathJson);
+            }
+            let option = {
+                title:{
+                    text:pName+"省"
+                },
+                backgroundColor: '#081832',
+                legend:{
+                    data:[
+                        {
+                            name:"确诊人数",
+                            icon:"circle",
+                            textStyle:{
+                                color:"red"
+                            },
+                        },
+                        {
+                            name:"死亡人数",
+                            icon: "circle",
+                            textStyle: {
+                                color: "blue"
+                            },
+                        },
+                        {
+                            name:"治愈人数",
+                            icon:"circle",
+                            textStyle:{
+                                color:"green"
+                            },
+                        }
+                    ],
+                    selectedMode:'single',
+                    selected:{
+                        "死亡人数":false,
+                        '治愈人数': false
+                    }
+                },
+                visualMap: {
+                    type: 'piecewise',
+                    pieces: [
+                        { min: 1000, max: 1000000, label: '大于等于1000人', color: '#372a28' },
+                        { min: 500, max: 999, label: '500-999人', color: '#4e160f' },
+                        { min: 100, max: 499, label: '100-499人', color: '#974236' },
+                        { min: 10, max: 99, label: '10-99人', color: '#ee7263' },
+                        { min: 1, max: 9, label: '1-9人', color: '#f5bba7' },
+                        { min: 0, max: 0, label: '0', color: 'lightgray'},
+                    ],
+                    color: ['#E0022B', '#E09107', '#A3E00B']
+                },
+                toolbox: {
+                    show: true,
+                    orient: 'vertical',
+                    left: 'right',
+                    top: 'center',
+                    feature: {
+                        mark: { show: true },
+                        dataView: { show: true, readOnly: false },
+                        restore: { show: true },
+                        saveAsImage: { show: true }
+                    }
+                },
+                series:[
+                    {
+                        name:"确诊人数",
+                        type:"map",
+                        mapType:pName,
+                        roam:true,
+                        zoom:1,
+                        showLegendSymbol: false,
+                        itemStyle: {
+                            normal: {
+                                // areaColor: '#974236',
+                                areaColor:"chocolate",
+                                borderColor: '#ffffff'
+                            },
+                            emphasis: { //鼠标移入高亮显颜色
+                                // areaColor: "#ee7263"
+                                areaColor: "orange"
+                            }
+                        },
+                        label:{
+                            color: "white",
+                            show: true
+                        },
+                        data: confirmArr
+                    },
+                    {
+                        name:"治愈人数",
+                        type: "map",
+                        mapType: pName,
+                        roam: false,
+                        zoom: 1,
+                        showLegendSymbol: false,
+                        itemStyle: {
+                            normal: {
+                                areaColor: '#008b8b',
+                                borderColor: '#ffffff'
+                            },
+                            emphasis: {
+                                areaColor: '#e0ffff'
+                            }
+                        },
+                        label:{
+                            color: "white",
+                            show: true
+                        },
+                        data: cureArr
+                    },
+                    {
+                        name:"死亡人数",
+                        type: "map",
+                        mapType: pName,
+                        roam: false,
+                        zoom: 1,
+                        showLegendSymbol: false,
+                        itemStyle: {
+                            normal: {
+                                areaColor: "green",
+                                borderColor: '#ffffff'
+                            },
+                            emphasis: {
+                                areaColor: "lightgreen"
+                            }
+                        },
+                        label:{
+                            color: "white",
+                            show: true
+                        },
+                        data: deathArr
+                    }
+                ]
+            };
+            provinceChart.setOption(option);
+        }
+        drawProvince('湖北');
+
+
+        // 缓存
+        var dateIndex = {{ dateIndex|safe }};
+        var time_confirmed = {{ time_confirmed|safe }};
+        var time_cured = {{ time_cured|safe }};
+        var time_death = {{ time_death|safe }};
+        var zoom_data_index = {{ zoom_data_index|safe }};
+        var zoom_confirmed = {{ zoom_confirmed|safe }};
+        var zoom_cured = {{ zoom_cured|safe }};
+        var zoom_death = {{ zoom_death|safe }};
+
+
+
+
+        function drawZoom(pName) {
+    // <!--        let dateIndex = ['1/22/2020','1/23/2020','1/24/2020','1/25/2020','1/26/2020','1/27/2020','1/28/2020','1/29/2020','1/30/2020','1/31/2020','2/1/2020','2/2/2020','2/3/2020','2/4/2020','2/5/2020','2/6/2020','2/7/2020','2/8/2020','2/9/2020','2/10/2020','2/11/2020','2/12/2020','2/13/2020','2/14/2020','2/15/2020','2/16/2020','2/17/2020','2/18/2020','2/19/2020','2/20/2020','2/21/2020','2/22/2020','2/23/2020','2/24/2020','2/25/2020','2/26/2020','2/27/2020','2/28/2020','2/29/2020','3/1/2020','3/2/2020','3/3/2020','3/4/2020','3/5/2020','3/6/2020','3/7/2020','3/8/2020','3/9/2020','3/10/2020','3/11/2020','3/12/2020','3/13/2020','3/14/2020','3/15/2020','3/16/2020','3/17/2020','3/18/2020','3/19/2020','3/20/2020','3/21/2020','3/22/2020','3/23/2020','3/24/2020','3/25/2020','3/26/2020','3/27/2020','3/28/2020','3/29/2020','3/30/2020','3/31/2020','4/1/2020','4/2/2020','4/3/2020','4/4/2020','4/5/2020','4/6/2020','4/7/2020','4/8/2020','4/9/2020','4/10/2020','4/11/2020','4/12/2020','4/13/2020','4/14/2020','4/15/2020','4/16/2020','4/17/2020','4/18/2020','4/19/2020','4/20/2020','4/21/2020','4/22/2020','4/23/2020','4/24/2020','4/25/2020','4/26/2020','4/27/2020','4/28/2020','4/29/2020','4/30/2020','5/1/2020','5/2/2020','5/3/2020','5/4/2020','5/5/2020','5/6/2020','5/7/2020','5/8/2020','5/9/2020','5/10/2020','5/11/2020','5/12/2020','5/13/2020','5/14/2020','5/15/2020','5/16/2020','5/17/2020','5/18/2020','5/19/2020','5/20/2020','5/21/2020','5/22/2020','5/23/2020','5/24/2020','5/25/2020','5/26/2020','5/27/2020','5/28/2020','5/29/2020','5/30/2020','5/31/2020','6/1/2020','6/2/2020'];-->
+    // <!--        let confirmZoomData = [0];-->
+    // <!--        let cureZoomData = [0];-->
+    // <!--        let deathZoomData = [0];-->
+    // <!--        let dateIndex0 = ['1/22/2020','1/23/2020','1/24/2020','1/25/2020','1/26/2020'];-->
+    // <!--        let confirmData0 = [2000,3500,5000,6000,7500];-->
+    // <!--        let cureData0 = [20,120,350,400,600];-->
+    // <!--        let deathData0 = [2,5,10,35,60];-->
+            // 基于准备好的dom，初始化echarts实例
+            var myChart = echarts.init(document.getElementById('pieChart2'),'dark');
+
+            // 指定图表的配置项和数据
+            var option = {
+                title:{
+                    text:pName+"省"
+                },
+                backgroundColor: '#081832',
+                xAxis: {
+                    type: 'category',
+                    data: zoom_data_index
+                },
+                yAxis: {
+                    type: 'value'
+                },
+                dataZoom: [
+                    {   // 这个dataZoom组件，默认控制x轴。
+                        type: 'slider', // 这个 dataZoom 组件是 slider 型 dataZoom 组件
+                        start: 10,      // 左边在 10% 的位置。
+                        end: 60         // 右边在 60% 的位置。
+                    }
+                ],
+                legend:{
+                    data:[
+                        {
+                            name:"确诊人数",
+                            icon:"circle",
+                            textStyle:{
+                                color:"red"
+                            }
+                        },
+                        {
+                            name:"死亡人数",
+                            icon: "circle",
+                            textStyle: {
+                                color: "blue"
+                            }
+                        },
+                        {
+                            name:"治愈人数",
+                            icon:"circle",
+                            textStyle:{
+                                color:"green"
+                            }
+                        }
+                    ],
+                    // selectedMode:'single',
+                    // selected:{
+                    //     "死亡人数":false,
+                    //     '治愈人数': false
+                    // }
+                },
+                series: [
+                    {
+                        name:'确诊人数',
+                        type: 'line', // 这是个『散点图』
+                        smooth: true,
+                        itemStyle: {
+                            opacity: 0.8
+                        },
+                        symbolSize: function (val) {
+                            return val[2] * 40;
+                        },
+                        data: zoom_confirmed[pName]
+                    },
+                    {
+                        name:'治愈人数',
+                        type: 'line', // 这是个『散点图』
+                        smooth: true,
+                        itemStyle: {
+                            opacity: 0.8
+                        },
+                        symbolSize: function (val) {
+                            return val[2] * 40;
+                        },
+                        data: zoom_cured[pName]
+                    },
+                    {
+                        name:'死亡人数',
+                        type: 'line', // 这是个『散点图』
+                        smooth: true,
+                        itemStyle: {
+                            opacity: 0.8
+                        },
+                        symbolSize: function (val) {
+                            return val[2] * 40;
+                        },
+                        data:zoom_death[pName]
+                    }
+                ]
+            };
+
+            // 使用刚指定的配置项和数据显示图表。
+            myChart.setOption(option);
+        }
+        drawZoom('湖北');
+
+        function drawTimeSeries(pName){
+    // <!--        let dateIndex = ['人数种类','1/22/2020','1/23/2020','1/24/2020','1/25/2020','1/26/2020','1/27/2020','1/28/2020','1/29/2020','1/30/2020','1/31/2020','2/1/2020','2/2/2020','2/3/2020','2/4/2020','2/5/2020','2/6/2020','2/7/2020','2/8/2020','2/9/2020','2/10/2020','2/11/2020','2/12/2020','2/13/2020','2/14/2020','2/15/2020','2/16/2020','2/17/2020','2/18/2020','2/19/2020','2/20/2020','2/21/2020','2/22/2020','2/23/2020','2/24/2020','2/25/2020','2/26/2020','2/27/2020','2/28/2020','2/29/2020','3/1/2020','3/2/2020','3/3/2020','3/4/2020','3/5/2020','3/6/2020','3/7/2020','3/8/2020','3/9/2020','3/10/2020','3/11/2020','3/12/2020','3/13/2020','3/14/2020','3/15/2020','3/16/2020','3/17/2020','3/18/2020','3/19/2020','3/20/2020','3/21/2020','3/22/2020','3/23/2020','3/24/2020','3/25/2020','3/26/2020','3/27/2020','3/28/2020','3/29/2020','3/30/2020','3/31/2020','4/1/2020','4/2/2020','4/3/2020','4/4/2020','4/5/2020','4/6/2020','4/7/2020','4/8/2020','4/9/2020','4/10/2020','4/11/2020','4/12/2020','4/13/2020','4/14/2020','4/15/2020','4/16/2020','4/17/2020','4/18/2020','4/19/2020','4/20/2020','4/21/2020','4/22/2020','4/23/2020','4/24/2020','4/25/2020','4/26/2020','4/27/2020','4/28/2020','4/29/2020','4/30/2020','5/1/2020','5/2/2020','5/3/2020','5/4/2020','5/5/2020','5/6/2020','5/7/2020','5/8/2020','5/9/2020','5/10/2020','5/11/2020','5/12/2020','5/13/2020','5/14/2020','5/15/2020','5/16/2020','5/17/2020','5/18/2020','5/19/2020','5/20/2020','5/21/2020','5/22/2020','5/23/2020','5/24/2020','5/25/2020','5/26/2020','5/27/2020','5/28/2020','5/29/2020','5/30/2020','5/31/2020','6/1/2020','6/2/2020'];-->
+    // <!--        let confirmData = [];-->
+    // <!--        confirmData.push("确诊人数");-->
+    // <!--        let cureData = [];-->
+    // <!--        cureData.push("治愈人数");-->
+    // <!--        let deathData = [];-->
+    // <!--        deathData.push("死亡人数");-->
+
+            let mapArea = document.getElementById("histogramChart1");
+            mapArea.removeAttribute('_echarts_instance_');
+            let myInteractChart = echarts.init(mapArea,'dark');
+
+            myInteractChart.setOption({
+                    backgroundColor: '#081832',
+            });
+            setTimeout(function () {
+                option = {
+                    title:{
+                        text:pName+"省"
+                    },
+                    legend:{},
+                    tooltip: {
+                        trigger: "axis",
+                        showContent:false
+                    },
+                    dataset:{
+                        source:[
+                            dateIndex,
+                            time_confirmed[pName],
+                            time_cured[pName],
+                            time_death[pName],
+                        ]
+                    },
+                    xAxis:{
+                        type:"category"
+                    },
+                    yAxis:{
+                        gridIndex:0
+                    },
+                    grid:{
+                        top:"55%"
+                    },
+                    series:[
+                        {type:"line", smooth: true,seriesLayoutBy: "row"},
+                        {type: "line",smooth: true,seriesLayoutBy: "row"},
+                        {type: "line",smooth: true,seriesLayoutBy: "row"},
+                        {
+                            type: "pie",
+                            id:"pie",
+                            radius:"30%",
+                            center:["50%","25%"],
+                            label:{
+                                formatter: "{b}: {@1/22/2020} ({d}%)"
+                            },
+                            encode: {
+                                itemName: "人数种类",
+                                value:"1/22/2020",
+                                tooltip:"1/22/2020"
+                            }
+                        }
+                    ]
+                };
+                myInteractChart.on("updateAxisPointer",function (event) {
+                    let xAxisInfo = event.axesInfo[0];
+                    if (xAxisInfo){
+                        let dimension = xAxisInfo.value+1;
+
+                        console.log(dimension);
+                        myInteractChart.setOption({
+                            series:{
+                                id:"pie",
+                                label:{
+                                    format:"{b}: {@['dimension']} ({d}%)"
+                                },
+                                encode: {
+                                    value: dimension,
+                                    tooltip: dimension
+                                }
+                            }
+                        });
+                    }
+                });
+                myInteractChart.setOption(option);
+            });
+        }
+        drawTimeSeries('湖北');
+
+        myChart.on("click",function (params) {
+            console.log("params");
+            console.log(params.data.name);
+            drawProvince(params.data.name);
+            drawZoom(params.data.name);
+            drawTimeSeries(params.data.name);
+        });
+
+</script>
 </body>
 </html>
