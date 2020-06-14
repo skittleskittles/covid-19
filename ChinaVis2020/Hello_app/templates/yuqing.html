@@ -18,6 +18,7 @@
       <ul>
           <li><a href="{% url 'home' %}">主界面</a> </li>
           <li><a href="{% url 'timezone' %}">时空态势</a> </li>
+          <li><a href="{% url 'qianyi' %}">迁徙传播</a> </li>
           <li class="nav_active"><a href="{% url 'yuqing' %}">舆情分析</a> </li>
           <!-- <li class="nav_active"><i class="nav_4"></i><a href="chronic.html">慢病病人列表</a> </li> -->
           </ul>
@@ -62,9 +63,7 @@
         var dom = document.getElementById("histogramChart3");
         var cpChart = echarts.init(dom);
         cpChart.hideLoading();
-
         data = {{ cpkeyword|safe }}[keyword]
-        console.log(data)
         
         chartname ='\"'+ keyword+'\" 词频'
         option = {
@@ -121,12 +120,6 @@
                         show: false,
                     },
                     axisLabel: {
-                        // formatter: function (a) {
-                        //     a = +a;
-                        //     return isFinite(a)
-                        //         ? echarts.format.addCommas(+a / 1000)
-                        //         : '';
-                        // }
                     }
                 }
             ],
@@ -170,7 +163,8 @@
     cpcanve('疫情')
     var maskResource = new Image()
     maskResource.src = '../static/images/heart.png'
-    
+    data1 = {{ cpjsonlist|safe }}
+    data2 = {{ cpqyjsonlist|safe }}
     var histogramChart1 = echarts.init(document.getElementById('histogramChart1'));
     var option ={
             //设置标题，居中显示
@@ -178,7 +172,15 @@
                 // text: 'E词云图',
                 // left:'center',
              },
-            //数据可以点击
+            legend: {
+                data: ['总词频','迁移相关词频'],
+                // selectedMode : 'single',
+                // selected:{
+                //     '迁移相关词频':false,
+                //     '总词频':false
+                // },
+                // itemGap: 5
+            },
             tooltip:{
                 show: true,
                 feature: {
@@ -191,19 +193,14 @@
             },
 
             series:[
-                {
-                    // maskImage:maskResource,
-                    //词的类型
+            {
+                    name:'总词频',
                     type: 'wordCloud',
                     //设置字符大小范围
                     gridSize: 2,
-                    // sizeRange: [10, 60],
                     sizeRange:[10,80],
                     rotationRange:[-45,90],
                     maskImage: maskResource,
-                    // shape: 'triangle',
-                    // width: 400,
-                    // height: 200,
                     textStyle: {
                         normal:{
                             //生成随机的字体颜色
@@ -218,10 +215,39 @@
                         }
 
                     },
-                    //不要忘记调用数据
-                       data: {{ cpjsonlist|safe }}
+                    data: data1
 
-                 }
+                 },
+                 {
+                    name:'迁移相关词频',
+                    // maskImage:maskResource,
+                    //词的类型
+                    type: 'wordCloud',
+                    //设置字符大小范围
+                    gridSize: 2,
+                    // sizeRange: [10, 60],
+                    sizeRange:[14,80],
+                    rotationRange:[-45,90],
+                    maskImage: maskResource,
+
+                    textStyle: {
+                        normal:{
+                            //生成随机的字体颜色
+                            color:function () {
+                                return 'rgb(' + [
+                                    Math.round(Math.random() * 160+30),
+                                    Math.round(Math.random() * 160+30),
+                                    Math.round(Math.random() * 160+30)
+                                ].join(',')+')';
+
+                            }
+                        }
+
+                    },
+                        data: data2
+
+                 },
+
             ]
 
         };
@@ -240,7 +266,7 @@
     //主要症状
    var histogramChart2 = echarts.init(document.getElementById('histogramChart2'));
    histogramChart2.setOption({
-       color: ['rgb(194,53,49)', "#FFCC99", 'rgb(83,122,149)'],
+       color: ['rgb(194,53,49)',"#FFCC99", 'rgb(83,122,149)','rgb(188,111,151)','rgb(137,183,158)','rgb(40,67,167)'],
        tooltip : {
            trigger: 'axis',
            axisPointer : {            // 坐标轴指示器，坐标轴触发有效
@@ -253,8 +279,10 @@
                     value += params[i].value;
                 }
                 for (var i = 0, l = params.length; i < l; i++) {
-              //marker 就是带颜色的小圆圈 seriesName x轴名称  value  y轴值 后面就是计算百分比
-                    relVal += '<br/>'+ params[i].marker + params[i].seriesName + ' : '+ parseFloat(params[i].value) +' (' + (100 *
+                    if(params[i].seriesName === "新增")
+                        relVal += '<br/>'+ params[i].marker + params[i].seriesName + ' : '+ parseFloat(params[i].value);
+                    else
+                        relVal += '<br/>'+ params[i].marker + params[i].seriesName + ' : '+ parseFloat(params[i].value) +' (' + (100 *
                         parseFloat(params[i].value) / parseFloat(value)).toFixed(2) + "%)";
                 }
                return relVal;
@@ -290,7 +318,10 @@
        yAxis : [
            {
                type : 'value',
-               //max: 5,
+               name: '微博数量',
+               nameTextStyle:{
+                    color:"#FFF",
+                },
                axisLine:{
                    show: false,//不显示坐标轴线
                },
@@ -307,7 +338,29 @@
                   width: 1,
                 }
               }
-           }
+           },
+           {
+            type: 'value',
+            name: '新增',
+           nameTextStyle:{
+                color:"#FFF",
+            },
+           textStyle: {
+                   color: '#fff'
+               },
+            axisLine:{
+                   show: false,//不显示坐标轴线
+               },
+               axisLabel : {
+                   textStyle: {
+                       color: '#fff'
+                   }
+               },
+                // y軸的分割線顏色
+              splitLine: {
+                show: false,
+              }
+        }
        ],
        series:{{ series|safe }},
        dataZoom: [
