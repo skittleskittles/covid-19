@@ -139,7 +139,7 @@
             </div>
             <div class="div_any_child">
                 <!--                <div class="div_any_title"><img src="../images/title_12.png">疫情控制情况</div>-->
-                <div class="div_any_title"><img src="../static/images/title_0.png">疫情控制情况</div>
+                <div class="div_any_title"><img src="../static/images/title_0.png">疫情控制情况图</div>
                 <p id="pieChart2" class="p_chart"></p>
             </div>
         </div>
@@ -149,7 +149,7 @@
                 <p id="pieChart1" class="p_chart"></p>
             </div>
             <div class="div_any_child">
-                <div class="div_any_title"><img src="../static/images/title_5.png">省份动态折线图</div>
+                <div class="div_any_title"><img src="../static/images/title_5.png">省份动态情况图</div>
                 <p id="histogramChart1" class="p_chart"></p>
             </div>
         </div>
@@ -495,7 +495,7 @@
             }
             let option = {
                 title:{
-                    text:pName+"省"
+                    text:pName
                 },
                 tooltip: {  // 配置提示信息
                     trigger: 'item'
@@ -670,7 +670,7 @@
             // 指定图表的配置项和数据
             var option = {
                 title:{
-                    text:pName+"省"
+                    text:pName
                 },
                 backgroundColor: '#081832',
                 tooltip: {
@@ -785,12 +785,12 @@
             setTimeout(function () {
                 option = {
                     title:{
-                        text:pName+"省"
+                        text:pName
                     },
                     legend:{},
                     tooltip: {
                         trigger: "axis",
-                        showContent:false
+                        showContent:true
                     },
                     dataset:{
                         source:[
