@@ -148,12 +148,14 @@
                     name: '确诊数',
                     type: 'map',
                     mapType: 'china',
-                    roam: false,
+                    roam: true,
+                    zoom: 1,
                     label: {
                         show: true,
                         color: 'rgb(249, 249, 249)'
                     },
                     data: []
+
                 }
             ]
         };
@@ -198,7 +200,7 @@
                                     name: '确诊数',
                                     type: 'map',
                                     mapType: 'china',
-                                    roam: false,
+                                    roam: true,
                                     zoom:1,
                                     label: {
                                         show: true,
@@ -234,22 +236,200 @@
             let cureArr = []
             let deathArr = []
             for (let i=0;i<length;i++){
-                let confirmJson = {
-                    name:city_data[i],
-                    value:confirm_province_data[i]
-                };
-                let cureJson = {
-                    name:city_data[i],
-                    value:cure_province_data[i]
+                let tail;
+                if (pName == "北京" || pName=="上海"){
+                    tail = "区";
                 }
-                let deathJson = {
-                    name:city_data[i],
-                    value:death_province_data[i]
+                else if (pName=="天津" || pName=="重庆"){
+                        tail = "";
                 }
+                else{
+                    tail = "市";
+                }
+                if (city_data[i]==="大兴安岭"){ tail = "地区"; }
+                if (city_data[i]==="延边"){ tail = "朝鲜族自治州"; }
+                if (city_data[i]==="锡林郭勒" || city_data[i]==="阿拉善"){ tail = "盟"; }
+                if (city_data[i]==="兴安盟"){ tail = ""; }
+                if (city_data[i]==="阿克苏"){ tail = "地区"; }
+                if (city_data[i]==="凉山"){ tail = "彝族自治州"; }
+                if (city_data[i]==="甘孜"){ tail = "藏族自治州"; }
+                if (city_data[i]==="阿坝"){ tail = "藏族羌族自治州"; }
+                if (city_data[i]==="大理"){ tail = "白族自治州"; }
+                if (city_data[i]==="保山市"){ tail = ""; }
+                if (city_data[i]==="红河"){ tail = "哈尼族彝族自治州"; }
+                if (city_data[i]==="昭通市"){ tail = ""; }
+                if (city_data[i]==="丽江市"){ tail = ""; }
+                if (city_data[i]==="湘西自治州"){
+                    let confirmJson = {
+                        name: "湘西土家族苗族自治州",
+                        value: confirm_province_data[i]
+                    };
+                    confirmArr.push(confirmJson);
+                    let cureJson = {
+                        name: "湘西土家族苗族自治州",
+                        value: cure_province_data[i]
+                    };
+                    cureArr.push(cureJson);
+                    let deathJson = {
+                        name: "湘西土家族苗族自治州",
+                        value: death_province_data[i]
+                    };
+                    deathArr.push(deathJson);
+                }
+                else if (city_data[i]==="黔南州"){
+                    let confirmJson = {
+                        name: "黔南布依族苗族自治州",
+                        value: confirm_province_data[i]
+                    };
+                    confirmArr.push(confirmJson);
+                    let cureJson = {
+                        name: "黔南布依族苗族自治州",
+                        value: cure_province_data[i]
+                    };
+                    cureArr.push(cureJson);
+                    let deathJson = {
+                        name: "黔南布依族苗族自治州",
+                        value: death_province_data[i]
+                    };
+                    deathArr.push(deathJson);
+                }
+                else if (city_data[i]==="黔东南州"){
+                    let confirmJson = {
+                        name: "黔东南苗族侗族自治州",
+                        value: confirm_province_data[i]
+                    };
+                    confirmArr.push(confirmJson);
+                    let cureJson = {
+                        name: "黔东南苗族侗族自治州",
+                        value: cure_province_data[i]
+                    };
+                    cureArr.push(cureJson);
+                    let deathJson = {
+                        name: "黔东南苗族侗族自治州",
+                        value: death_province_data[i]
+                    };
+                    deathArr.push(deathJson);
+                }
+                else if (city_data[i]==="黔西南州"){
+                    let confirmJson = {
+                        name: "黔西南布依族苗族自治州",
+                        value: confirm_province_data[i]
+                    };
+                    confirmArr.push(confirmJson);
+                    let cureJson = {
+                        name: "黔西南布依族苗族自治州",
+                        value: cure_province_data[i]
+                    };
+                    cureArr.push(cureJson);
+                    let deathJson = {
+                        name: "黔西南布依族苗族自治州",
+                        value: death_province_data[i]
+                    };
+                    deathArr.push(deathJson);
+                }
+                else if (city_data[i]==="德宏州"){
+                    let confirmJson = {
+                        name: "德宏傣族景颇族自治州",
+                        value: confirm_province_data[i]
+                    };
+                    confirmArr.push(confirmJson);
+                    let cureJson = {
+                        name: "德宏傣族景颇族自治州",
+                        value: cure_province_data[i]
+                    };
+                    cureArr.push(cureJson);
+                    let deathJson = {
+                        name: "德宏傣族景颇族自治州",
+                        value: death_province_data[i]
+                    };
+                    deathArr.push(deathJson);
+                }
+                else if (city_data[i]==="西双版纳州"){
+                    let confirmJson = {
+                        name: "西双版纳傣族自治州",
+                        value: confirm_province_data[i]
+                    };
+                    confirmArr.push(confirmJson);
+                    let cureJson = {
+                        name: "西双版纳傣族自治州",
+                        value: cure_province_data[i]
+                    };
+                    cureArr.push(cureJson);
+                    let deathJson = {
+                        name: "西双版纳傣族自治州",
+                        value: death_province_data[i]
+                    };
+                    deathArr.push(deathJson);
+                }
+                else if (city_data[i]==="文山州"){
+                    let confirmJson = {
+                        name: "文山壮族苗族自治州",
+                        value: confirm_province_data[i]
+                    };
+                    confirmArr.push(confirmJson);
+                    let cureJson = {
+                        name: "文山壮族苗族自治州",
+                        value: cure_province_data[i]
+                    };
+                    cureArr.push(cureJson);
+                    let deathJson = {
+                        name: "文山壮族苗族自治州",
+                        value: death_province_data[i]
+                    };
+                    deathArr.push(deathJson);
+                }
+                else if (city_data[i]==="楚雄州"){
+                    let confirmJson = {
+                        name: "楚雄彝族自治州",
+                        value: confirm_province_data[i]
+                    };
+                    confirmArr.push(confirmJson);
+                    let cureJson = {
+                        name: "楚雄彝族自治州",
+                        value: cure_province_data[i]
+                    };
+                    cureArr.push(cureJson);
+                    let deathJson = {
+                        name: "楚雄彝族自治州",
+                        value: death_province_data[i]
+                    };
+                    deathArr.push(deathJson);
+                }
+                else if (city_data[i]==="恩施洲"){
+                    let confirmJson = {
+                        name: "恩施土家族苗族自治州",
+                        value: confirm_province_data[i]
+                    };
+                    confirmArr.push(confirmJson);
+                    let cureJson = {
+                        name: "恩施土家族苗族自治州",
+                        value: cure_province_data[i]
+                    };
+                    cureArr.push(cureJson);
+                    let deathJson = {
+                        name: "恩施土家族苗族自治州",
+                        value: death_province_data[i]
+                    };
+                    deathArr.push(deathJson);
+                }
+                else{
+                    let confirmJson = {
+                        name:city_data[i]+tail,
+                        value:confirm_province_data[i]
+                    };
+                    let cureJson = {
+                        name:city_data[i]+tail,
+                        value:cure_province_data[i]
+                    }
+                    let deathJson = {
+                        name:city_data[i]+tail,
+                        value:death_province_data[i]
+                    }
 
-                confirmArr.push(confirmJson);
-                cureArr.push(cureJson);
-                deathArr.push(deathJson);
+                    confirmArr.push(confirmJson);
+                    cureArr.push(cureJson);
+                    deathArr.push(deathJson);
+                }
             }
             let option = {
                 title:{
@@ -437,21 +617,21 @@
                             name:"确诊人数",
                             icon:"circle",
                             textStyle:{
-                                color:"red"
+                                color:'white'
                             }
                         },
                         {
                             name:"死亡人数",
                             icon: "circle",
                             textStyle: {
-                                color: "blue"
+                                color: 'white'
                             }
                         },
                         {
                             name:"治愈人数",
                             icon:"circle",
                             textStyle:{
-                                color:"green"
+                                color:'white'
                             }
                         }
                     ],
@@ -550,23 +730,25 @@
                         top:"55%"
                     },
                     series:[
-                        {type:"line", smooth: true,seriesLayoutBy: "row"},
-                        {type: "line",smooth: true,seriesLayoutBy: "row"},
-                        {type: "line",smooth: true,seriesLayoutBy: "row"},
                         {
                             type: "pie",
                             id:"pie",
                             radius:"30%",
-                            center:["50%","25%"],
+                            center:["50%","32%"],
                             label:{
-                                formatter: "{b}: {@1/22/2020} ({d}%)"
+<!--                                formatter: "{b}: {@1/22/2020} ({d}%)"-->
+                                formatter: "{b}:  {d}%"
                             },
                             encode: {
                                 itemName: "人数种类",
                                 value:"1/22/2020",
                                 tooltip:"1/22/2020"
                             }
-                        }
+                        },
+                        {type:"line", smooth: true,seriesLayoutBy: "row"},
+                        {type: "line",smooth: true,seriesLayoutBy: "row"},
+                        {type: "line",smooth: true,seriesLayoutBy: "row"},
+
                     ]
                 };
                 myInteractChart.on("updateAxisPointer",function (event) {
@@ -583,7 +765,7 @@
                                 },
                                 encode: {
                                     value: dimension,
-                                    tooltip: dimension
+                                    tooltip: dimension,
                                 }
                             }
                         });
