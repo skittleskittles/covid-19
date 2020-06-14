@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>数据可视化demo</title>
-    <link href="../static/styles/common.css" rel="stylesheet">
-
+    <link href="../static/styles/common_lrf.css" rel="stylesheet">
 <!--    <script src="../scripts/Plugin/echarts.min.js"></script>-->
     <script src="../static/scripts/Plugin/bmap.min.js"></script>
 <!--    <script src="http://api.map.baidu.com/api?v=2.0&ak=LelFSt6BfykGf8m3PB5zr8LaXAG2cMg6"></script>-->
@@ -45,11 +44,12 @@
 </header>
 <!--内容部分-->
 <div class="con left">
-  <!--数据总概-->
+  <!--数据总概
   <div class="con_div">
       <div class="con_div_text left">
           <div class="con_div_text01 left">
               <img src="../static/images/info_7.png" class="left text01_img"/>
+
               <div class="left text01_div">
                   <p>新增确诊病例(例)</p>
                   <p>11</p>
@@ -57,6 +57,7 @@
           </div>
           <div class="con_div_text01 right">
               <img src="../static/images/info_8.png" class="left text01_img"/>
+
               <div class="left text01_div">
                   <p>境外输入病例(例)</p>
                   <p>11</p>
@@ -66,13 +67,16 @@
       <div class="con_div_text left">
           <div class="con_div_text01 left">
               <img src="../static/images/info_9.png" class="left text01_img"/>
+
               <div class="left text01_div">
                   <p>累计报告确诊病例(人)</p>
                   <p class="sky">83057</p>
               </div>
           </div>
           <div class="con_div_text01 right">
+
               <img src="../static/images/info_10.png" class="left text01_img"/>
+
               <div class="left text01_div">
                   <p>累计治愈出院病例(人)</p>
                   <p class="sky">78361</p>
@@ -82,7 +86,9 @@
       <div class="con_div_text left">
 
           <div class="con_div_text01 left">
+
               <img src="../static/images/info_11.png" class="left text01_img"/>
+
               <div class="left text01_div">
                   <p>西药占比</p>
                   <p class="org">92%</p>
@@ -90,37 +96,41 @@
           </div>
           <div class="con_div_text01 right">
               <img src="../static/images/info_12.png" class="left text01_img"/>
+
               <div class="left text01_div">
                   <p>中药占比</p>
                   <p class="org">8%</p>
               </div>
           </div>
       </div>
-  </div>
+  </div>-->
     <!--统计分析图-->
     <div class="div_any">
         <div class="left div_any02">
             <div class="div_any_child">
                 <div class="div_any_title"><img src="../static/images/title_0.png">传播地图</div>
-                	<div id="echarts_map" style="height: 480px; width:800px;padding: 5px;left:5px; border: 0px solid #CCC"></div>
+
+                	<div id="echarts_map" style="height: 95%; width:95%;padding:14px;left:0px; border: 0px solid #CCC"></div>
                 <div id="transportChart" class="p_chart"></div>
             </div>
         </div>
         <div class="left div_any01">
             <div class="div_any_childr">
-                <div class="div_any_title"><img src="../static/images/title_11.png">迁移词云</div>
-                <p id="pieChart1" class="p_chart"></p>
+                <div class="div_any_title"><img src="../static/images/title_11.png">人口密度地图</div>
+                <div id="container1" style="height: 98%;padding:10px"></div>
             </div>
             <div class="div_any_childr">
-                <div class="div_any_title"><img src="../static/images/title_12.png">词频曲线</div>
-                <p id="pieChart2" class="p_chart"></p>
+                <div class="div_any_title"><img src="../static/images/title_12.png">疫情趋势与人口密度关系图</div>
+                 <div id="container2" style="height: 90%;width:90%;padding:16px;left:0px; "></div>
             </div>
         </div>
     </div>
     <div class="div_any">
         <div class="left div_any03">
             <div class="div_any_childr">
+
                 <div class="div_any_title"><img src="../static/images/title_0.png">疫情趋势与迁移趋势关系图</div>
+
                  <div id="container" style="height: 260px;padding: 25px"></div>
                 <div id="transportChart" class="p_chart"></div>
             </div>
@@ -130,13 +140,400 @@
 
 </div>
 
-    <!--Step:1 Prepare a dom for ECharts which (must) has size (width & hight)-->
-    <!--Step:1 为ECharts准备一个具备大小（宽高）的Dom-->
+ <script type="text/javascript">
+var dom = document.getElementById("container1");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+option = {
+    title : {
+        subtext: '数据来自地理国情监测云平台',
+        left: 'center'
+    },
+    tooltip : {
+        trigger: 'item'
+    },
+    legend: {
+        orient: 'vertical',
+        left: 'left',
+        data:['人口密度'],
+                textStyle: {
+            color: '#fff'
+        }
+    },
+    visualMap: {
+        min: 0,
+        max: 500,
+        left: 'left',
+        top: 'bottom',
+        text:['高','低'],           // 文本，默认为数值文本
+        calculable : true,
+                textStyle: {
+            color: '#fff'
+        }
+    },
+    toolbox: {
+        show: true,
+        orient : 'vertical',
+        left: 'right',
+        top: 'center',
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    series : [
+        {
+            name: '人口密度',
+            type: 'map',
+            mapType: 'china',
+            roam: false,
+            label: {
+                normal: {
+                    show: false
+                },
+                emphasis: {
+                    show: true
+                }
+            },
+            data:[
+                {name: '北京',value:1323},
+                {name: '天津',value:1306},
+                {name: '上海',value:3814},
+                {name: '重庆',value:374},
+                {name: '河北',value:355},
+                {name: '河南',value: 553},
+                {name: '云南',value:109},
+                {name: '辽宁',value: 291},
+                {name: '黑龙江',value:81},
+                {name: '湖南',value:304 },
+                {name: '安徽',value: 429},
+                {name: '山东',value:579},
+                {name: '新疆',value:13 },
+                {name: '江苏',value:742 },
+                {name: '浙江',value:460 },
+                {name: '江西',value: 247},
+                {name: '湖北',value:325},
+                {name: '广西',value:190},
+                {name: '甘肃',value: 57},
+                {name: '山西',value:212 },
+                {name: '内蒙古',value:20},
+                {name: '陕西',value: 185},
+                {name: '吉林',value: 151},
+                {name: '福建',value: 285},
+                {name: '贵州',value:200 },
+                {name: '广东',value:481 },
+                {name: '青海',value: 7},
+                {name: '西藏',value: 2},
+                {name: '四川',value:172},
+                {name: '宁夏',value: 85},
+                {name: '海南',value: 224},
+                {name: '台湾',value:600}
+            ]
+        }
+    ]
+};;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+       </script>
+
+
+       <script type="text/javascript">
+var dom = document.getElementById("container2");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+var dataBJ = [
+    [5,0,0,1323,0,1.64,0,"01/05"],
+    [10,1.20,2,1323,2,1.64,0,"01/10"],
+    [15,3.70,4,1323,6,1.64,0,"01/15"],
+    [20,8.50,8,1323,14,1.64,0,"01/20"],
+    [25,25.00,27,1323,41,1.64,1,"01/25"],
+    [30,69.50,73,1323,114,1.64,1,"01/30"],
+    [35,154.30,139,1323,253,1.64,2,"02/05"],
+    [40,205.50,84,1323,337,1.64,4,"02/10"],
+    [45,228.70,38,1323,375,1.64,4,"02/15"],
+    [50,240.90,20,1323,395,1.64,4,"02/20"],
+    [55,243.90,5,1323,400,1.64,4,"02/25"],
+    [60,251.80,13,1323,413,1.64,8,"03/01"],
+    [65,254.90,5,1323,418,1.64,8,"03/05"],
+    [70,261.60,11,1323,429,1.64,8,"03/10"],
+    [75,269.50,13,1323,442,1.64,8,"03/15"],
+    [80,299.40,49,1323,491,1.64,8,"03/20"],
+    [85,342.10,70,1323,561,1.64,8,"03/25"],
+    [90,351.80,16,1323,577,1.64,8,"03/30"],
+    [95,357.30,9,1323,586,1.64,8,"04/05"],
+    [100,358.50,2,1323,588,1.64,8,"04/10"],
+    [105,359.80,2,1323,590,1.64,8,"04/15"],
+    [110,361.60,3,1323,593,1.64,8,"04/20"],
+    [115,361.60,0,1323,593,1.64,8,"04/25"],
+    [120,361.60,0,1323,593,1.64,9,"04/30"],
+    [125,361.60,0,1323,593,1.64,9,"05/05"],
+    [130,361.60,0,1323,593,1.64,9,"05/10"],
+    [135,361.60,0,1323,593,1.64,9,"05/15"],
+    [140,361.60,0,1323,593,1.64,9,"05/20"],
+    [145,361.60,0,1323,593,1.64,9,"05/25"],
+    [150,361.60,0,1323,593,1.64,9,"05/30"],
+    [155,361.60,0,1323,593,1.64,9,"06/05"]
+];
+
+var dataGZ = [
+    [5,0,0,374,0,8.24,0,"01/05"],
+    [10,0.12,1,374,1,8.24,0,"01/10"],
+    [15,0.24,1,374,2,8.24,0,"01/15"],
+    [20,0.73,4,374,6,8.24,0,"01/20"],
+    [25,6.92,51,374,57,8.24,0,"01/25"],
+    [30,22.09,125,374,182,8.24,0,"01/30"],
+    [35,47.21,207,374,389,8.24,2,"02/05"],
+    [40,58.98,97,374,486,8.24,2,"02/10"],
+    [45,66.02,58,374,544,8.24,5,"02/15"],
+    [50,68.81,23,374,567,8.24,6,"02/20"],
+    [55,69.90,9,374,576,8.24,6,"02/25"],
+    [60,69.90,0,374,576,8.24,6,"03/01"],
+    [65,69.90,0,374,576,8.24,6,"03/05"],
+    [70,69.90,0,374,576,8.24,6,"03/10"],
+    [75,69.90,0,374,576,8.24,6,"03/15"],
+    [80,69.90,0,374,576,8.24,6,"03/20"],
+    [85,70.15,2,374,578,8.24,6,"03/25"],
+    [90,70.27,1,374,579,8.24,6,"03/30"],
+    [95,70.27,0,374,579,8.24,6,"04/05"],
+    [100,70.27,0,374,579,8.24,6,"04/10"],
+    [105,70.27,0,374,579,8.24,6,"04/15"],
+    [110,70.27,0,374,579,8.24,6,"04/20"],
+    [115,70.27,0,374,579,8.24,6,"04/25"],
+    [120,70.27,0,374,579,8.24,6,"04/30"],
+    [125,70.27,0,374,579,8.24,6,"05/05"],
+    [130,70.27,0,374,579,8.24,6,"05/10"],
+    [135,70.27,0,374,579,8.24,6,"05/15"],
+    [140,70.27,0,374,579,8.24,6,"05/20"],
+    [145,70.27,0,374,579,8.24,6,"05/25"],
+    [150,70.27,0,374,579,8.24,6,"05/30"],
+    [155,70.27,0,374,579,8.24,6,"06/05"]
+];
+
+var dataSH = [
+    [5,0,0,3741,0,0.63,0,"01/05"],
+    [10,3.15,2,3741,2,0.63,0,"01/10"],
+    [15,6.30,2,3741,4,0.63,0,"01/15"],
+    [20,14.20,5,3741,9,0.63,0,"01/20"],
+    [25,52.05,24,3741,33,0.63,0,"01/25"],
+    [30,176.66,79,3741,112,0.63,1,"01/30"],
+    [35,383.28,131,3741,243,0.63,1,"02/05"],
+    [40,471.61,56,3741,299,0.63,1,"02/10"],
+    [45,514.20,27,3741,326,0.63,1,"02/15"],
+    [50,526.81,8,3741,334,0.63,2,"02/20"],
+    [55,529.97,2,3741,336,0.63,3,"02/25"],
+    [60,531.55,1,3741,337,0.63,3,"03/01"],
+    [65,534.70,2,3741,339,0.63,3,"03/05"],
+    [70,542.59,5,3741,344,0.63,3,"03/10"],
+    [75,556.78,9,3741,353,0.63,3,"03/15"],
+    [80,585.17,18,3741,371,0.63,3,"03/20"],
+    [85,682.97,62,3741,433,0.63,5,"03/25"],
+    [90,785.49,65,3741,498,0.63,5,"03/30"],
+    [95,837.54,33,3741,531,0.63,6,"04/05"],
+    [100,875.39,24,3741,555,0.63,7,"04/10"],
+    [105,981.07,67,3741,622,0.63,7,"04/15"],
+    [110,1006.31,16,3741,638,0.63,7,"04/20"],
+    [115,1012.62,4,3741,642,0.63,7,"04/25"],
+    [120,1028.39,10,3741,652,0.63,7,"04/30"],
+    [125,1034.70,4,3741,656,0.63,7,"05/05"],
+    [130,1039.43,3,3741,659,0.63,7,"05/10"],
+    [135,1048.90,6,3741,665,0.63,7,"05/15"],
+    [140,1050.47,1,3741,666,0.63,7,"05/20"],
+    [145,1055.21,3,3741,669,0.63,7,"05/25"],
+    [150,1059.94,3,3741,672,0.63,7,"05/30"],
+    [155,1061.51,1,3741,673,0.63,7,"06/05"]
+]
+
+var schema = [
+    {name: 'date', index: 0, text: '日'},
+    {name: 'AQIindex', index: 1, text: '总确诊密度(人/万km^2)'},
+    {name: 'PM25', index: 2, text: '阶段新增确诊(人)'},
+    {name: 'PM10', index: 3, text: '人口密度(人/km^2)'},
+    {name: 'CO', index: 4, text: '总确诊人数(人)'},
+    {name: 'NO2', index: 5, text: '区域面积(km^2)'},
+    {name: 'SO2', index: 6, text: '死亡人数(人)'}
+];
+
+
+var itemStyle = {
+    opacity: 0.8,
+    shadowBlur: 10,
+    shadowOffsetX: 0,
+    shadowOffsetY: 0,
+    shadowColor: 'rgba(0, 0, 0, 0.5)'
+};
+
+option = {
+    backgroundColor: '#081832',
+    color: [
+        '#dd4444', '#fec42c', '#80F1BE'
+    ],
+    legend: {
+        top: 10,
+        data: ['北京', '上海', '重庆'],
+        textStyle: {
+            color: '#fff',
+            fontSize: 16
+        }
+    },
+    grid: {
+        left: '10%',
+        right: 150,
+        top: '18%',
+        bottom: '10%'
+    },
+    tooltip: {
+        padding: 10,
+        backgroundColor: '#222',
+        borderColor: '#777',
+        borderWidth: 1,
+        formatter: function (obj) {
+            var value = obj.value;
+            return '<div style="border-bottom: 1px solid rgba(255,255,255,.3); font-size: 18px;padding-bottom: 7px;margin-bottom: 7px">'
+                + obj.seriesName + ' ' + value[0] + '日：'
+                + value[7]
+                + '</div>'
+                + schema[1].text + '：' + value[1] + '<br>'
+                + schema[2].text + '：' + value[2] + '<br>'
+                + schema[3].text + '：' + value[3] + '<br>'
+                + schema[4].text + '：' + value[4] + '<br>'
+                + schema[5].text + '：' + value[5] + '<br>'
+                + schema[6].text + '：' + value[6] + '<br>';
+        }
+    },
+    xAxis: {
+        type: 'value',
+        name: '天',
+        nameGap: 16,
+        nameTextStyle: {
+            color: '#fff',
+            fontSize: 14
+        },
+        max: 150,
+        splitLine: {
+            show: false
+        },
+        axisLine: {
+            lineStyle: {
+                color: '#eee'
+            }
+        }
+    },
+    yAxis: {
+        type: 'value',
+        name: '疫情指数',
+        nameLocation: 'end',
+        nameGap: 20,
+        textStyle: {
+            color: '#fff',
+            fontSize: 16
+        },
+        axisLine: {
+            lineStyle: {
+                color: '#eee'
+            }
+        },
+        splitLine: {
+            show: false
+        }
+    },
+    visualMap: [
+        {
+            left: 'right',
+            top: '10%',
+            dimension: 2,
+            min: 0,
+            max: 200,
+            itemWidth: 30,
+            itemHeight: 120,
+            calculable: true,
+            precision: 0.1,
+            text: ['圆形大小：阶段新增确诊人数'],
+            textGap: 30,
+            textStyle: {
+                color: '#fff'
+            },
+            inRange: {
+                symbolSize: [10, 70]
+            },
+            outOfRange: {
+                symbolSize: [10, 70],
+                color: ['rgba(255,255,255,.2)']
+            },
+            controller: {
+                inRange: {
+                    color: ['#c23531']
+                },
+                outOfRange: {
+                    color: ['#444']
+                }
+            }
+        },
+        {
+            left: 'right',
+            bottom: '5%',
+            dimension: 6,
+            min: 0,
+            max: 9,
+            itemHeight: 120,
+
+            precision: 0.1,
+            text: ['明暗：死亡人数'],
+            textGap: 30,
+            textStyle: {
+                color: '#fff'
+            },
+            inRange: {
+                colorLightness: [1, 0.5]
+            },
+            outOfRange: {
+                color: ['rgba(255,255,255,.2)']
+            },
+            controller: {
+                inRange: {
+                    color: ['#c23531']
+                },
+                outOfRange: {
+                    color: ['#444']
+                }
+            }
+        }
+    ],
+    series: [
+        {
+            name: '北京',
+            type: 'scatter',
+            itemStyle: itemStyle,
+            data: dataBJ
+        },
+        {
+            name: '上海',
+            type: 'scatter',
+            itemStyle: itemStyle,
+            data: dataSH
+        },
+        {
+            name: '重庆',
+            type: 'scatter',
+            itemStyle: itemStyle,
+            data: dataGZ
+        }
+    ]
+};;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+       </script>
 
      
     <!--Step:2 Import echarts.js-->
     <script src="../static/source/echarts.js"></script>
      <script type="text/javascript">
+
 var dom = document.getElementById("container");
 var myChart = echarts.init(dom);
 var app = {};
@@ -200,6 +597,8 @@ backgroundColor: '#081832',
             type: 'category',
             boundaryGap: false,
             axisLine: {onZero: false},
+            nameTextStyle: {
+            color: '#fff'},
             data: [
                 '2020/01/01', '2020/01/02', '2020/01/03', '2020/01/04', '2020/01/05', '2020/01/06', '2020/01/07', '2020/01/08', '2020/01/09', '2020/01/10', '2020/01/11',
                 '2020/01/12', '2020/01/13', '2020/01/14', '2020/01/15', '2020/01/16', '2020/01/17', '2020/01/18', '2020/01/19', '2020/01/20',
@@ -218,6 +617,8 @@ backgroundColor: '#081832',
             name: '迁移趋势',
             type: 'value',
             color:'#fff',
+            nameTextStyle: {
+            color: '#fff'},
             max: 100
         },
         {
@@ -225,6 +626,8 @@ backgroundColor: '#081832',
             nameLocation: 'start',
             max: 5000,
             type: 'value',
+            nameTextStyle: {
+            color: '#fff'},
             inverse: true
         }
     ],
@@ -16219,7 +16622,7 @@ backgroundColor: '#081832',
         }
     ]
 }
-            
+
 
 ]
 
