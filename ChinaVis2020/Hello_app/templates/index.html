@@ -69,24 +69,24 @@
 
 </header>
 <!--内容部分-->
-<div class="con left" style="width: 47%; margin-left: 30px;">
+<div class="con left" style="width: 47%; margin-left: 50px;">
     <!--统计分析图-->
     <div class="div_any">
         <div class="left div_any02" style="width: 98%">
-            <div class="div_any_child ">
+            <div class="div_any_child " style="width:100%;position:relative;height: 400px;">
                 <div class="div_any_title"><img src="../static/images/title_0.png">疫情地图</div>
-                <div id="mapChart_home" class="p_chart"></div>
+                <div id="mapChart_home" class="p_chart"  style="width: 90%; height:85%;margin-left:40px;"></div>
             </div>
-            <div class="div_any_child" style="width:100%;position:relative;height: 350px;">
+            <div class="div_any_child" style="width:100%;position:relative;height: 455px;">
                 <div class="div_any_title"><img src="../static/images/title_13.png">舆情词云</div>
-                <div id="histogramChart1_home"  style="width: 120%; height:115%;margin-top:-40px;margin-left:-70px;"></div>
+                <div id="histogramChart1_home"  style="width: 120%; height:130%;margin-top:-70px;margin-left:-80px;"></div>
             </div>
         </div>
     </div>
 </div>
-<div class="con right" style="width:47%;margin-right: 30px;">
+<div class="con right" style="width:48%;margin-right: 30px;">
     <div class="right div_any02" style="width:98%;">
-        <div class="div_any_child" style="width:98%;position:relative;height: 700px;">
+        <div class="div_any_child" style="width:98%;position:relative;height: 880px;">
             <div class="div_any_title"><img src="../static/images/title_0.png">传播地图</div>
             <div id="echarts_map" style="height: 90%; width:90%; margin-left:5%;margin-top:5%;border: 0px solid #CCC"></div>
         </div>
@@ -218,6 +218,7 @@
     maskResource.src = '../static/images/heart.png'
 
     var histogramChart1 = echarts.init(document.getElementById('histogramChart1_home'));
+    histogramChart1.hideLoading();
     var option_cipin ={
             //设置标题，居中显示
             title:{
@@ -237,7 +238,7 @@
                     //设置字符大小范围
                     gridSize: 2,
                     // sizeRange: [10, 60],
-                    sizeRange:[10,80],
+                    sizeRange:[14,85],
                     rotationRange:[-45,90],
                     maskImage: maskResource,
                     // shape: 'triangle',
@@ -248,9 +249,9 @@
                             //生成随机的字体颜色
                             color:function () {
                                 return 'rgb(' + [
-                                    Math.round(Math.random() * 160+30),
-                                    Math.round(Math.random() * 160+30),
-                                    Math.round(Math.random() * 160+30)
+                                    Math.round(Math.random() * 160+40),
+                                    Math.round(Math.random() * 160+40),
+                                    Math.round(Math.random() * 160+40)
                                 ].join(',')+')';
 
                             }

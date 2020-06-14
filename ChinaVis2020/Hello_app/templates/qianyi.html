@@ -38,28 +38,28 @@
 <div class="con left">
     <!--统计分析图-->
     <div class="div_any">
-        <div class="left div_any02" style="width:47%;margin-left:30px">
-            <div class="div_any_child">
+        <div class="left div_any02" style="width:47%; ">
+            <div class="div_any_child"style="width:100%; margin-left:30px;height: 577px;">
                 <div class="div_any_title"><img src="../static/images/title_0.png">传播地图</div>
                 <div id="echarts_map" style="height: 90%; width:90%; margin-left:5%;margin-top:5%;border: 0px solid #CCC"></div>
             </div>
         </div>
         <div class="left div_any01">
-            <div class="div_any_childr">
-                <div class="div_any_title"><img src="../static/images/title_11.png">人口密度地图</div>
-                <div id="container1" style="height: 98%;padding:10px;"></div>
+            <div class="div_any_childr"style="width:100%; margin-left:30px;height: 280px;">
+                <div class="div_any_title" ><img src="../static/images/title_11.png">人口密度地图</div>
+                <div id="container1" style="height: 98%;padding:10px;margin-left:5%;"></div>
             </div>
-            <div class="div_any_childr">
-                <div class="div_any_title"><img src="../static/images/title_12.png">疫情趋势与人口密度关系图</div>
-                 <div id="container2" style="height: 90%;width:90%;padding:16px;left:0px; "></div>
+            <div class="div_any_childr" style="width:100%; margin-left:30px;height: 270px;">
+                <div class="div_any_title" ><img src="../static/images/title_12.png">疫情趋势与人口密度关系图</div>
+                 <div id="container2" style="height: 90%;width:95%;padding:16px;left:0px; "></div>
             </div>
         </div>
     </div>
     <div class="div_any">
-        <div class="left div_any03" style="width:94%;margin-left:30px">
-            <div class="div_any_childr">
+        <div class="left div_any03" style="width:94%;margin-left:30px;height: 250px;">
+            <div class="div_any_childr" style="height: 260px;">
                 <div class="div_any_title"><img src="../static/images/title_0.png">疫情趋势与迁移趋势关系图</div>
-                 <div id="container" style="height: 260px;padding: 25px"></div>
+                 <div id="container" style="width:97%;height: 220px;padding: 20px;left:px"></div>
             </div>
         </div>
     </div>
@@ -92,7 +92,8 @@ option = {
         min: 0,
         max: 500,
         left: 'left',
-        top: 'bottom',
+        bottom:40,
+        // top: 'bottom',
         text:['高','低'],           // 文本，默认为数值文本
         calculable : true,
                 textStyle: {
@@ -113,7 +114,7 @@ option = {
     },
     series : [
         {
-            name: '人口密度',
+            // name: '人口密度',
             type: 'map',
             mapType: 'china',
             roam: false,
@@ -311,9 +312,9 @@ option = {
     },
     grid: {
         left: '10%',
-        right: 150,
+        right: '20%',
         top: '18%',
-        bottom: '10%'
+        bottom: '20%'
     },
     tooltip: {
         padding: 10,
@@ -382,8 +383,9 @@ option = {
     },
     visualMap: [
         {
-            left: 'right',
-            top: '10%',
+            right:50,
+            // left: 'right',
+            bottom: '2%',
             dimension: 2,
             min: 0,
             max: 200,
@@ -391,7 +393,7 @@ option = {
             itemHeight: 120,
             calculable: true,
             precision: 0.1,
-            text: ['圆形大小：阶段新增确诊人数'],
+            text: ['圆形大小：\n阶段新增  \n确诊人数  '],
             textGap: 30,
             textStyle: {
                 color: '#fff'
@@ -413,15 +415,16 @@ option = {
             }
         },
         {
-            left: 'right',
-            bottom: '5%',
+            right: 0,
+            // left: 0,
+            bottom: '2%',
             dimension: 6,
             min: 0,
             max: 9,
             itemHeight: 120,
 
             precision: 0.1,
-            text: ['明暗：死亡人数'],
+            text: ['明暗：\n死亡人数'],
             textGap: 30,
             textStyle: {
                 color: '#fff'
@@ -488,7 +491,7 @@ backgroundColor: '#081832',
         }
     },
     grid: {
-        bottom: 80
+        bottom: 60
     },
     toolbox: {
         feature: {
@@ -512,7 +515,7 @@ backgroundColor: '#081832',
     },
     legend: {
         data: ['迁移趋势', '疫情趋势'],
-        left: 10,
+        left: 100,
         textStyle : {
             color: '#fff'
         }
@@ -521,13 +524,13 @@ backgroundColor: '#081832',
         {
             show: true,
             realtime: true,
-            start: 65,
+            start: 55,
             end: 85
         },
         {
             type: 'inside',
             realtime: true,
-            start: 65,
+            start: 55,
             end: 85
         },
         {
