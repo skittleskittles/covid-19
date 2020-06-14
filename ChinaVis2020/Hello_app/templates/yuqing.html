@@ -63,9 +63,7 @@
         var dom = document.getElementById("histogramChart3");
         var cpChart = echarts.init(dom);
         cpChart.hideLoading();
-
         data = {{ cpkeyword|safe }}[keyword]
-        console.log(data)
         
         chartname ='\"'+ keyword+'\" 词频'
         option = {
@@ -122,12 +120,6 @@
                         show: false,
                     },
                     axisLabel: {
-                        // formatter: function (a) {
-                        //     a = +a;
-                        //     return isFinite(a)
-                        //         ? echarts.format.addCommas(+a / 1000)
-                        //         : '';
-                        // }
                     }
                 }
             ],
@@ -171,7 +163,8 @@
     cpcanve('疫情')
     var maskResource = new Image()
     maskResource.src = '../static/images/heart.png'
-    
+    data1 = {{ cpjsonlist|safe }}
+    data2 = {{ cpqyjsonlist|safe }}
     var histogramChart1 = echarts.init(document.getElementById('histogramChart1'));
     var option ={
             //设置标题，居中显示
@@ -179,7 +172,15 @@
                 // text: 'E词云图',
                 // left:'center',
              },
-            //数据可以点击
+            legend: {
+                data: ['总词频','迁移相关词频'],
+                // selectedMode : 'single',
+                // selected:{
+                //     '迁移相关词频':false,
+                //     '总词频':false
+                // },
+                // itemGap: 5
+            },
             tooltip:{
                 show: true,
                 feature: {
@@ -192,19 +193,14 @@
             },
 
             series:[
-                {
-                    // maskImage:maskResource,
-                    //词的类型
+            {
+                    name:'总词频',
                     type: 'wordCloud',
                     //设置字符大小范围
                     gridSize: 2,
-                    // sizeRange: [10, 60],
                     sizeRange:[10,80],
                     rotationRange:[-45,90],
                     maskImage: maskResource,
-                    // shape: 'triangle',
-                    // width: 400,
-                    // height: 200,
                     textStyle: {
                         normal:{
                             //生成随机的字体颜色
@@ -219,10 +215,39 @@
                         }
 
                     },
-                    //不要忘记调用数据
-                       data: {{ cpjsonlist|safe }}
+                    data: data1
 
-                 }
+                 },
+                 {
+                    name:'迁移相关词频',
+                    // maskImage:maskResource,
+                    //词的类型
+                    type: 'wordCloud',
+                    //设置字符大小范围
+                    gridSize: 2,
+                    // sizeRange: [10, 60],
+                    sizeRange:[14,80],
+                    rotationRange:[-45,90],
+                    maskImage: maskResource,
+
+                    textStyle: {
+                        normal:{
+                            //生成随机的字体颜色
+                            color:function () {
+                                return 'rgb(' + [
+                                    Math.round(Math.random() * 160+30),
+                                    Math.round(Math.random() * 160+30),
+                                    Math.round(Math.random() * 160+30)
+                                ].join(',')+')';
+
+                            }
+                        }
+
+                    },
+                        data: data2
+
+                 },
+
             ]
 
         };
