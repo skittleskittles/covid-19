@@ -644,7 +644,15 @@
         var zoom_cured = {{ zoom_cured|safe }};
         var zoom_death = {{ zoom_death|safe }};
 
+        function convertDateFormat(mmddyyyy){
+            const splitResult = mmddyyyy.split("/");
+            if(splitResult.length==1) return mmddyyyy;
 
+            const mm = splitResult[0];
+            const dd = splitResult[1];
+            const mm_dd = (mm.length==1?"0":"")+mm+"-"+(dd.length==1?"0":"")+dd;
+            return mm_dd
+        };
 
 
         function drawZoom(pName) {
@@ -665,9 +673,13 @@
                     text:pName+"省"
                 },
                 backgroundColor: '#081832',
+                tooltip: {
+                        trigger: "axis",
+                        showContent:true
+                },
                 xAxis: {
                     type: 'category',
-                    data: zoom_data_index
+                    data: zoom_data_index.map(convertDateFormat)
                 },
                 yAxis: {
                     type: 'value'
@@ -682,21 +694,21 @@
                 legend:{
                     data:[
                         {
-                            name:"确诊人数",
+                            name:"确诊增长速率",
                             icon:"circle",
                             textStyle:{
                                 color:'white'
                             }
                         },
                         {
-                            name:"死亡人数",
+                            name:"死亡增长速率",
                             icon: "circle",
                             textStyle: {
                                 color: 'white'
                             }
                         },
                         {
-                            name:"治愈人数",
+                            name:"治愈增长速率",
                             icon:"circle",
                             textStyle:{
                                 color:'white'
@@ -711,7 +723,7 @@
                 },
                 series: [
                     {
-                        name:'确诊人数',
+                        name:'确诊增长速率',
                         type: 'line', // 这是个『散点图』
                         smooth: true,
                         itemStyle: {
@@ -723,7 +735,7 @@
                         data: zoom_confirmed[pName]
                     },
                     {
-                        name:'治愈人数',
+                        name:'治愈增长速率',
                         type: 'line', // 这是个『散点图』
                         smooth: true,
                         itemStyle: {
@@ -735,7 +747,7 @@
                         data: zoom_cured[pName]
                     },
                     {
-                        name:'死亡人数',
+                        name:'死亡增长速率',
                         type: 'line', // 这是个『散点图』
                         smooth: true,
                         itemStyle: {
@@ -782,7 +794,7 @@
                     },
                     dataset:{
                         source:[
-                            dateIndex,
+                            dateIndex.map(convertDateFormat),
                             time_confirmed[pName],
                             time_cured[pName],
                             time_death[pName],
@@ -809,8 +821,8 @@
                             },
                             encode: {
                                 itemName: "人数种类",
-                                value:"1/22/2020",
-                                tooltip:"1/22/2020"
+                                value:convertDateFormat("1/22/2020"),
+                                tooltip:convertDateFormat("1/22/2020")
                             }
                         },
                         {type:"line", smooth: true,seriesLayoutBy: "row"},
