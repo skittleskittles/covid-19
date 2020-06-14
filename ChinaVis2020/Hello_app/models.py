@@ -13,6 +13,19 @@ class Epidemic(models.Model):
         db_table = 'Epidemic'
 
 
+class Epidemic(models.Model):
+    province = models.CharField(max_length=45, blank=True, null=True)
+    city = models.CharField(max_length=45, blank=True, null=True)
+    quezhen = models.IntegerField(blank=True, null=True)
+    death = models.IntegerField(blank=True, null=True)
+    cure = models.IntegerField(blank=True, null=True)
+    time = models.CharField(max_length=45, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'Epidemic'
+
+
 class Warning(models.Model):
     id = models.IntegerField(primary_key=True)
     warning = models.TextField(blank=True, null=True)
@@ -1017,4 +1030,3 @@ class HubeiMoveout(models.Model):
     class Meta:
         managed = False
         db_table = 'hubei_moveout'
-
