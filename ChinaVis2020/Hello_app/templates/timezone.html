@@ -151,7 +151,7 @@
                     roam: true,
                     zoom: 1,
                     label: {
-                        show: true,
+                        show: false,
                         color: 'rgb(249, 249, 249)'
                     },
                     data: []
@@ -203,7 +203,7 @@
                                     roam: true,
                                     zoom:1,
                                     label: {
-                                        show: true,
+                                        show: false,
                                         color: 'rgb(249, 249, 249)'
                                     },
                                     data: newArr
@@ -435,6 +435,9 @@
                 title:{
                     text:pName+"省"
                 },
+                tooltip: {  // 配置提示信息
+                    trigger: 'item'
+                },
                 backgroundColor: '#081832',
                 legend:{
                     data:[
@@ -511,9 +514,10 @@
                         },
                         label:{
                             color: "white",
-                            show: true
+                            show: false
                         },
-                        data: confirmArr
+                        data: confirmArr,
+                        showLegendSymbol:true
                     },
                     {
                         name:"治愈人数",
@@ -533,9 +537,10 @@
                         },
                         label:{
                             color: "white",
-                            show: true
+                            show: false
                         },
-                        data: cureArr
+                        data: cureArr,
+                        showLegendSymbol:true
                     },
                     {
                         name:"死亡人数",
@@ -555,9 +560,10 @@
                         },
                         label:{
                             color: "white",
-                            show: true
+                            show: false
                         },
-                        data: deathArr
+                        data: deathArr,
+                        showLegendSymbol:true
                     }
                 ]
             };
