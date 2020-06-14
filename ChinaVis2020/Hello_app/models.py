@@ -457,7 +457,8 @@ class Confirmed(models.Model):
 class ConfirmedEmotional(models.Model):
     date = models.CharField(max_length=45, blank=True, null=True)
     newconfirmed = models.IntegerField(db_column='newConfirmed', blank=True, null=True)  # Field name made lowercase.
-
+    newcure = models.IntegerField(db_column='newCure', blank=True, null=True)
+    newdeath = models.IntegerField(db_column='newDeath', blank=True, null=True)
     class Meta:
         managed = False
         db_table = 'confirmed_emotional'
