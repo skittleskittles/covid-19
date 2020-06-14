@@ -283,7 +283,7 @@
                     value += params[i].value;
                 }
                 for (var i = 0, l = params.length; i < l; i++) {
-                    if(params[i].seriesName === "新增确诊" || params[i].seriesName === "新增死亡" || params[i].seriesName === "新增治愈") 
+                    if(params[i].seriesName === "新增确诊" || params[i].seriesName === "新增死亡" || params[i].seriesName === "新增治愈")
                         relVal += '<br/>'+ params[i].marker + params[i].seriesName + ' : '+ parseFloat(params[i].value);
                     else
                         relVal += '<br/>'+ params[i].marker + params[i].seriesName + ' : '+ parseFloat(params[i].value) +' (' + (100 *
@@ -370,12 +370,12 @@
        dataZoom: [
            {   // 这个dataZoom组件，默认控制x轴。
                type: 'slider', // 这个 dataZoom 组件是 slider 型 dataZoom 组件
-               start: 20,      // 左边在 10% 的位置。
+               start: 0,      // 左边在 10% 的位置。
                end: 100         // 右边在 60% 的位置。
            },
            {   // 这个dataZoom组件，默认控制x轴。
                type: 'inside', // 这个 dataZoom 组件是 inside 型 dataZoom 组件
-               start: 20,      // 左边在 10% 的位置。
+               start: 0,      // 左边在 10% 的位置。
                end: 100         // 右边在 60% 的位置。
            }
         ],
