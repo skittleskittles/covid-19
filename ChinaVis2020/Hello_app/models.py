@@ -1,5 +1,30 @@
 from django.db import models
 
+class Epidemic(models.Model):
+    province = models.CharField(max_length=45, blank=True, null=True)
+    city = models.CharField(max_length=45, blank=True, null=True)
+    quezhen = models.IntegerField(blank=True, null=True)
+    death = models.IntegerField(blank=True, null=True)
+    cure = models.IntegerField(blank=True, null=True)
+    time = models.CharField(max_length=45, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'Epidemic'
+
+
+class Epidemic(models.Model):
+    province = models.CharField(max_length=45, blank=True, null=True)
+    city = models.CharField(max_length=45, blank=True, null=True)
+    quezhen = models.IntegerField(blank=True, null=True)
+    death = models.IntegerField(blank=True, null=True)
+    cure = models.IntegerField(blank=True, null=True)
+    time = models.CharField(max_length=45, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'Epidemic'
+
 
 class Warning(models.Model):
     id = models.IntegerField(primary_key=True)
@@ -76,6 +101,7 @@ class AuthUserUserPermissions(models.Model):
         managed = False
         db_table = 'auth_user_user_permissions'
         unique_together = (('user', 'permission'),)
+
 
 class Cipin1(models.Model):
     id = models.IntegerField(primary_key=True)
@@ -465,6 +491,16 @@ class Confirmed(models.Model):
     class Meta:
         managed = False
         db_table = 'confirmed'
+
+
+class ConfirmedEmotional(models.Model):
+    date = models.CharField(max_length=45, blank=True, null=True)
+    newconfirmed = models.IntegerField(db_column='newConfirmed', blank=True, null=True)  # Field name made lowercase.
+    newcure = models.IntegerField(db_column='newCure', blank=True, null=True)
+    newdeath = models.IntegerField(db_column='newDeath', blank=True, null=True)
+    class Meta:
+        managed = False
+        db_table = 'confirmed_emotional'
 
 
 class CountryMovein(models.Model):
@@ -940,7 +976,7 @@ class DjangoSession(models.Model):
 
 
 class EmotionalTendency(models.Model):
-    date = models.IntegerField(blank=True, null=True)
+    date = models.CharField(max_length=45, blank=True, null=True)
     total = models.IntegerField(blank=True, null=True)
     total_sample = models.IntegerField(blank=True, null=True)
     positive = models.IntegerField(blank=True, null=True)
@@ -1020,113 +1056,3 @@ class HubeiMoveout(models.Model):
     class Meta:
         managed = False
         db_table = 'hubei_moveout'
-
-class CipinTop300(models.Model):
-    cpid = models.IntegerField(primary_key=True)
-    keyword = models.CharField(unique=True, max_length=50, blank=True, null=True)
-    m0122 = models.IntegerField(blank=True, null=True)
-    m0123 = models.IntegerField(blank=True, null=True)
-    m0124 = models.IntegerField(blank=True, null=True)
-    m0125 = models.IntegerField(blank=True, null=True)
-    m0126 = models.IntegerField(blank=True, null=True)
-    m0127 = models.IntegerField(blank=True, null=True)
-    m0128 = models.IntegerField(blank=True, null=True)
-    m0129 = models.IntegerField(blank=True, null=True)
-    m0130 = models.IntegerField(blank=True, null=True)
-    m0131 = models.IntegerField(blank=True, null=True)
-    m0201 = models.IntegerField(blank=True, null=True)
-    m0202 = models.IntegerField(blank=True, null=True)
-    m0203 = models.IntegerField(blank=True, null=True)
-    m0204 = models.IntegerField(blank=True, null=True)
-    m0205 = models.IntegerField(blank=True, null=True)
-    m0206 = models.IntegerField(blank=True, null=True)
-    m0207 = models.IntegerField(blank=True, null=True)
-    m0208 = models.IntegerField(blank=True, null=True)
-    m0209 = models.IntegerField(blank=True, null=True)
-    m0210 = models.IntegerField(blank=True, null=True)
-    m0211 = models.IntegerField(blank=True, null=True)
-    m0212 = models.IntegerField(blank=True, null=True)
-    m0213 = models.IntegerField(blank=True, null=True)
-    m0214 = models.IntegerField(blank=True, null=True)
-    m0215 = models.IntegerField(blank=True, null=True)
-    m0216 = models.IntegerField(blank=True, null=True)
-    m0217 = models.IntegerField(blank=True, null=True)
-    m0218 = models.IntegerField(blank=True, null=True)
-    m0219 = models.IntegerField(blank=True, null=True)
-    m0220 = models.IntegerField(blank=True, null=True)
-    m0221 = models.IntegerField(blank=True, null=True)
-    m0222 = models.IntegerField(blank=True, null=True)
-    m0223 = models.IntegerField(blank=True, null=True)
-    m0224 = models.IntegerField(blank=True, null=True)
-    m0225 = models.IntegerField(blank=True, null=True)
-    m0226 = models.IntegerField(blank=True, null=True)
-    m0227 = models.IntegerField(blank=True, null=True)
-    m0228 = models.IntegerField(blank=True, null=True)
-    m0229 = models.IntegerField(blank=True, null=True)
-    m0301 = models.IntegerField(blank=True, null=True)
-    m0302 = models.IntegerField(blank=True, null=True)
-    m0303 = models.IntegerField(blank=True, null=True)
-    m0304 = models.IntegerField(blank=True, null=True)
-    m0305 = models.IntegerField(blank=True, null=True)
-    m0306 = models.IntegerField(blank=True, null=True)
-    m0307 = models.IntegerField(blank=True, null=True)
-    m0308 = models.IntegerField(blank=True, null=True)
-    m0309 = models.IntegerField(blank=True, null=True)
-    m0310 = models.IntegerField(blank=True, null=True)
-    m0311 = models.IntegerField(blank=True, null=True)
-    m0312 = models.IntegerField(blank=True, null=True)
-    m0313 = models.IntegerField(blank=True, null=True)
-    m0314 = models.IntegerField(blank=True, null=True)
-    m0315 = models.IntegerField(blank=True, null=True)
-    m0316 = models.IntegerField(blank=True, null=True)
-    m0317 = models.IntegerField(blank=True, null=True)
-    m0318 = models.IntegerField(blank=True, null=True)
-    m0319 = models.IntegerField(blank=True, null=True)
-    m0320 = models.IntegerField(blank=True, null=True)
-    m0321 = models.IntegerField(blank=True, null=True)
-    m0322 = models.IntegerField(blank=True, null=True)
-    m0323 = models.IntegerField(blank=True, null=True)
-    m0324 = models.IntegerField(blank=True, null=True)
-    m0325 = models.IntegerField(blank=True, null=True)
-    m0326 = models.IntegerField(blank=True, null=True)
-    m0327 = models.IntegerField(blank=True, null=True)
-    m0328 = models.IntegerField(blank=True, null=True)
-    m0329 = models.IntegerField(blank=True, null=True)
-    m0330 = models.IntegerField(blank=True, null=True)
-    m0331 = models.IntegerField(blank=True, null=True)
-    m0401 = models.IntegerField(blank=True, null=True)
-    m0402 = models.IntegerField(blank=True, null=True)
-    m0403 = models.IntegerField(blank=True, null=True)
-    m0404 = models.IntegerField(blank=True, null=True)
-    m0405 = models.IntegerField(blank=True, null=True)
-    m0406 = models.IntegerField(blank=True, null=True)
-    m0407 = models.IntegerField(blank=True, null=True)
-    m0408 = models.IntegerField(blank=True, null=True)
-    m0409 = models.IntegerField(blank=True, null=True)
-    m0410 = models.IntegerField(blank=True, null=True)
-    m0411 = models.IntegerField(blank=True, null=True)
-    m0412 = models.IntegerField(blank=True, null=True)
-    m0413 = models.IntegerField(blank=True, null=True)
-    m0414 = models.IntegerField(blank=True, null=True)
-    m0415 = models.IntegerField(blank=True, null=True)
-    m0416 = models.IntegerField(blank=True, null=True)
-    m0417 = models.IntegerField(blank=True, null=True)
-    m0418 = models.IntegerField(blank=True, null=True)
-    m0419 = models.IntegerField(blank=True, null=True)
-    m0420 = models.IntegerField(blank=True, null=True)
-    m0421 = models.IntegerField(blank=True, null=True)
-    m0422 = models.IntegerField(blank=True, null=True)
-    m0423 = models.IntegerField(blank=True, null=True)
-    m0424 = models.IntegerField(blank=True, null=True)
-    m0425 = models.IntegerField(blank=True, null=True)
-    m0426 = models.IntegerField(blank=True, null=True)
-    m0427 = models.IntegerField(blank=True, null=True)
-    m0428 = models.IntegerField(blank=True, null=True)
-    m0429 = models.IntegerField(blank=True, null=True)
-    m0430 = models.IntegerField(blank=True, null=True)
-    total = models.IntegerField(blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'cipin_top300'
-
