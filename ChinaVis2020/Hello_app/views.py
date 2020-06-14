@@ -54,7 +54,32 @@ def yuqing(request):
         cpCloud['name'] = cp.keyword
         cpCloud['value'] = cp.total
         cpjsonlist.append(cpCloud)
-    print(cpjsonlist)
+    # print(cpjsonlist)
+    cpkeyword = {}
+    cpkey = []
+    f = 0
+    for cp in cpdate:
+
+        cpkeyword[cp.keyword] = []
+        i = 0
+        for item in cp.__dict__.items():
+
+            if i>=3 and i!=103:
+                cpkeyword[cp.keyword].append(item[1])
+                if f == 0:
+                    cpkey.append(item[0])
+            
+            i+=1
+        if f==0:
+            f=1
+    print(cpkey)
+    # print(cpkeyword)
+    # a = cpkeyword['肺炎']
+
+    # print(a.__dict__.items())
+    # for item in a.__dict__.items():
+    #     print (item)
+    # print (', '.join(['%s:%s' % item for item in a.__dict__.items()]))
     # print(CipinTop300.objects.get(keyword= '新型').total)
     # cpword = CipinTop300.objects.values("keyword")
     # cpid = CipinTop300.objects.values("cpid")
@@ -129,6 +154,8 @@ def yuqing(request):
         "series":series,
         "x_data":x_data,
         "legend_data":legend_data,
-        "cpjsonlist":cpjsonlist
+        "cpjsonlist":cpjsonlist,
+        "cpkeyword":cpkeyword,
+        "cpkey":cpkey
     }
     ) 
