@@ -67,8 +67,12 @@ def yuqing(request):
             if i>=3 and i!=103:
                 cpkeyword[cp.keyword].append(item[1])
                 if f == 0:
-                    cpkey.append(item[0])
-            
+                    if item[0][3]!='0':
+                        date = item[0][2]+'月'+item[0][3]+item[0][4]+'日'
+                    else:
+                        date = item[0][2]+'月'+item[0][4]+'日'
+                    cpkey.append(date)
+
             i+=1
         if f==0:
             f=1
