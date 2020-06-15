@@ -321,7 +321,7 @@ def yuqing(request):
         cpCloud['name'] = cp.keyword
         cpCloud['value'] = cp.total
         cpjsonlist.append(cpCloud)
-    # print(cpjsonlist)
+    #print(cpjsonlist)
 
     cpkeyword = {}
     cpkey = []
@@ -362,7 +362,7 @@ def yuqing(request):
             i+=1
  
 
-    print(len(cpkeyword))
+    #print(len(cpkeyword))
     # by月份 by正向中性负向
     # 首先获取列名
     cols = ['正向', '中立', '负向', '新增确诊','新增治愈','新增死亡']
