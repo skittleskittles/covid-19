@@ -46,19 +46,19 @@
         </div>
         <div class="left div_any01">
             <div class="div_any_childr">
-                <div class="div_any_title"><img src="../static/images/title_11.png">人口密度地图</div>
+                <div class="div_any_title"><img src="../static/images/title_0.png">人口密度地图</div>
                 <div id="container1" style="height: 98%;padding:10px;"></div>
             </div>
             <div class="div_any_childr">
-                <div class="div_any_title"><img src="../static/images/title_12.png">疫情趋势与人口密度关系图</div>
-                 <div id="container2" style="height: 90%;width:95%;padding:16px;left:0px; "></div>
+                <div class="div_any_title"><img src="../static/images/title_3.png">疫情趋势与人口密度关系图</div>
+                 <div id="container2" style="height: 90%;width:90%;padding:16px;left:0px; "></div>
             </div>
         </div>
     </div>
     <div class="div_any">
         <div class="left div_any03" style="width:94%;margin-left:30px">
             <div class="div_any_childr">
-                <div class="div_any_title"><img src="../static/images/title_0.png">疫情趋势与迁移趋势关系图</div>
+                <div class="div_any_title"><img src="../static/images/title_3.png">疫情趋势与迁移趋势关系图</div>
                  <div id="container" style="height: 260px;padding: 25px"></div>
             </div>
         </div>
@@ -478,7 +478,7 @@ var myChart = echarts.init(dom);
 var app = {};
 option = null;
 option = {
-backgroundColor: '#081832',
+    backgroundColor: '#081832',
     title: {
         subtext: '数据来自百度迁徙地图与国家卫健委',
         left: 'center',
@@ -604,7 +604,7 @@ backgroundColor: '#081832',
                 width: 1
             },
             markArea: {
-                silent: true,
+                silent: false,
                 data: [[{
                     xAxis: '01-01'
                 }, {
@@ -625,7 +625,7 @@ backgroundColor: '#081832',
                 width: 1
             },
             markArea: {
-                silent: true,
+                silent: false,
                 data: [
                     [{
                         xAxis: '01-01'

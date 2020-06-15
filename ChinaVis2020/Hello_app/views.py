@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from Hello_app.models import Confirmed, Epidemic, CountryMovein,CountryMoveout,HubeiMoveout,Cure,Death,\
-    EmotionalTendency,CipinTop300,Cipin1,ConfirmedEmotional
+    EmotionalTendency,CipinTop300,Cipin1,ConfirmedEmotional,CipinQianyi
 
 def convert_to_dicts(objs):
     '''把对象列表转换为字典列表'''
@@ -311,7 +311,8 @@ def qianyi(request):
 
 
 def yuqing(request):
-    print('---cipin----')
+    # print('---cipin----')
+# 总词频
     cpdate = CipinTop300.objects.all()
     cpjsonlist = []
     for cp in cpdate:
@@ -320,6 +321,7 @@ def yuqing(request):
         cpCloud['value'] = cp.total
         cpjsonlist.append(cpCloud)
     # print(cpjsonlist)
+
     cpkeyword = {}
     cpkey = []
     f = 0
@@ -333,48 +335,58 @@ def yuqing(request):
                 cpkeyword[cp.keyword].append(item[1])
                 if f == 0:
                     if item[0][3]!='0':
-                        date = item[0][2]+'月'+item[0][3]+item[0][4]+'日'
+                        date = '0'+item[0][2]+'-'+item[0][3]+item[0][4]
                     else:
-                        date = item[0][2]+'月'+item[0][4]+'日'
+                        date = '0'+item[0][2]+'-0'+item[0][4]
                     cpkey.append(date)
 
             i+=1
         if f==0:
             f=1
-    #print(cpkey)
-    # print(cpkeyword)
-    # a = cpkeyword['肺炎']
+# 迁徙相关词频
+    cpqydate = CipinQianyi.objects.all()
+    cpqyjsonlist = []
+    for cpqy in cpqydate:
+        cpCloud = {}
+        cpCloud['name'] = cpqy.keyword
+        cpCloud['value'] = cpqy.total
+        cpqyjsonlist.append(cpCloud)
+    # print(cpqyjsonlist)
+    for cpqy in cpqydate:
+        cpkeyword[cpqy.keyword] = []
+        i = 0
+        for item in cpqy.__dict__.items():
+            if i>=3 and i!=103:
+                cpkeyword[cpqy.keyword].append(item[1])
+            i+=1
+ 
 
-    # print(a.__dict__.items())
-    # for item in a.__dict__.items():
-    #     print (item)
-    # print (', '.join(['%s:%s' % item for item in a.__dict__.items()]))
-    # print(CipinTop300.objects.get(keyword= '新型').total)
-    # cpword = CipinTop300.objects.values("keyword")
-    # cpid = CipinTop300.objects.values("cpid")
-    # cptotal = CipinTop300.objects.values("total")
-    # cpm0122 = CipinTop300.objects.values("m0122")
-    # cpword = Cipin1.objects.values("keyword")
-    # cpid = Cipin1.objects.values("id")
-    # cptotal = Cipin1.objects.values("total")
-    # cpm0122 = Cipin1.objects.values("m0122")
-    # for (cid, kw,m122) in zip(cpid,cpword,cpm0122):
-    #     print(cid)
-    #     print(kw)
-    #     print(m122)
-
+    print(len(cpkeyword))
     # by月份 by正向中性负向
     # 首先获取列名
     cols = ['正向', '中立', '负向', '新增确诊','新增治愈','新增死亡']
     # 再来获取行名及数据
     dates = ConfirmedEmotional.objects.values("date")
     # # 对获取到的时间格式整理成by month,只获取月份
-    rows = []
-    for row in dates:
-        month = row['date']
-        if month not in rows:
-            rows.append(month)
-    rows.sort()
+    rows = ['01-15','01-16','01-17','01-18','01-19','01-20','01-21',
+            '01-22', '01-23', '01-24', '01-25', '01-26', '01-27',
+             '01-28', '01-29', '01-30', '01-31', '02-01', '02-02',
+             '02-03', '02-04', '02-05', '02-06', '02-07', '02-08',
+             '02-09', '02-10', '02-11', '02-12', '02-13', '02-14',
+             '02-15', '02-16', '02-17', '02-18', '02-19', '02-20',
+             '02-21', '02-22', '02-23', '02-24', '02-25', '02-26',
+             '02-27', '02-28', '02-29', '03-01', '03-02', '03-03',
+             '03-04', '03-05', '03-06', '03-07', '03-08', '03-09',
+             '03-10', '03-11', '03-12', '03-13', '03-14', '03-15',
+             '03-16', '03-17', '03-18', '03-19', '03-20', '03-21',
+             '03-22', '03-23', '03-24', '03-25', '03-26', '03-27',
+             '03-28', '03-29', '03-30', '03-31', '04-01', '04-02',
+             '04-03', '04-04', '04-05', '04-06', '04-07', '04-08',
+             '04-09', '04-10', '04-11', '04-12', '04-13', '04-14',
+             '04-15', '04-16', '04-17', '04-18', '04-19', '04-20',
+             '04-21', '04-22', '04-23', '04-24', '04-25', '04-26',
+             '04-27', '04-28', '04-29', '04-30']
+
     #print(rows)
     legend_data = cols
     x_data = rows
@@ -434,6 +446,7 @@ def yuqing(request):
         "legend_data":legend_data,
         "cpjsonlist":cpjsonlist,
         "cpkeyword":cpkeyword,
+        "cpqyjsonlist":cpqyjsonlist,
         "cpkey":cpkey
     }
     ) 
