@@ -42,7 +42,7 @@
         <div class="div_any01" style="width:257%;height:380px; margin-top: 40px;">
             <div class="div_any_child" style="position:relative;width:100%;height: 100%;">
                 <div class="div_any_title"><img src="../static/images/title_15.png">情感倾向</div>
-                <p id="histogramChart2" class="p_chart" style="height: 94%;"></p>
+                <p id="histogramChart2" class="p_chart" style="width: 94%; height: 94%; margin-left: 50px;"></p>
             </div>
         </div>
     </div>
@@ -82,7 +82,7 @@
             calculable: true,
             legend: {
                 textStyle: {
-                   color: '#c4e1e1'
+                   color: '#D1E9E9'
                }
             },
             grid: {
@@ -98,7 +98,7 @@
                     data: {{cpkey|safe}},
                     axisLine: {
                         lineStyle: {
-                            color: '#c4e1e1', // 颜色
+                            color: '#D1E9E9', // 颜色
                             width: 2 // 粗细
                         },
                         show:false
@@ -114,14 +114,14 @@
                     type: 'value',
                     name: chartname,
                     nameTextStyle:{
-                        color:'#c4e1e1',
+                        color:'#D1E9E9',
                     },
                     axisLine:{
                         show: false,//不显示坐标轴线
                    },
                    axisLabel : {
                        textStyle: {
-                           color: '#c4e1e1'
+                           color: '#D1E9E9'
                        }
                    },
                     // y軸的分割線顏色
@@ -183,7 +183,7 @@
             legend: {
                 data: ['总词频','迁移相关词频'],
                 textStyle: {
-                   color: '#c4e1e1'
+                   color: '#D1E9E9'
                },
                 {#selectedMode : 'single',#}
                 {#selected:{#}
@@ -301,7 +301,7 @@
        legend: {
            data:{{ legend_data|safe }},
            textStyle: {
-               color: '#c4e1e1'
+               color: '#D1E9E9'
            }
        },
        grid: {
@@ -320,7 +320,7 @@
                },
                axisLabel : {
                    textStyle: {
-                       color: '#c4e1e1'
+                       color: '#D1E9E9'
                    }
                }
            }
@@ -337,7 +337,7 @@
                },
                axisLabel : {
                    textStyle: {
-                       color: '#c4e1e1'
+                       color: '#D1E9E9'
                    }
                },
                // y軸的分割線顏色
@@ -356,14 +356,14 @@
                 color:"#FFF",
             },
            textStyle: {
-                   color: '#c4e1e1'
+                   color: '#D1E9E9'
                },
             axisLine:{
                    show: false,//不显示坐标轴线
                },
                axisLabel : {
                    textStyle: {
-                       color: '#c4e1e1'
+                       color: '#D1E9E9'
                    }
                },
                 // y軸的分割線顏色
@@ -383,7 +383,29 @@
                type: 'inside', // 这个 dataZoom 组件是 inside 型 dataZoom 组件
                start: 0,      // 左边在 10% 的位置。
                end: 100         // 右边在 60% 的位置。
-           }
+           },
+            {
+                show: true,
+                filterMode: 'empty',
+                width: 30,
+                height: '70%',
+                showDataShadow: false,
+                left: '0%',
+                yAxisIndex: 0,
+                start: 0,
+                end: 100
+            },
+            {
+                show: true,
+                filterMode: 'empty',
+                width: 30,
+                height: '70%',
+                showDataShadow: false,
+                left: '97%',
+                yAxisIndex: 1,
+                start: 0,
+                end: 100
+            }
         ],
    })
 </script>
