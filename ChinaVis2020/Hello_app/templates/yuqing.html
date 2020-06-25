@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>新冠疫情可视分析系统</title>
+    <title>数据可视化demo</title>
     <link href="../static/styles/common.css?random=120100" rel="stylesheet">
     <script src="../static/scripts/Plugin/jquery-3.3.1.min.js"></script>
     <script src="../static/scripts/Plugin/echarts.min.js"></script>
@@ -39,10 +39,10 @@
                 <div id="histogramChart1"  style="width: 120%; height:115%;margin-top:-40px;margin-left:-70px;"></div>
             </div>
         </div>
-        <div class="div_any01" style="width:254%;height:380px; margin-top: 40px;">
+        <div class="div_any01" style="width:257%;height:380px; margin-top: 40px;">
             <div class="div_any_child" style="position:relative;width:100%;height: 100%;">
                 <div class="div_any_title"><img src="../static/images/title_15.png">情感倾向</div>
-                <p id="histogramChart2" class="p_chart" style="height: 94%;"></p>
+                <p id="histogramChart2" class="p_chart" style="width: 94%; height: 94%; margin-left: 50px;"></p>
             </div>
         </div>
     </div>
@@ -54,6 +54,7 @@
             <div id="histogramChart3"  style="width: 100%;display: inline-block;height: 100%;margin-left: -25px;"></div>
         </div>
     </div>
+
 </div>
 </body>
 
@@ -81,7 +82,7 @@
             calculable: true,
             legend: {
                 textStyle: {
-                   color: '#c4e1e1'
+                   color: '#D1E9E9'
                }
             },
             grid: {
@@ -97,7 +98,7 @@
                     data: {{cpkey|safe}},
                     axisLine: {
                         lineStyle: {
-                            color: '#c4e1e1', // 颜色
+                            color: '#D1E9E9', // 颜色
                             width: 2 // 粗细
                         },
                         show:false
@@ -113,14 +114,14 @@
                     type: 'value',
                     name: chartname,
                     nameTextStyle:{
-                        color:'#c4e1e1',
+                        color:'#D1E9E9',
                     },
                     axisLine:{
                         show: false,//不显示坐标轴线
                    },
                    axisLabel : {
                        textStyle: {
-                           color: '#c4e1e1'
+                           color: '#D1E9E9'
                        }
                    },
                     // y軸的分割線顏色
@@ -147,15 +148,7 @@
                     end: 100,
                     top:'88%'
                 },
-                // {
-                //     show: true,
-                //     yAxisIndex: 0,
-                //     filterMode: 'empty',
-                //     width: 30,
-                //     height: '80%',
-                //     showDataShadow: false,
-                //     left: '96%'
-                // }
+
             ],
             series: [
                 {
@@ -180,8 +173,8 @@
             //设置标题，居中显示
                 title: {
                     subtext: '数据来自微博',
-                    left: '55px',
-                    top:'55px',
+                    left: '70px',
+                    top:'-10px',
                     align: 'right',
                     textStyle : {
                         color: '#fff'
@@ -190,7 +183,7 @@
             legend: {
                 data: ['总词频','迁移相关词频'],
                 textStyle: {
-                   color: '#c4e1e1'
+                   color: '#D1E9E9'
                },
                 {#selectedMode : 'single',#}
                 {#selected:{#}
@@ -224,9 +217,9 @@
                             //生成随机的字体颜色
                             color:function () {
                                 return 'rgb(' + [
-                                    Math.round(Math.random() * 160+30),
-                                    Math.round(Math.random() * 160+30),
-                                    Math.round(Math.random() * 160+30)
+                                    Math.round(Math.random() * 160+40),
+                                    Math.round(Math.random() * 160+40),
+                                    Math.round(Math.random() * 160+40)
                                 ].join(',')+')';
 
                             }
@@ -253,9 +246,9 @@
                             //生成随机的字体颜色
                             color:function () {
                                 return 'rgb(' + [
-                                    Math.round(Math.random() * 160+30),
-                                    Math.round(Math.random() * 160+30),
-                                    Math.round(Math.random() * 160+30)
+                                    Math.round(Math.random() * 160+40),
+                                    Math.round(Math.random() * 160+40),
+                                    Math.round(Math.random() * 160+40)
                                 ].join(',')+')';
 
                             }
@@ -308,7 +301,7 @@
        legend: {
            data:{{ legend_data|safe }},
            textStyle: {
-               color: '#c4e1e1'
+               color: '#D1E9E9'
            }
        },
        grid: {
@@ -327,7 +320,7 @@
                },
                axisLabel : {
                    textStyle: {
-                       color: '#c4e1e1'
+                       color: '#D1E9E9'
                    }
                }
            }
@@ -344,7 +337,7 @@
                },
                axisLabel : {
                    textStyle: {
-                       color: '#c4e1e1'
+                       color: '#D1E9E9'
                    }
                },
                // y軸的分割線顏色
@@ -363,14 +356,14 @@
                 color:"#FFF",
             },
            textStyle: {
-                   color: '#c4e1e1'
+                   color: '#D1E9E9'
                },
             axisLine:{
                    show: false,//不显示坐标轴线
                },
                axisLabel : {
                    textStyle: {
-                       color: '#c4e1e1'
+                       color: '#D1E9E9'
                    }
                },
                 // y軸的分割線顏色

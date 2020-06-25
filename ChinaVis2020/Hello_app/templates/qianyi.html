@@ -38,28 +38,28 @@
 <div class="con left">
     <!--统计分析图-->
     <div class="div_any">
-        <div class="left div_any02" style="width:47%;margin-left:30px">
-            <div class="div_any_child">
+        <div class="left div_any02" style="width:47%; ">
+            <div class="div_any_child"style="width:100%; margin-left:30px;height: 577px;">
                 <div class="div_any_title"><img src="../static/images/title_0.png">传播地图</div>
                 <div id="echarts_map" style="height: 90%; width:90%; margin-left:5%;margin-top:5%;border: 0px solid #CCC"></div>
             </div>
         </div>
         <div class="left div_any01">
-            <div class="div_any_childr">
-                <div class="div_any_title"><img src="../static/images/title_0.png">人口密度地图</div>
-                <div id="container1" style="height: 98%;padding:10px;"></div>
+            <div class="div_any_childr"style="width:100%; margin-left:30px;height: 280px;">
+                <div class="div_any_title" ><img src="../static/images/title_11.png">人口密度地图</div>
+                <div id="container1" style="height: 98%;padding:10px;margin-left:5%;"></div>
             </div>
-            <div class="div_any_childr">
-                <div class="div_any_title"><img src="../static/images/title_12.png">疫情趋势与人口密度关系图</div>
+            <div class="div_any_childr" style="width:100%; margin-left:30px;height: 270px;">
+                <div class="div_any_title" ><img src="../static/images/title_12.png">疫情趋势与人口密度关系图</div>
                  <div id="container2" style="height: 90%;width:95%;padding:16px;left:0px; "></div>
             </div>
         </div>
     </div>
     <div class="div_any">
-        <div class="left div_any03" style="width:94%;margin-left:30px">
-            <div class="div_any_childr">
-                <div class="div_any_title"><img src="../static/images/title_3.png">疫情趋势与迁移趋势关系图</div>
-                 <div id="container" style="height: 260px;padding: 25px"></div>
+        <div class="left div_any03" style="width:94%;margin-left:30px;height: 250px;">
+            <div class="div_any_childr" style="height: 260px;">
+                <div class="div_any_title"><img src="../static/images/title_0.png">疫情趋势与迁移趋势关系图</div>
+                 <div id="container" style="width:97%;height: 220px;padding: 20px;left:px"></div>
             </div>
         </div>
     </div>
@@ -85,18 +85,19 @@ option = {
         left: 'left',
         data:['人口密度'],
                 textStyle: {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     visualMap: {
         min: 0,
         max: 500,
         left: 'left',
-        top: 'bottom',
+        bottom:40,
+        // top: 'bottom',
         text:['高','低'],           // 文本，默认为数值文本
         calculable : true,
                 textStyle: {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {
@@ -113,7 +114,7 @@ option = {
     },
     series : [
         {
-            name: '人口密度',
+            // name: '人口密度',
             type: 'map',
             mapType: 'china',
             roam: false,
@@ -305,15 +306,15 @@ option = {
         top: 10,
         data: ['北京', '上海', '重庆'],
         textStyle: {
-            color: '#fff',
+            color: '#D1E9E9',
             fontSize: 16
         }
     },
     grid: {
         left: '10%',
-        right: 150,
+        right: '20%',
         top: '18%',
-        bottom: '10%'
+        bottom: '20%'
     },
     tooltip: {
         padding: 10,
@@ -339,7 +340,7 @@ option = {
         name: '天',
         nameGap: 16,
         nameTextStyle: {
-            color: '#fff',
+            color: '#D1E9E9',
             fontSize: 14
         },
         max: 150,
@@ -353,7 +354,7 @@ option = {
         },
          axisLabel : {
            textStyle: {
-               color: '#fff'
+               color: '#D1E9E9'
            }
          }
     },
@@ -363,7 +364,7 @@ option = {
         nameLocation: 'end',
         nameGap: 20,
         textStyle: {
-            color: '#fff',
+            color: '#D1E9E9',
             fontSize: 16
         },
         axisLine: {
@@ -376,14 +377,15 @@ option = {
         },
           axisLabel : {
            textStyle: {
-               color: '#fff'
+               color: '#D1E9E9'
            }
          }
     },
     visualMap: [
         {
-            right: '60px',
-            bottom: '5%',
+            right:50,
+            // left: 'right',
+            bottom: '2%',
             dimension: 2,
             min: 0,
             max: 200,
@@ -391,10 +393,10 @@ option = {
             itemHeight: 120,
             calculable: true,
             precision: 0.1,
-            text: ['新增确诊'],
+            text: ['圆形大小：\n阶段新增  \n确诊人数  '],
             textGap: 30,
             textStyle: {
-                color: '#fff'
+                color: '#D1E9E9'
             },
             inRange: {
                 symbolSize: [10, 70]
@@ -414,17 +416,18 @@ option = {
         },
         {
             right: 0,
-            bottom: '5%',
+            // left: 0,
+            bottom: '2%',
             dimension: 6,
             min: 0,
             max: 9,
             itemHeight: 120,
 
             precision: 0.1,
-            text: ['死亡人数'],
+            text: ['明暗：\n死亡人数'],
             textGap: 30,
             textStyle: {
-                color: '#fff'
+                color: '#D1E9E9'
             },
             inRange: {
                 colorLightness: [1, 0.5]
@@ -484,17 +487,17 @@ option = {
         left: 'center',
         align: 'right',
                 textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     grid: {
-        bottom: 80
+        bottom: 60
     },
     toolbox: {
         feature: {
             dataZoom: {
                 yAxisIndex: 'none',
-                backgroundColor:'#fff'
+                backgroundColor:'#D1E9E9'
             },
             restore: {},
             saveAsImage: {}
@@ -513,22 +516,22 @@ option = {
     },
     legend: {
         data: ['迁移趋势', '疫情趋势'],
-        left: 10,
+        left: 100,
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     dataZoom: [
         {
             show: true,
             realtime: true,
-            start: 65,
+            start: 55,
             end: 85
         },
         {
             type: 'inside',
             realtime: true,
-            start: 65,
+            start: 55,
             end: 85
         },
         {
@@ -545,11 +548,11 @@ option = {
             axisLine: {onZero: false},
             axisLabel : {
                    textStyle: {
-                       color: '#fff'
+                       color: '#D1E9E9'
                    }
             },
             nameTextStyle: {
-            color: '#fff'},
+            color: '#D1E9E9'},
             data: [
                 '01-01', '01-02', '01-03', '01-04', '01-05', '01-06', '01-07', '01-08', '01-09', '01-10', '01-11',
                 '01-12', '01-13', '01-14', '01-15', '01-16', '01-17', '01-18', '01-19', '01-20',
@@ -567,13 +570,13 @@ option = {
         {
             name: '迁移趋势',
             type: 'value',
-            color:'#fff',
+            color:'#D1E9E9',
             nameTextStyle: {
-            color: '#fff'},
+            color: '#D1E9E9'},
             max: 100,
             axisLabel : {
                    textStyle: {
-                       color: '#fff'
+                       color: '#D1E9E9'
                    }
             },
         },
@@ -583,11 +586,11 @@ option = {
             max: 15152,
             type: 'value',
             nameTextStyle: {
-            color: '#fff'},
+            color: '#D1E9E9'},
             inverse: true,
             axisLabel : {
                    textStyle: {
-                       color: '#fff'
+                       color: '#D1E9E9'
                    }
             },
         }
@@ -657,7 +660,7 @@ if (option && typeof option === "object") {
      timeline: {
             bottom: '6%',
             autoPlay: true,
-           //backgroundColor:'#FFF',
+           //backgroundColor:'#D1E9E9',
 
             data: ['01-01', '01-02', '01-03','01-04', '01-05', '01-06',
             '01-07', '01-08', '01-09','01-10', '01-11', '01-12',
@@ -673,7 +676,7 @@ if (option && typeof option === "object") {
 
             ],
             textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
             }
      },
 
@@ -690,7 +693,7 @@ backgroundColor: '#081832',
         text: '2020年01月01日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -708,7 +711,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -729,7 +732,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -756,7 +759,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -891,7 +894,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -946,7 +949,7 @@ backgroundColor: '#081832',
         text: '2020年01月02日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -964,7 +967,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -985,7 +988,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -1012,7 +1015,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -1147,7 +1150,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -1199,7 +1202,7 @@ backgroundColor: '#081832',
         text: '2020年01月03日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -1217,7 +1220,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -1238,7 +1241,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -1265,7 +1268,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -1400,7 +1403,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -1452,7 +1455,7 @@ backgroundColor: '#081832',
         text: '2020年01月04日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -1470,7 +1473,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -1491,7 +1494,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -1518,7 +1521,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -1653,7 +1656,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -1705,7 +1708,7 @@ backgroundColor: '#081832',
         text: '2020年01月05日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -1723,7 +1726,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -1744,7 +1747,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -1771,7 +1774,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -1906,7 +1909,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -1958,7 +1961,7 @@ backgroundColor: '#081832',
         text: '2020年01月06日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -1976,7 +1979,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -1997,7 +2000,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -2024,7 +2027,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -2159,7 +2162,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -2212,7 +2215,7 @@ backgroundColor: '#081832',
         text: '2020年01月07日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -2230,7 +2233,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -2251,7 +2254,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -2278,7 +2281,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -2413,7 +2416,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -2466,7 +2469,7 @@ backgroundColor: '#081832',
         text: '2020年01月08日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -2484,7 +2487,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -2505,7 +2508,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -2532,7 +2535,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -2667,7 +2670,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -2719,7 +2722,7 @@ backgroundColor: '#081832',
         text: '2020年01月09日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -2737,7 +2740,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -2758,7 +2761,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -2785,7 +2788,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -2920,7 +2923,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -2972,7 +2975,7 @@ backgroundColor: '#081832',
         text: '2020年01月10日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -2990,7 +2993,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -3011,7 +3014,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -3038,7 +3041,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -3173,7 +3176,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -3225,7 +3228,7 @@ backgroundColor: '#081832',
         text: '2020年01月11日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -3243,7 +3246,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -3264,7 +3267,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -3291,7 +3294,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -3426,7 +3429,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -3478,7 +3481,7 @@ backgroundColor: '#081832',
         text: '2020年01月12日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -3496,7 +3499,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -3517,7 +3520,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -3544,7 +3547,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -3679,7 +3682,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -3731,7 +3734,7 @@ backgroundColor: '#081832',
         text: '2020年01月13日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -3749,7 +3752,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -3770,7 +3773,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -3797,7 +3800,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -3932,7 +3935,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -3984,7 +3987,7 @@ backgroundColor: '#081832',
         text: '2020年01月14日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -4002,7 +4005,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -4023,7 +4026,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -4050,7 +4053,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -4185,7 +4188,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -4237,7 +4240,7 @@ backgroundColor: '#081832',
         text: '2020年01月15日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -4255,7 +4258,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -4276,7 +4279,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -4303,7 +4306,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -4438,7 +4441,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -4490,7 +4493,7 @@ backgroundColor: '#081832',
         text: '2020年01月16日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -4508,7 +4511,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -4529,7 +4532,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -4556,7 +4559,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -4691,7 +4694,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -4743,7 +4746,7 @@ backgroundColor: '#081832',
         text: '2020年01月17日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -4761,7 +4764,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -4782,7 +4785,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -4809,7 +4812,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -4944,7 +4947,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -4996,7 +4999,7 @@ backgroundColor: '#081832',
         text: '2020年01月18日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -5014,7 +5017,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -5035,7 +5038,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -5062,7 +5065,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -5197,7 +5200,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -5250,7 +5253,7 @@ backgroundColor: '#081832',
         text: '2020年01月19日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -5268,7 +5271,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -5289,7 +5292,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -5316,7 +5319,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -5451,7 +5454,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -5503,7 +5506,7 @@ backgroundColor: '#081832',
         text: '2020年01月20日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -5521,7 +5524,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -5542,7 +5545,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -5569,7 +5572,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -5704,7 +5707,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -5756,7 +5759,7 @@ backgroundColor: '#081832',
         text: '2020年01月21日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -5774,7 +5777,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -5795,7 +5798,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -5822,7 +5825,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -5957,7 +5960,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -6010,7 +6013,7 @@ backgroundColor: '#081832',
         text: '2020年01月22日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -6028,7 +6031,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -6049,7 +6052,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -6076,7 +6079,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -6211,7 +6214,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -6263,7 +6266,7 @@ backgroundColor: '#081832',
         text: '2020年01月23日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -6281,7 +6284,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -6302,7 +6305,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -6329,7 +6332,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -6464,7 +6467,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -6516,7 +6519,7 @@ backgroundColor: '#081832',
         text: '2020年01月24日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -6534,7 +6537,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -6555,7 +6558,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -6582,7 +6585,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -6717,7 +6720,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -6769,7 +6772,7 @@ backgroundColor: '#081832',
         text: '2020年01月25日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -6787,7 +6790,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -6808,7 +6811,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -6835,7 +6838,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -6970,7 +6973,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -7022,7 +7025,7 @@ backgroundColor: '#081832',
         text: '2020年01月26日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -7040,7 +7043,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -7061,7 +7064,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -7088,7 +7091,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -7223,7 +7226,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -7275,7 +7278,7 @@ backgroundColor: '#081832',
         text: '2020年01月27日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -7293,7 +7296,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -7314,7 +7317,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -7341,7 +7344,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -7476,7 +7479,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -7528,7 +7531,7 @@ backgroundColor: '#081832',
         text: '2020年01月28日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -7546,7 +7549,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -7567,7 +7570,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -7594,7 +7597,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -7729,7 +7732,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -7781,7 +7784,7 @@ backgroundColor: '#081832',
         text: '2020年01月29日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -7799,7 +7802,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -7820,7 +7823,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -7847,7 +7850,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -7982,7 +7985,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -8034,7 +8037,7 @@ backgroundColor: '#081832',
         text: '2020年01月30日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -8052,7 +8055,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -8073,7 +8076,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -8100,7 +8103,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -8235,7 +8238,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -8287,7 +8290,7 @@ backgroundColor: '#081832',
         text: '2020年01月31日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -8305,7 +8308,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -8326,7 +8329,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -8353,7 +8356,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -8488,7 +8491,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -8545,7 +8548,7 @@ backgroundColor: '#081832',
         text: '2020年02月01日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -8563,7 +8566,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -8584,7 +8587,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -8611,7 +8614,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -8746,7 +8749,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -8798,7 +8801,7 @@ backgroundColor: '#081832',
         text: '2020年02月02日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -8816,7 +8819,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -8837,7 +8840,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -8864,7 +8867,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -8999,7 +9002,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -9049,7 +9052,7 @@ backgroundColor: '#081832',
         text: '2020年02月03日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -9067,7 +9070,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -9088,7 +9091,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -9115,7 +9118,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -9250,7 +9253,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -9301,7 +9304,7 @@ backgroundColor: '#081832',
         text: '2020年02月04日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -9319,7 +9322,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -9340,7 +9343,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -9367,7 +9370,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -9502,7 +9505,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -9552,7 +9555,7 @@ backgroundColor: '#081832',
         text: '2020年02月05日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -9570,7 +9573,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -9591,7 +9594,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -9618,7 +9621,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -9753,7 +9756,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -9803,7 +9806,7 @@ backgroundColor: '#081832',
         text: '2020年02月06日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -9821,7 +9824,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -9842,7 +9845,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -9869,7 +9872,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -10004,7 +10007,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -10055,7 +10058,7 @@ backgroundColor: '#081832',
         text: '2020年02月07日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -10073,7 +10076,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -10094,7 +10097,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -10121,7 +10124,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -10256,7 +10259,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -10307,7 +10310,7 @@ backgroundColor: '#081832',
         text: '2020年02月08日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -10325,7 +10328,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -10346,7 +10349,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -10373,7 +10376,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -10508,7 +10511,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -10558,7 +10561,7 @@ backgroundColor: '#081832',
         text: '2020年02月09日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -10576,7 +10579,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -10597,7 +10600,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -10624,7 +10627,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -10759,7 +10762,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -10809,7 +10812,7 @@ backgroundColor: '#081832',
         text: '2020年02月10日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -10827,7 +10830,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -10848,7 +10851,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -10875,7 +10878,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -11010,7 +11013,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -11060,7 +11063,7 @@ backgroundColor: '#081832',
         text: '2020年02月11日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -11078,7 +11081,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -11099,7 +11102,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -11126,7 +11129,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -11261,7 +11264,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -11311,7 +11314,7 @@ backgroundColor: '#081832',
         text: '2020年02月12日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -11329,7 +11332,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -11350,7 +11353,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -11377,7 +11380,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -11512,7 +11515,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -11562,7 +11565,7 @@ backgroundColor: '#081832',
         text: '2020年02月13日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -11580,7 +11583,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -11601,7 +11604,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -11628,7 +11631,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -11763,7 +11766,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -11813,7 +11816,7 @@ backgroundColor: '#081832',
         text: '2020年02月14日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -11831,7 +11834,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -11852,7 +11855,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -11879,7 +11882,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -12014,7 +12017,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -12064,7 +12067,7 @@ backgroundColor: '#081832',
         text: '2020年02月15日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -12082,7 +12085,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -12103,7 +12106,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -12130,7 +12133,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -12265,7 +12268,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -12315,7 +12318,7 @@ backgroundColor: '#081832',
         text: '2020年02月16日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -12333,7 +12336,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -12354,7 +12357,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -12381,7 +12384,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -12516,7 +12519,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -12566,7 +12569,7 @@ backgroundColor: '#081832',
         text: '2020年02月17日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -12584,7 +12587,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -12605,7 +12608,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -12632,7 +12635,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -12767,7 +12770,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -12817,7 +12820,7 @@ backgroundColor: '#081832',
         text: '2020年01月18日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -12835,7 +12838,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -12856,7 +12859,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -12883,7 +12886,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -13018,7 +13021,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -13069,7 +13072,7 @@ backgroundColor: '#081832',
         text: '2020年02月19日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -13087,7 +13090,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -13108,7 +13111,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -13135,7 +13138,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -13270,7 +13273,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -13320,7 +13323,7 @@ backgroundColor: '#081832',
         text: '2020年02月20日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -13338,7 +13341,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -13359,7 +13362,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -13386,7 +13389,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -13521,7 +13524,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -13571,7 +13574,7 @@ backgroundColor: '#081832',
         text: '2020年02月21日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -13589,7 +13592,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -13610,7 +13613,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -13637,7 +13640,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -13772,7 +13775,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -13823,7 +13826,7 @@ backgroundColor: '#081832',
         text: '2020年02月22日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -13841,7 +13844,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -13862,7 +13865,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -13889,7 +13892,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -14024,7 +14027,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -14074,7 +14077,7 @@ backgroundColor: '#081832',
         text: '2020年02月23日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -14092,7 +14095,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -14113,7 +14116,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -14140,7 +14143,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -14275,7 +14278,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -14325,7 +14328,7 @@ backgroundColor: '#081832',
         text: '2020年02月24日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -14343,7 +14346,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -14364,7 +14367,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -14391,7 +14394,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -14526,7 +14529,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -14576,7 +14579,7 @@ backgroundColor: '#081832',
         text: '2020年02月25日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -14594,7 +14597,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -14615,7 +14618,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -14642,7 +14645,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -14777,7 +14780,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -14827,7 +14830,7 @@ backgroundColor: '#081832',
         text: '2020年02月26日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -14845,7 +14848,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -14866,7 +14869,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -14893,7 +14896,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -15028,7 +15031,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -15078,7 +15081,7 @@ backgroundColor: '#081832',
         text: '2020年02月27日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -15096,7 +15099,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -15117,7 +15120,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -15144,7 +15147,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -15279,7 +15282,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -15329,7 +15332,7 @@ backgroundColor: '#081832',
         text: '2020年02月28日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -15347,7 +15350,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -15368,7 +15371,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -15395,7 +15398,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -15530,7 +15533,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -15580,7 +15583,7 @@ backgroundColor: '#081832',
         text: '2020年02月29日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -15598,7 +15601,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -15619,7 +15622,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -15646,7 +15649,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -15781,7 +15784,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -15831,7 +15834,7 @@ backgroundColor: '#081832',
         text: '2020年03月01日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -15849,7 +15852,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -15870,7 +15873,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -15897,7 +15900,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -16032,7 +16035,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -16082,7 +16085,7 @@ backgroundColor: '#081832',
         text: '2020年01月31日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -16100,7 +16103,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -16121,7 +16124,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -16148,7 +16151,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -16283,7 +16286,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
@@ -16337,7 +16340,7 @@ backgroundColor: '#081832',
         text: '2020年02月01日从湖北省迁入各省市的迁移指数统计值',        
         x:'center',
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     tooltip : {//每个省份会出现的
@@ -16355,7 +16358,7 @@ backgroundColor: '#081832',
             '广州 Top10' : false
         },
         textStyle : {
-            color: '#fff'
+            color: '#D1E9E9'
         }
     },
     toolbox: {//辅助线按键
@@ -16376,7 +16379,7 @@ backgroundColor: '#081832',
         calculable : true,
         color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
         textStyle:{
-            color:'#fff'
+            color:'#D1E9E9'
         }
     },
     series : [
@@ -16403,7 +16406,7 @@ backgroundColor: '#081832',
                 symbolSize : 1,
                 itemStyle : {
                     normal: {
-                        color:'#fff',
+                        color:'#D1E9E9',
                         borderWidth:1,
                         borderColor:'rgba(30,144,255,0.5)'
                     }
@@ -16538,7 +16541,7 @@ backgroundColor: '#081832',
                     show: true,
                     scaleSize: 2,
                     period: 30,
-                    color: '#fff',
+                    color: '#D1E9E9',
                     shadowBlur: 10
                 },
                 itemStyle : {
