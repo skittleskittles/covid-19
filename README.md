@@ -1,10 +1,13 @@
-# covid-19
-## 简介
-本项目是一个新冠疫情可视分析系统，包含**时空态势，传播模式，舆情分析**三个版块。
+# COVID-19 Visualization
 
-项目基于Django和Echarts实现。
+## Introduction
+This project is a COVID-19 visual analytics system, which includes three modules: spatiotemporal situation, transmission patterns, and public opinion analysis.
 
-## 内容
-- **疫情时空态势**：分析中国疫情的时空分布，分析新增确诊、累计确诊、治愈率、死亡率的变化趋势，监控疫情发展态势。
-- **疫情传播模式**：关联人口流动、人口密度和疫情发展趋势，分析疫情传播模式，比较各地传播差异。
-- **疫情舆情分析**：分析新浪微博最常出现的疫情相关关键词，分析词频变化趋势以及用户关于疫情的情感的动态演变，对社会舆情进行态势感知。
+The project is built with Django and Echarts.
+
+## Content
+- **Spatiotemporal Situation of the Pandemic**: Analyzes the spatiotemporal distribution of the COVID-19 pandemic in China, examines the trends in newly confirmed cases, total confirmed cases, recovery rates, and mortality rates, and monitors the development of the pandemic.
+
+- **Pandemic Transmission Patterns**: Links population mobility, population density, and pandemic development trends to analyze transmission patterns and compare the differences in transmission across regions.
+
+- **Public Opinion Analysis**: Analyzes the most frequently mentioned COVID-19-related keywords on Sina Weibo, tracks changes in keyword frequency, and studies the dynamic evolution of users' sentiments about the pandemic to perform situational awareness of public opinion.
